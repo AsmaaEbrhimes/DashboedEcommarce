@@ -1,0 +1,361 @@
+<div class="d-flex flex-wrap p-3 gap-3">
+  <div class="col-1 custem_color p-3 rounded">
+    <p class="custem-white">Filter</p>
+    <div class="d-flex align-items-center border-inp px-2 py-1 rounded">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <input class="w-100 bg-transparent border-0 border-inp py-1 px-2" placeholder="Search For" />
+    </div>
+    <div>
+      <div class="mt-4 mb-2 d-flex align-items-center justify-content-between">
+        <span class="custem-size">Price</span>
+        <i  *ngIf="toggelcategoryprice == true" (click)="ToggleCategoryPrice()" class="fa-solid fa-angle-right curor-pointer"></i>
+        <i  *ngIf="toggelcategoryprice == false" (click)="ToggleCategoryPrice()" class="fa-solid fa-angle-up curor-pointer"></i>
+      </div>
+      <div [@ToggleCategory]
+      *ngIf="toggelcategoryprice"
+      >
+        <div class="w-100 d-flex align-items-center custom-checkbox">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe" class="check position-relative"></label>
+          <span class="ps-1">All</span>
+        </div>
+
+        <div class="w-100 mt-3 d-flex align-items-center custom-checkbox">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe" class="check position-relative"></label>
+          <span class="ps-1">$0.00 – $110.00</span>
+        </div>
+
+
+        <div class="w-100 mt-3 d-flex align-items-center custom-checkbox">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe" class="check position-relative"></label>
+          <span class="ps-1">$110.00 – $220.00</span>
+        </div>
+
+        <div class="w-100 mt-3 d-flex align-items-center custom-checkbox">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe" class="check position-relative"></label>
+          <span class="ps-1">$550+</span>
+        </div>
+
+        <div class="w-100 mt-3 d-flex align-items-center custom-checkbox">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe" class="check position-relative"></label>
+          <span class="ps-1">$330 - $550</span>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div>
+      <div class="mt-4 mb-2 d-flex align-items-center justify-content-between">
+        <span class="custem-size">Product Category</span>
+        <i  *ngIf="CategoryProduct == true" (click)="ToggleCategoryproduct()" class="fa-solid fa-angle-right curor-pointer"></i>
+        <i  *ngIf="CategoryProduct == false" (click)="ToggleCategoryproduct()" class="fa-solid fa-angle-up curor-pointer"></i>
+      </div>
+      <div [@ToggleCategory]
+      *ngIf="CategoryProduct"
+      >
+        <div class="w-100 d-flex align-items-center custom-checkbox">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe" class="check position-relative"></label>
+          <span class="ps-1">All</span>
+        </div>
+
+        <div class="w-100 mt-3 d-flex align-items-center custom-checkbox">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe" class="check position-relative"></label>
+          <span class="ps-1">Mobiles, Computers</span>
+        </div>
+
+
+        <div class="w-100 mt-3 d-flex align-items-center custom-checkbox">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe" class="check position-relative"></label>
+          <span class="ps-1">Men's Fashion</span>
+        </div>
+
+        <div class="w-100 mt-3 d-flex align-items-center custom-checkbox">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe" class="check position-relative"></label>
+          <span class="ps-1">Women's Fashion</span>
+        </div>
+
+
+      </div>
+    </div>
+
+
+    <div>
+      <div class="mt-4 mb-2 d-flex align-items-center justify-content-between">
+        <span class="custem-size">Rating</span>
+        <i  *ngIf="rating == true" (click)="ToggleCategoryRating()" class="fa-solid fa-angle-right curor-pointer"></i>
+        <i  *ngIf="rating == false" (click)="ToggleCategoryRating()" class="fa-solid fa-angle-up curor-pointer"></i>
+      </div>
+      <div [@ToggleCategory]
+      *ngIf="rating"
+      >
+        <div class="w-100 d-flex align-items-center custom-checkbox mt-2">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe" class="check position-relative"></label>
+          <i class="fa-regular fa-star rate-color ps-1"></i>
+          <span class="ps-1">All</span>
+        </div>
+
+        <div class="w-100 d-flex align-items-center custom-checkbox mt-2">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe" class="check position-relative"></label>
+          <i class="fa-regular fa-star rate-color ps-1"></i>
+          <span class="ps-1">4 Rating and Up</span>
+        </div>
+
+        <div class="w-100 d-flex align-items-center custom-checkbox mt-2">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe" class="check position-relative"></label>
+          <i class="fa-regular fa-star rate-color ps-1"></i>
+          <span class="ps-1">3 Rating and Up</span>
+        </div>
+
+        <div class="w-100 d-flex align-items-center custom-checkbox mt-2">
+          <input type="checkbox" id="rememberMe" />
+          <label for="rememberMe" class="check position-relative"></label>
+          <i class="fa-regular fa-star rate-color ps-1"></i>
+          <span class="ps-1">2 Rating and Up</span>
+        </div>
+
+
+
+
+
+      </div>
+    </div>
+  </div>
+  <div class="col-2  rounded">
+<div class="d-flex custem-flex gap-3">
+  <div class="custem_color rounded p-3 position-relative">
+    <i class="fa-regular fa-heart position-absolute heart-position pe-2 curor-pointer"></i>
+    <img class="w-75 text-center m-auto d-block"  src="./assets/Img/img-03.png" />
+    <p class="font-size mt-3 mb-0">Mesh Ergonomic Black Chair</p>
+    <div class="mt-1 w-100 mb-2">
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <span>(198)</span>
+    </div>
+    <p>$674.12 <span class="secondry-color font-size">784.99</span></p>
+    <div class="d-flex justify-content-between w-100">
+      <button class="w-75 p-2 bg-transparent rounded Add-cart font-size"><i class="fa-solid fa-cart-shopping font-size pe-1"></i>Add ToCart</button>
+      <button class="rounded border-0 custem-img-color custem_color text-light"><i class="fa-solid fa-ellipsis px-1"></i></button>
+    </div>
+   </div>
+
+   <div class="custem_color rounded p-3 position-relative">
+    <i class="fa-regular fa-heart position-absolute heart-position pe-2 curor-pointer"></i>
+    <img class="w-75 text-center m-auto d-block"  src="./assets/Img/img-03.png" />
+    <p class="font-size mt-3 mb-0">Mesh Ergonomic Black Chair</p>
+    <div class="mt-1 w-100 mb-2">
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <span>(198)</span>
+    </div>
+    <p>$674.12 <span class="secondry-color font-size">784.99</span></p>
+    <div class="d-flex justify-content-between w-100">
+      <button class="w-75 p-2 bg-transparent rounded Add-cart font-size"><i class="fa-solid fa-cart-shopping font-size pe-1"></i>Add ToCart</button>
+      <button class="rounded border-0 custem-img-color custem_color text-light"><i class="fa-solid fa-ellipsis px-1"></i></button>
+    </div>
+   </div>
+
+
+   <div class="custem_color rounded p-3 position-relative">
+    <i class="fa-regular fa-heart position-absolute heart-position pe-2 curor-pointer"></i>
+    <img class="w-75 text-center m-auto d-block"  src="./assets/Img/img-03.png" />
+    <p class="font-size mt-3 mb-0">Mesh Ergonomic Black Chair</p>
+    <div class="mt-1 w-100 mb-2">
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <span>(198)</span>
+    </div>
+    <p>$674.12 <span class="secondry-color font-size">784.99</span></p>
+    <div class="d-flex justify-content-between w-100">
+      <button class="w-75 p-2 bg-transparent rounded Add-cart font-size"><i class="fa-solid fa-cart-shopping font-size pe-1"></i>Add ToCart</button>
+      <button class="rounded border-0 custem-img-color custem_color text-light"><i class="fa-solid fa-ellipsis px-1"></i></button>
+    </div>
+   </div>
+   <div class="custem_color rounded p-3 position-relative">
+    <i class="fa-regular fa-heart position-absolute heart-position pe-2 curor-pointer"></i>
+    <img class="w-75 text-center m-auto d-block"  src="./assets/Img/img-03.png" />
+    <p class="font-size mt-3 mb-0">Mesh Ergonomic Black Chair</p>
+    <div class="mt-1 w-100 mb-2">
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <span>(198)</span>
+    </div>
+    <p>$674.12 <span class="secondry-color font-size">784.99</span></p>
+    <div class="d-flex justify-content-between w-100">
+      <button class="w-75 p-2 bg-transparent rounded Add-cart font-size"><i class="fa-solid fa-cart-shopping font-size pe-1"></i>Add ToCart</button>
+      <button class="rounded border-0 custem-img-color custem_color text-light"><i class="fa-solid fa-ellipsis px-1"></i></button>
+    </div>
+   </div>
+   <div class="custem_color rounded p-3 position-relative">
+    <i class="fa-regular fa-heart position-absolute heart-position pe-2 curor-pointer"></i>
+    <img class="w-75 text-center m-auto d-block"  src="./assets/Img/img-03.png" />
+    <p class="font-size mt-3 mb-0">Mesh Ergonomic Black Chair</p>
+    <div class="mt-1 w-100 mb-2">
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <span>(198)</span>
+    </div>
+    <p>$674.12 <span class="secondry-color font-size">784.99</span></p>
+    <div class="d-flex justify-content-between w-100">
+      <button class="w-75 p-2 bg-transparent rounded Add-cart font-size"><i class="fa-solid fa-cart-shopping font-size pe-1"></i>Add ToCart</button>
+      <button class="rounded border-0 custem-img-color custem_color text-light"><i class="fa-solid fa-ellipsis px-1"></i></button>
+    </div>
+   </div>
+   <div class="custem_color rounded p-3 position-relative">
+    <i class="fa-regular fa-heart position-absolute heart-position pe-2 curor-pointer"></i>
+    <img class="w-75 text-center m-auto d-block"  src="./assets/Img/img-03.png" />
+    <p class="font-size mt-3 mb-0">Mesh Ergonomic Black Chair</p>
+    <div class="mt-1 w-100 mb-2">
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <span>(198)</span>
+    </div>
+    <p>$674.12 <span class="secondry-color font-size">784.99</span></p>
+    <div class="d-flex justify-content-between w-100">
+      <button class="w-75 p-2 bg-transparent rounded Add-cart font-size"><i class="fa-solid fa-cart-shopping font-size pe-1"></i>Add ToCart</button>
+      <button class="rounded border-0 custem-img-color custem_color text-light"><i class="fa-solid fa-ellipsis px-1"></i></button>
+    </div>
+   </div>
+   <div class="custem_color rounded p-3 position-relative">
+    <i class="fa-regular fa-heart position-absolute heart-position pe-2 curor-pointer"></i>
+    <img class="w-75 text-center m-auto d-block"  src="./assets/Img/img-03.png" />
+    <p class="font-size mt-3 mb-0">Mesh Ergonomic Black Chair</p>
+    <div class="mt-1 w-100 mb-2">
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <span>(198)</span>
+    </div>
+    <p>$674.12 <span class="secondry-color font-size">784.99</span></p>
+    <div class="d-flex justify-content-between w-100">
+      <button class="w-75 p-2 bg-transparent rounded Add-cart font-size"><i class="fa-solid fa-cart-shopping font-size pe-1"></i>Add ToCart</button>
+      <button class="rounded border-0 custem-img-color custem_color text-light"><i class="fa-solid fa-ellipsis px-1"></i></button>
+    </div>
+   </div>
+   <div class="custem_color rounded p-3 position-relative">
+    <i class="fa-regular fa-heart position-absolute heart-position pe-2 curor-pointer"></i>
+    <img class="w-75 text-center m-auto d-block"  src="./assets/Img/img-03.png" />
+    <p class="font-size mt-3 mb-0">Mesh Ergonomic Black Chair</p>
+    <div class="mt-1 w-100 mb-2">
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <span>(198)</span>
+    </div>
+    <p>$674.12 <span class="secondry-color font-size">784.99</span></p>
+    <div class="d-flex justify-content-between w-100">
+      <button class="w-75 p-2 bg-transparent rounded Add-cart font-size"><i class="fa-solid fa-cart-shopping font-size pe-1"></i>Add ToCart</button>
+      <button class="rounded border-0 custem-img-color custem_color text-light"><i class="fa-solid fa-ellipsis px-1"></i></button>
+    </div>
+   </div>
+   <div class="custem_color rounded p-3 position-relative">
+    <i class="fa-regular fa-heart position-absolute heart-position pe-2 curor-pointer"></i>
+    <img class="w-75 text-center m-auto d-block"  src="./assets/Img/img-03.png" />
+    <p class="font-size mt-3 mb-0">Mesh Ergonomic Black Chair</p>
+    <div class="mt-1 w-100 mb-2">
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <span>(198)</span>
+    </div>
+    <p>$674.12 <span class="secondry-color font-size">784.99</span></p>
+    <div class="d-flex justify-content-between w-100">
+      <button class="w-75 p-2 bg-transparent rounded Add-cart font-size"><i class="fa-solid fa-cart-shopping font-size pe-1"></i>Add ToCart</button>
+      <button class="rounded border-0 custem-img-color custem_color text-light"><i class="fa-solid fa-ellipsis px-1"></i></button>
+    </div>
+   </div>
+   <div class="custem_color rounded p-3 position-relative">
+    <i class="fa-regular fa-heart position-absolute heart-position pe-2 curor-pointer"></i>
+    <img class="w-75 text-center m-auto d-block"  src="./assets/Img/img-03.png" />
+    <p class="font-size mt-3 mb-0">Mesh Ergonomic Black Chair</p>
+    <div class="mt-1 w-100 mb-2">
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <span>(198)</span>
+    </div>
+    <p>$674.12 <span class="secondry-color font-size">784.99</span></p>
+    <div class="d-flex justify-content-between w-100">
+      <button class="w-75 p-2 bg-transparent rounded Add-cart font-size"><i class="fa-solid fa-cart-shopping font-size pe-1"></i>Add ToCart</button>
+      <button class="rounded border-0 custem-img-color custem_color text-light"><i class="fa-solid fa-ellipsis px-1"></i></button>
+    </div>
+   </div>
+   <div class="custem_color rounded p-3 position-relative">
+    <i class="fa-regular fa-heart position-absolute heart-position pe-2 curor-pointer"></i>
+    <img class="w-75 text-center m-auto d-block"  src="./assets/Img/img-03.png" />
+    <p class="font-size mt-3 mb-0">Mesh Ergonomic Black Chair</p>
+    <div class="mt-1 w-100 mb-2">
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <span>(198)</span>
+    </div>
+    <p>$674.12 <span class="secondry-color font-size">784.99</span></p>
+    <div class="d-flex justify-content-between w-100">
+      <button class="w-75 p-2 bg-transparent rounded Add-cart font-size"><i class="fa-solid fa-cart-shopping font-size pe-1"></i>Add ToCart</button>
+      <button class="rounded border-0 custem-img-color custem_color text-light"><i class="fa-solid fa-ellipsis px-1"></i></button>
+    </div>
+   </div>
+   <div class="custem_color rounded p-3 position-relative">
+    <i class="fa-regular fa-heart position-absolute heart-position pe-2 curor-pointer"></i>
+    <img class="w-75 text-center m-auto d-block"  src="./assets/Img/img-03.png" />
+    <p class="font-size mt-3 mb-0">Mesh Ergonomic Black Chair</p>
+    <div class="mt-1 w-100 mb-2">
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <i class="fa-solid fa-star rate-color"></i>
+      <span>(198)</span>
+    </div>
+    <p>$674.12 <span class="secondry-color font-size">784.99</span></p>
+    <div class="d-flex justify-content-between w-100">
+      <button class="w-75 p-2 bg-transparent rounded Add-cart font-size"><i class="fa-solid fa-cart-shopping font-size pe-1"></i>Add ToCart</button>
+      <button class="rounded border-0 custem-img-color custem_color text-light"><i class="fa-solid fa-ellipsis px-1"></i></button>
+    </div>
+   </div>
+</div>
+
+
+
+  </div>
+</div>

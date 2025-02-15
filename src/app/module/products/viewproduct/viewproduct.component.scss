@@ -86,7 +86,13 @@ width: 100%;
 }
 
 
-
+.tabMenue{
+  right: 25px;
+  top: 70px;
+  text-align: right;
+  width: 15%;
+display: none;
+}
 
 
 .color_product span{
@@ -198,7 +204,9 @@ width: 20%;
     .right-img{
       width: 100%;
     }
-
+    .tabMenue{
+      width: 60%;
+    }
  }
 
  @media(min-width:767px) and (max-width:1200px){
@@ -209,6 +217,9 @@ width: 20%;
    }
    .right-img{
     width: 99.5%;
+  }
+  .tabMenue{
+    width: 30%;
   }
   }
   @media(min-width:1200px) and (max-width:1400px){
@@ -221,7 +232,9 @@ width: 20%;
    .right-img{
     width: 99.5%;
   }
-
+  .tabMenue{
+    width: 30%;
+  }
   }
 
 

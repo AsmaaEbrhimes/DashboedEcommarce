@@ -1,0 +1,147 @@
+.col-1{
+width: 22.5%;
+position: sticky;
+top: 0;
+height: fit-content;
+}
+
+.col-2{
+width: 76.1%;
+height: fit-content;
+}
+
+.Add-cart{
+  color: rgb(59 130 246 );
+  border:1px dashed rgb(59 130 246 )
+}
+
+.Add-cart:hover{
+  background-color: #142a44 !important;
+}
+
+.custem-img-color{
+  background-color:rgba(28 46 69 ) !important;
+}
+
+.custem-img-color:hover{
+  background-color:rgb(52, 81, 120) !important;
+
+}
+.custem-white{
+  color: rgb(226 234 243 )
+}
+.border-inp{
+  border: 1px solid rgb(35 58 87 );
+}
+
+
+input{
+  color: white;
+}
+input:focus{
+  outline: none;
+}
+
+.secondry-color{
+  color: rgb(146 175 211);
+}
+
+.custem-size{
+  font-size: 15px;
+  text-decoration:underline;
+}
+.font-size{
+  font-size: 11px;
+}
+
+.heart-position{
+  right: 0;
+}
+.rate-color{
+  color:rgb(234 179 8);
+  font-size: 14px;
+}
+
+.custom-checkbox input[type="checkbox"] {
+  display: none;
+}
+
+.custom-checkbox label {
+  width:17px;
+  height: 17px;
+  border: 2px solid rgb(35 58 87 );
+  background: transparent;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.custom-checkbox input[type="checkbox"]:checked + label::after {
+  content: "✔";
+  font-size: 16px;
+  color: white;
+  position: absolute;
+  left: 50%;
+  top: 35%;
+  transform: translate(-50%, -50%);
+}
+.custem_color{
+  background-color: #132337;
+ }
+
+.custem-flex{
+  display: flex;
+  flex-wrap: wrap;
+}
+.custem-flex div{
+  width: 23.7%;
+  height: fit-content;
+}
+
+@media(min-width:320px) and (max-width:767px){
+  .custem-flex div{
+    width: 100% !important;
+}
+  .col-1{
+    width: 100%;
+    position: relative;
+    }
+
+    .custem-flex{
+      flex-direction: column;
+    }
+
+    .col-2{
+      width: 100%;
+    }
+}
+
+
+@media(min-width:767px) and (max-width:1200px){
+  .col-1{
+    width: 100%;
+    position: relative;
+    }
+
+    .col-2{
+      width: 100%;
+    }
+
+    .custem-flex div{
+      width: 47.9%;
+ }
+}
+
+
+@media(min-width:1200px) and (max-width:1400px){
+  .col-1{
+    width: 25%;
+    }
+
+    .col-2{
+    width: 73%;
+    }
+
+    .custem-flex div{
+         width: 30.9%;
+    }
+}
