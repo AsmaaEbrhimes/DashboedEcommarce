@@ -1,0 +1,18 @@
+<div class="background-verfiy">
+  <div class="content d-flex justify-content-center rounded-2 m-auto position-relative">
+    <div class="text-center">
+      <img src="../../../../assets/Img/logo-light.png" width="120" height="30" class="mt-5 mb-4" />
+      <h5 class="custem_primary_color">Verify Email</h5>
+      <p class="coustem_secondry_color mt-2 mb-0">Please enter the 4 digit code sent to</p>
+      <p class="coustem_secondry_color mt-1">tailwickthemesdesign.com</p>
+      <form [formGroup]="otp">
+        <div class="margin-otp">
+          <p-inputOtp formControlName="valueotp" />
+        </div>
+
+        <button
+          class="d-block text-center m-auto btn-send-code border-0 p-2 rounded text-light mt-3 mb-5">Confirme</button>
+      </form>
+    </div>
+  </div>
+</div>

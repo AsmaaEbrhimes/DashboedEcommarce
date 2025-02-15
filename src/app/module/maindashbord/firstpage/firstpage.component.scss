@@ -1,0 +1,102 @@
+.header_dashboard{
+  background-color: #132337;
+}
+
+.flexbox{
+  display: flex;
+  flex-wrap: wrap;
+}
+.fa-bars{
+  display: inline-block;
+  height: 40px;
+  width: 40px;
+  line-height: 40px;
+  transition: 0.3s linear;
+}
+
+
+
+.show_big_screen{
+display: block;
+}
+
+
+.fa-bars:hover{
+  background-color: #1c2e45;
+}
+
+.col_one{
+
+  height: fit-content;
+ }
+ .custem_color{
+  width: 100%;
+  background-color: #132337;
+  box-shadow: 0 6px 10px #1b293c !important;
+
+ }
+
+
+
+.card{
+  background-color: #132337;
+  box-shadow: 0 6px 10px #1b293c !important;
+}
+
+.size_icon{
+  height: 51px;
+  width: 51px;
+  line-height: 51px;
+}
+.blue_color{
+background-color: #3b82f633;
+color: rgb(59 130 246);
+}
+
+.blueviolet_color{
+  background-color: #a855f733;
+  color: #A855F7;
+}
+
+.green_color{
+  background-color: #163a46;
+color: #249782;
+}
+
+
+.red_color{
+background-color: #3f2a3a;
+color: #ef4444;
+}
+.custem_margin{
+  margin-top: 41px;
+}
+
+
+
+
+@media(min-width:320px) and (max-width:767px){
+  .img_ecommarce{
+    display: none;
+  }
+  .custem_left_md{
+    left: 20px;
+        }
+}
+
+
+@media(min-width:767px) and (max-width:1200px){
+  .custem_left_md{
+left: 35px;
+    }
+}
+
+
+
+
+
+
+
+
+
+

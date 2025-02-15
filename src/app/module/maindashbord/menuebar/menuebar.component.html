@@ -1,0 +1,46 @@
+<div class="menue_avatar d-flex justify-content-center mt-3">
+  <div class="d-flex align-items-center justify-content-center">
+    <img *ngIf="collpsed" src="../../../../assets/Img/logo-light.png" class="w-50" />
+    <i (click)="closemMenue()" *ngIf="collpsed" class="fa-solid fa-xmark fs-4 fw-bold position-absolute curor-pointer text-center m-auto me-2 rounded-circle show-in-small-screen"></i>
+  </div>
+
+  <img *ngIf="!collpsed" src="../../../../assets/Img/download (1).png" class="mb-5" width="30px" height="30px"
+    style="position: fixed;" />
+</div>
+
+<div *ngIf="collpsed"
+  class="pt-2 pb-2 px-3 d-flex justify-content-center justify-content-between mt-3 active-bacground  pb-0 rounded-2">
+  <div class="d-flex align-items-center">
+    <p class="m-0"><i class="fa-solid fa-chart-line pe-2"></i></p>
+    <p class="m-0">Dashbord</p>
+  </div>
+  <div>
+    <i class="fa-solid fa-chevron-left"></i>
+  </div>
+</div>
+
+
+<ul class="mt-4 p-2 m-0">
+  <li class="mb-3 custem-color curor-pointer curor-pointer" *ngFor="let item of datamenue"
+    [ngClass]="{'flex':!closebsed}">
+    <div class="fs-5 d-flex hover_li p-1 rounded"
+      [ngClass]="{'justify-content-between': collpsed, 'justify-content-center': !collpsed}">
+      <div>
+        <span class="text-center m-auto me-2 custem-size icon-label"><i [class]="item?.icon"></i></span>
+        <span *ngIf="collpsed" class="custem-size">{{ item?.label }}</span>
+      </div>
+      <div>
+        <span *ngIf="collpsed" class="background_icon text-center rounded-circle "><i (click)="toggleSubMenu(item)"
+            class="fa-solid fa-chevron-left custem-size"></i></span>
+      </div>
+    </div>
+    <ul *ngIf="item?.isOpen && item?.sublevelItems && collpsed" [@slideToggle]>
+      <li [routerLink]="[subItem?.routeLink]" routerLinkActive="router-link-active"
+        class="p-0 mt-2 m-0 d-flex align-items-center curor-pointer" *ngFor="let subItem of item?.sublevelItems">
+
+        <span class="circle rounded-circle me-2"></span>
+        <span class="custem-color">{{ subItem?.label }}</span>
+      </li>
+    </ul>
+  </li>
+</ul>

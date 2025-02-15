@@ -1,0 +1,22 @@
+<div class="header_dashboard position-sticky ps-3 pt-2 pb-2 d-flex justify-content-between align-items-center p-2"
+[ngClass]="{'header_scrolled':isScrolled}"
+>
+  <div class="d-flex align-items-center">
+    <i class="fa-solid fa-bars p-2 rounded curor-pointer fs-5" (click)="toggelMenue()"></i>
+    <input class="input_header ms-2 rounded bg-transbernt p-2 bg-transparent w-100 ms-3" placeholder="Search for ..." />
+  </div>
+
+  <div class="pt-2">
+    <i class="fa-solid fa-gear pe-4 me-4"></i>
+    <span class=" bell position-relative me-4">
+      <i class="fa-solid fa-bell pe-4"></i>
+    </span>
+    <span class="position-relative me-4">
+      <span class="page"></span>
+      <i class="fa-solid fa-cart-shopping pe-4"></i>
+    </span>
+    <span class="me-4">
+      <img class="rounded-circle" width="40" height="40" src="../../../../assets/Img/avatar-4.png" />
+    </span>
+  </div>
+</div>

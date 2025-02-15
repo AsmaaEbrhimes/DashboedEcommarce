@@ -1,0 +1,113 @@
+.background-verfiy {
+  height: 100vh;
+  background-color: #0f1824
+}
+
+
+.content
+{
+width: 32%;
+  background-color: #132337;
+  box-shadow: 0 0 10px #1a2a3e !important;
+  top: 24vh;
+}
+
+
+::ng-deep .p-inputotp {
+  display: flex
+;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+
+::ng-deep .p-inputotp-input {
+  text-align: center;
+  width: 6rem;
+  background-color: transparent;
+  height: 2.9rem;
+}
+
+
+
+
+::ng-deep .p-inputtext {
+  font-family: var(--font-family);
+  font-feature-settings: var(--font-feature-settings, normal);
+  font-size: 1rem;
+  color: rgb(178, 200, 228);
+  font-weight: bolder;
+  // background: #ffffff;
+  padding: 0.75rem 0.75rem;
+   border: 1px solid rgb(35 58 87);
+  transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+  appearance: none;
+  border-radius: 6px;
+}
+
+::ng-deep .p-inputotp {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-send-code{
+  background-color: rgb(59 130 246 );
+  font-size: 14px;
+  width: 100%;
+  transition: 0.1s linear;
+}
+
+
+
+.btn-send-code:hover{
+  opacity: 0.8;
+}
+
+
+.custem_primary_color{
+  color: #185bea;
+}
+
+.coustem_secondry_color{
+  color: rgb(146 175 211 );
+}
+
+.margin-otp{
+  margin-top: 35px !important;
+  margin-bottom: 44px !important;
+}
+@media(min-width:320px) and (max-width:767px){
+  ::ng-deep .p-inputotp-input{
+width: 95%;
+  }
+
+  .content{
+    width: 100%;
+    top:5vh
+  }
+}
+
+@media(min-width:767px) and (max-width:1200px){
+  .content{
+    width: 50%;
+    top:9vh
+  }
+
+  ::ng-deep .p-inputotp-input{
+    width: 15rem;
+      }
+
+}
+
+
+@media(min-width:1200px) and (max-width:1400px){
+  .content{
+    width: 40%;
+    top:20vh
+  }
+
+}

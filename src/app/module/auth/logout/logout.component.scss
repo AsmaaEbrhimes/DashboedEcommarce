@@ -1,0 +1,60 @@
+.background{
+  height: 100vh;
+  background-color: #0f1824
+}
+
+
+
+.content
+{
+width: 34%;
+  background-color: #132337;
+  box-shadow: 0 0 10px #1a2a3e !important;
+  top: 180px;
+}
+
+.color-icon{
+  color: rgb(168 85 247)
+}
+
+.primary-color{
+color:  rgb(59 130 246 )
+}
+
+.secondry-color{
+  color: rgb(146 175 211);
+}
+.btn-logout{
+  background-color: rgb(59 130 246 );
+  font-size: 14px;
+  width: 85%;
+  transition: 0.1s linear;
+}
+
+.btn-logout:hover{
+  opacity: 0.8;
+}
+
+
+
+
+@media(min-width:320px) and (max-width:767px){
+  .content{
+    width: 100%;
+  }
+}
+
+@media(min-width:767px) and (max-width:1200px){
+  .content{
+    width: 50%;
+  }
+
+}
+
+
+@media(min-width:1200px) and (max-width:1400px){
+  .content{
+    width: 40%;
+  }
+
+}

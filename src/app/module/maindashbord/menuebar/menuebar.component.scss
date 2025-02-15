@@ -1,0 +1,67 @@
+
+
+.hover_li{
+  color : rgb(146 175 211);
+  cursor: pointer;
+  }
+
+  .hover_li:hover{
+    color: #2450c5;
+    background-color: #1c2e45;
+  }
+
+.fa-xmark{
+right: 0;
+}
+
+.show-in-small-screen{
+  color:#4895f9;
+  height: 30px;
+  width: 30px;
+  line-height: 30px;
+  background-color: #1c2e45;
+  display: none;
+}
+
+.show-in-small-screen:hover{
+  background-color: white;
+  color: black;
+}
+
+  .custem-size{
+    font-size: 15px;
+  }
+
+  .active-bacground{
+    color: #2450c5;
+    background-color: #1c2e45;
+  }
+
+
+  .circle{
+    left: 0;
+    height: 7px;
+    width: 7px;
+    background-color:  rgb(146 175 211);
+  }
+
+
+  .custem-color{
+    color:rgb(146 175 211 )
+  }
+
+
+  @media(min-width:320px) and (max-width:767px){
+    .show-in-small-screen{
+      display: block;
+    }
+
+  }
+
+
+  @media(min-width:767px) and (max-width:1200px){
+    .show-in-small-screen{
+      display: block;
+    }
+
+  }

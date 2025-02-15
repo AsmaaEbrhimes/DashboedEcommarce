@@ -1,0 +1,39 @@
+.avatar::before{
+  content: "";
+  position: absolute;
+  background-color: #3B82F6;
+  border-radius: 50%;
+  height: 7px;
+  width: 7px;
+  bottom: 0;
+  right: 0;
+  }
+
+  .other-property{
+    top: 0;
+  }
+
+  .custem-height{
+    height: fit-content;
+  }
+
+  .font-size{
+    font-size: 15px;
+    color: #92ADC9 !important;
+  }
+
+ .range{
+   height: 10px;
+   width: 100%;
+   background-color: rgb(28 46 69 );
+   border-radius: 10px;
+ }
+
+ .range::after{
+   content: "";
+   position: absolute;
+background-color: rgb(36 151 130);
+height: 10px;
+width: 50%;
+border-radius: 10px;
+ }
