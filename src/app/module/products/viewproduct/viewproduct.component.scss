@@ -2,6 +2,15 @@
   top: 0;
   position: sticky;
 }
+.raunde-bottom{
+border-bottom-right-radius: 10px;
+border-bottom-left-radius: 10px;
+}
+
+.raunde-top{
+  border-top-right-radius: 10px;
+  border-top-left-radius: 10px;
+}
 
 .custem_color{
  background-color: #132337;
@@ -133,8 +142,37 @@ height: 7px;
 position: relative;
 }
 
-.custemer-rating p span:nth-child(1)::before{
+
+.level_rate_one::before{
   content: "";
+  border-radius: 10px;
+  position: absolute;
+background-color: rgb(36 151 130 );
+height: 100%;
+width: 60%;
+}
+
+.level_rate_two::before{
+  content: "";
+  border-radius: 10px;
+  position: absolute;
+background-color: rgb(14 165 233 );
+height: 100%;
+width: 40%;
+}
+
+.level_rate_there:before{
+  content: "";
+  border-radius: 10px;
+  position: absolute;
+background-color: rgb(168 85 247 );
+height: 100%;
+width: 30%;
+}
+
+.level_rate_four:before{
+  content: "";
+  border-radius: 10px;
   position: absolute;
 background-color: red;
 height: 100%;
