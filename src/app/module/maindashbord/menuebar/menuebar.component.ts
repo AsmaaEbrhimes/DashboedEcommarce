@@ -1,19 +1,19 @@
-import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter, HostListener } from '@angular/core';
 import { navbarData } from '../../../Core/scripts/constant.data';
 import { INavbarData } from '../../../Core/interfaces/navbar.interface';
 import { slideToggleAnimation } from '../../../Core/animations/menu-animations';
+import { FadeinAndFadeout } from '../../../Core/animations/fadeinandfadeout-anmations';
 
 @Component({
   selector: 'app-menuebar',
   templateUrl: './menuebar.component.html',
   styleUrl: './menuebar.component.scss',
-  animations: [slideToggleAnimation]
+  animations: [slideToggleAnimation , FadeinAndFadeout]
 
 })
 export class MenuebarComponent implements OnInit {
   private _collapsed: boolean = true;
   @Output() CollapsedMenue = new EventEmitter<boolean>();
-
   @Input()
   set collpsed(value: boolean) {
     this._collapsed = value;
@@ -24,6 +24,7 @@ export class MenuebarComponent implements OnInit {
   }
   datamenue: INavbarData[] = [];
   closebsed: any
+itemlabel:string = ''
   ngOnInit(): void {
     this.dataMenue();
   }
@@ -42,4 +43,37 @@ export class MenuebarComponent implements OnInit {
   closemMenue() {
     this.CollapsedMenue.emit(false)
   }
+
+  activeRoute(item:INavbarData){
+    console.log(item.label)
+    this.itemlabel = item.label
+  }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

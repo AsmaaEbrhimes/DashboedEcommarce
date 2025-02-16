@@ -23,13 +23,12 @@
 
 <ul class="mt-4 p-2 m-0">
   <li class="mb-3 custem-color curor-pointer curor-pointer" *ngFor="let item of datamenue"
-    [ngClass]="{'flex':!closebsed}" >
-    <div class="fs-5 d-flex flex-nowrap hover_li p-1 rounded"
-    (click)="toggleSubMenu(item)"
+    [ngClass]="{'flex':!closebsed}">
+    <div class="fs-5 d-flex flex-nowrap hover_li p-1 rounded" (click)="toggleSubMenu(item)"
       [ngClass]="{'justify-content-between': collpsed, 'justify-content-center': !collpsed}">
       <div>
         <span class="text-center m-auto custem-size icon-label"><i [class]="item?.icon"></i></span>
-        <span *ngIf="collpsed" class="custem-size ms-2">{{ item?.label }}</span>
+        <span [@fadeInOut] *ngIf="collpsed" class="custem-size ms-2">{{ item?.label }}</span>
       </div>
       <div>
         <span *ngIf="collpsed" class="background_icon text-center rounded-circle "><i
@@ -37,10 +36,12 @@
       </div>
     </div>
     <ul *ngIf="item?.isOpen && item?.sublevelItems && collpsed" [@slideToggle]>
-      <li [routerLink]="[subItem?.routeLink]" routerLinkActive="router-link-active"
-        class="p-0 mt-2 m-0 d-flex flex-nowrap align-items-center curor-pointer" *ngFor="let subItem of item?.sublevelItems">
+      <li [routerLink]="[subItem?.routeLink]" routerLinkActive="router-link-active" (click)="activeRoute(subItem)"
+        class="p-0 mt-2 m-0 d-flex flex-nowrap align-items-center curor-pointer"
+        [ngClass]="{'active_color' : itemlabel == subItem.label, 'custem-color': itemlabel !== subItem.label}"
+        *ngFor="let subItem of item?.sublevelItems" >
         <span class="circle rounded-circle me-2"></span>
-        <span class="custem-color">{{ subItem?.label }}</span>
+        <span>{{ subItem?.label }}</span>
       </li>
     </ul>
   </li>

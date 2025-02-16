@@ -11,10 +11,21 @@ export class HeaderComponent implements OnDestroy{
 
   @Output() isCollapsed = new EventEmitter<boolean>();
 
+  // toggelMenue() {
+  //   this.isMenuCollapsed = !this.isMenuCollapsed;
+  //   this.isCollapsed.emit(this.isMenuCollapsed);
+  // }
+
   toggelMenue() {
     this.isMenuCollapsed = !this.isMenuCollapsed;
-    this.isCollapsed.emit(this.isMenuCollapsed);
+    if (window.innerWidth >= 320 && window.innerWidth <= 1200) {
+      this.isCollapsed.emit(true);
+    } else {
+      this.isCollapsed.emit(this.isMenuCollapsed);
+    }
   }
+
+
   @HostListener('window:scroll', [])
   onScroll(): void {
     this.isScrolled = window.scrollY > 0;
