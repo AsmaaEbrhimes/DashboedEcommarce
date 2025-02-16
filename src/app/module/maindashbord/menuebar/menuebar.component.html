@@ -40,7 +40,7 @@
         class="p-0 mt-2 m-0 d-flex flex-nowrap align-items-center curor-pointer"
         [ngClass]="{'active_color' : itemlabel == subItem.label, 'custem-color': itemlabel !== subItem.label}"
         *ngFor="let subItem of item?.sublevelItems" >
-        <span class="circle rounded-circle me-2"></span>
+        <span class="circle rounded-circle me-2" [ngClass]="{'active_background' : itemlabel == subItem.label, 'main-background': itemlabel !== subItem.label}"></span>
         <span>{{ subItem?.label }}</span>
       </li>
     </ul>
