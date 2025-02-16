@@ -4,6 +4,7 @@ import { MaindashboardComponent } from './maindashboard/maindashboard.component'
 import { FirstpageComponent } from './firstpage/firstpage.component';
 import { CreateproductComponent } from '../products/createproduct/createproduct.component';
 import { ViewproductComponent } from '../products/viewproduct/viewproduct.component';
+import { AllproductsComponent } from '../products/allproducts/allproducts.component';
 
 const routes: Routes = [
   {
@@ -13,6 +14,7 @@ const routes: Routes = [
       { path: '', component: FirstpageComponent },
       {path:"product/creatproduct" , component:CreateproductComponent},
       {path:"product/viewproduct" , component:ViewproductComponent},
+      {path:"product/AllProduct" , component:AllproductsComponent},
     ]
   }
 ];

@@ -56,6 +56,12 @@ export const navbarData: INavbarData[] = [
     isOpen: false,
     sublevelItems: [
       {
+        routeLink: 'product/AllProduct',
+        label: 'All Product',
+        icon: 'fa-solid fa-folder',
+
+      },
+      {
         routeLink: 'product/creatproduct',
         label: 'Create Product',
         icon: 'fa-solid fa-file',
