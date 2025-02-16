@@ -11,7 +11,7 @@
         <i  *ngIf="toggelcategoryprice == true" (click)="ToggleCategoryPrice()" class="fa-solid fa-angle-right curor-pointer"></i>
         <i  *ngIf="toggelcategoryprice == false" (click)="ToggleCategoryPrice()" class="fa-solid fa-angle-up curor-pointer"></i>
       </div>
-      <div [@ToggleCategory]
+      <div 
       *ngIf="toggelcategoryprice"
       >
         <div class="w-100 d-flex align-items-center custom-checkbox">
@@ -94,7 +94,7 @@
         <i  *ngIf="rating == true" (click)="ToggleCategoryRating()" class="fa-solid fa-angle-right curor-pointer"></i>
         <i  *ngIf="rating == false" (click)="ToggleCategoryRating()" class="fa-solid fa-angle-up curor-pointer"></i>
       </div>
-      <div [@ToggleCategory]
+      <div 
       *ngIf="rating"
       >
         <div class="w-100 d-flex align-items-center custom-checkbox mt-2">
