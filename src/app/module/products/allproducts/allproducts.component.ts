@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-// import { CategoryAnamtion } from '../../../Core/animations/category-anmations';
+import { slideToggleAnimation } from '../../../Core/animations/menu-animations';
 @Component({
   selector: 'app-allproducts',
   templateUrl: './allproducts.component.html',
   styleUrl: './allproducts.component.scss',
-  //  animations: [CategoryAnamtion]
+  animations: [slideToggleAnimation]
 })
 export class AllproductsComponent {
   toggelcategoryprice: boolean = true
