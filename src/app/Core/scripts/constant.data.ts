@@ -10,41 +10,41 @@ export const navbarData: INavbarData[] = [
       {
         routeLink: 'auth/login',
         label: 'login',
-        icon: 'fa-solid fa-file',
+        // icon: 'fa-solid fa-file',
       },
       {
         routeLink: 'auth/register',
         label: 'Register',
-        icon: 'fa-solid fa-folder',
+        // icon: 'fa-solid fa-folder',
       },
       {
         routeLink: 'auth/verfiyemail',
         label: 'Verify Email',
-        icon: 'fa-solid fa-folder',
+        // icon: 'fa-solid fa-folder',
       },
 
       {
         routeLink: 'auth/verfiycode',
         label: 'Vervaction Code',
-        icon: 'fa-solid fa-folder',
+        // icon: 'fa-solid fa-folder',
       },
 
       {
         routeLink: 'auth/logout',
         label: 'Logout',
-        icon: 'fa-solid fa-folder',
+        // icon: 'fa-solid fa-folder',
       },
 
       {
         routeLink: 'auth/resetpasswprd',
         label: 'Reset Passwoed',
-        icon: 'fa-solid fa-folder',
+        // icon: 'fa-solid fa-folder',
       },
 
       {
         routeLink: 'auth/createpassword',
         label: 'Create Password',
-        icon: 'fa-solid fa-folder',
+        // icon: 'fa-solid fa-folder',
       },
     ],
   },
@@ -58,18 +58,24 @@ export const navbarData: INavbarData[] = [
       {
         routeLink: 'product/AllProduct',
         label: 'All Product',
-        icon: 'fa-solid fa-folder',
+        // icon: 'fa-solid fa-folder',
 
       },
       {
         routeLink: 'product/creatproduct',
         label: 'Create Product',
-        icon: 'fa-solid fa-file',
+        // icon: 'fa-solid fa-file',
       },
       {
         routeLink: 'product/viewproduct',
         label: 'view Product',
-        icon: 'fa-solid fa-folder',
+        // icon: 'fa-solid fa-folder',
+      },
+
+      {
+        routeLink: 'product/shoppingcart',
+        label: 'ShoppingCart',
+        // icon: 'fa-solid fa-folder',
       },
     ],
   },

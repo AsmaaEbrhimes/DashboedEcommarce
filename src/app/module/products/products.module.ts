@@ -5,13 +5,15 @@ import { ProductsRoutingModule } from './products-routing.module';
 import { CreateproductComponent } from './createproduct/createproduct.component';
 import { ViewproductComponent } from './viewproduct/viewproduct.component';
 import { AllproductsComponent } from './allproducts/allproducts.component';
+import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 
 
 @NgModule({
   declarations: [
     CreateproductComponent,
     ViewproductComponent,
-    AllproductsComponent
+    AllproductsComponent,
+    ShoppingcartComponent
   ],
   imports: [
     CommonModule,
