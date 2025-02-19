@@ -28,18 +28,13 @@ width: 31%;
 .col-2{
   width: 67%;
 }
-.main-img {
-width: 100%;
+.main-img , .bottom-img {
+width: 104%;
 }
 
-.bottom-img{
-  width: 100%;
-
+ .right-img {
+width:100%;
 }
-.right-img{
-  width: 96%;
-}
-
 .custem-flex{
   display: flex;
   align-items: center;
