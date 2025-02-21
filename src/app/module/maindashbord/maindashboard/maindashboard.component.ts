@@ -1,4 +1,4 @@
-import { Component , HostListener } from '@angular/core';
+import { Component, HostListener } from '@angular/core';
 
 @Component({
   selector: 'app-maindashboard',
@@ -7,8 +7,9 @@ import { Component , HostListener } from '@angular/core';
 })
 export class MaindashboardComponent {
   collpsed: boolean = true;
-  custemResponsive:boolean = false
-  smallresponsive:boolean = false
+  returncollpased:boolean = false
+  custemResponsive: boolean = false
+  smallresponsive: boolean = false
   ngOnInit() {
     this.updateSidenavState();
   }
@@ -22,6 +23,9 @@ export class MaindashboardComponent {
     this.updateSidenavState();
   }
 
+  returnDefauleMenue(event:boolean){
+this.returncollpased = event
+  }
 
   updateSidenavState() {
     const screenWidth = window.innerWidth;
@@ -29,6 +33,10 @@ export class MaindashboardComponent {
     if (screenWidth <= 767) {
       this.collpsed = false;
       this.custemResponsive = true;
+
+      // if(this.returncollpased == false){
+
+      // }
     }
 
     else if (screenWidth >= 767 && screenWidth <= 1200) {
@@ -38,7 +46,7 @@ export class MaindashboardComponent {
     }
   }
 
-  CloseMneueEvent(event:any){
+  CloseMneueEvent(event: any) {
     this.collpsed = event;
   }
 }

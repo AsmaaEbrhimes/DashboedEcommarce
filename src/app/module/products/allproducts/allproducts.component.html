@@ -8,9 +8,9 @@
     <div>
       <div class="mt-4 mb-2 d-flex align-items-center justify-content-between">
         <span class="custem-size">Price</span>
-        <i *ngIf="toggelcategoryprice == true" (click)="ToggleCategoryPrice()"
+        <i *ngIf="!toggelcategoryprice" (click)="ToggleCategoryPrice()"
           class="fa-solid fa-angle-right curor-pointer"></i>
-        <i *ngIf="toggelcategoryprice == false" (click)="ToggleCategoryPrice()"
+        <i *ngIf="toggelcategoryprice" (click)="ToggleCategoryPrice()"
           class="fa-solid fa-angle-up curor-pointer"></i>
       </div>
 
@@ -53,9 +53,9 @@
     <div>
       <div class="mt-4 mb-2 d-flex align-items-center justify-content-between">
         <span class="custem-size">Product Category</span>
-        <i *ngIf="CategoryProduct == true" (click)="ToggleCategoryproduct()"
+        <i *ngIf="!CategoryProduct" (click)="ToggleCategoryproduct()"
           class="fa-solid fa-angle-right curor-pointer"></i>
-        <i *ngIf="CategoryProduct == false" (click)="ToggleCategoryproduct()"
+        <i *ngIf="CategoryProduct" (click)="ToggleCategoryproduct()"
           class="fa-solid fa-angle-up curor-pointer"></i>
       </div>
       <div [@slideToggle] *ngIf="CategoryProduct">
@@ -92,8 +92,8 @@
     <div>
       <div class="mt-4 mb-2 d-flex align-items-center justify-content-between">
         <span class="custem-size">Rating</span>
-        <i *ngIf="rating == true" (click)="ToggleCategoryRating()" class="fa-solid fa-angle-right curor-pointer"></i>
-        <i *ngIf="rating == false" (click)="ToggleCategoryRating()" class="fa-solid fa-angle-up curor-pointer"></i>
+        <i *ngIf="!rating" (click)="ToggleCategoryRating()" class="fa-solid fa-angle-right curor-pointer"></i>
+        <i *ngIf="rating" (click)="ToggleCategoryRating()" class="fa-solid fa-angle-up curor-pointer"></i>
       </div>
       <div *ngIf="rating" [@slideToggle]>
         <div class="w-100 d-flex align-items-center custom-checkbox mt-2">

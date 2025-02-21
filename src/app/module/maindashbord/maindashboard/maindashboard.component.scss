@@ -24,12 +24,11 @@ margin-left: 5%;
 }
 
 .responsive_left-xs{
-  margin-left: 10%;
+  margin-left: 0%;
 }
 
-
 .responsive_width-xs{
-  width: 50%;
+  width: 100%;
 }
 
 .width-menue-small{
@@ -43,11 +42,14 @@ margin-left: 5%;
 
 @media(min-width:320px) and (max-width:767px){
   .custem-width-menue{
-    width: 10%;
+    width: 0%;
+    transform: translateX(-100px);
+    transition: transform 0.5s ease-in-out;
   }
 
   .custem-left-content{
-    margin-left: 10%;
+    margin-left: 0%;
+    width: 100%;
     }
 }
 
@@ -60,7 +62,4 @@ margin-left: 5%;
   .custem-left-content{
     margin-left: 8%;
     }
-
-
-
 }

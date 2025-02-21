@@ -4,7 +4,11 @@
     'responsive_width-xs' : custemResponsive && collpsed,
     'width-menue-small' : smallresponsive && collpsed
   }">
-    <app-menuebar [collpsed]="collpsed" (CollapsedMenue)="CloseMneueEvent($event)"></app-menuebar>
+    <app-menuebar
+    [collpsed]="collpsed"
+    (CollapsedMenue)="CloseMneueEvent($event)"
+    (returnDefaultMenue)="returnDefauleMenue($event)"
+    ></app-menuebar>
   </div>
   <div class="content" [ngClass]="{'
   custem-left-content' : !collpsed,
