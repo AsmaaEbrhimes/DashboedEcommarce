@@ -77,6 +77,12 @@ export const navbarData: INavbarData[] = [
         label: 'ShoppingCart',
         // icon: 'fa-solid fa-folder',
       },
+
+      {
+        routeLink: 'product/order',
+        label: 'orders',
+        // icon: 'fa-solid fa-folder',
+      },
     ],
   },
   {

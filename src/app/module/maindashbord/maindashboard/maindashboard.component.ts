@@ -29,8 +29,7 @@ export class MaindashboardComponent {
     if (screenWidth <= 767 && event == false) {
       this.collpsed = event;
     }
-
-    if (screenWidth >= 767 && screenWidth <= 1200 && event == false){
+    if (screenWidth >= 767 && screenWidth <= 1200 && event == false) {
       this.collpsed = event;
     }
   }

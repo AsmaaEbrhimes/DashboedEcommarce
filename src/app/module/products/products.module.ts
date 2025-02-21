@@ -6,19 +6,22 @@ import { CreateproductComponent } from './createproduct/createproduct.component'
 import { ViewproductComponent } from './viewproduct/viewproduct.component';
 import { AllproductsComponent } from './allproducts/allproducts.component';
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
-
+import { OrdersComponent } from './orders/orders.component';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   declarations: [
     CreateproductComponent,
     ViewproductComponent,
     AllproductsComponent,
-    ShoppingcartComponent
+    ShoppingcartComponent,
+    OrdersComponent
   ],
   imports: [
     CommonModule,
     ProductsRoutingModule,
     DropdownModule,
+    TableModule
   ]
 })
 export class ProductsModule { }

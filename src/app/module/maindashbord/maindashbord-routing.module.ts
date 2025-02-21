@@ -6,6 +6,7 @@ import { CreateproductComponent } from '../products/createproduct/createproduct.
 import { ViewproductComponent } from '../products/viewproduct/viewproduct.component';
 import { AllproductsComponent } from '../products/allproducts/allproducts.component';
 import { ShoppingcartComponent } from '../products/shoppingcart/shoppingcart.component';
+import { OrdersComponent } from '../products/orders/orders.component';
 
 const routes: Routes = [
   {
@@ -17,6 +18,7 @@ const routes: Routes = [
       {path:"product/viewproduct" , component:ViewproductComponent},
       {path:"product/AllProduct" , component:AllproductsComponent},
       {path:"product/shoppingcart" , component:ShoppingcartComponent},
+      {path:"product/order" , component:OrdersComponent},
     ]
   }
 ];
