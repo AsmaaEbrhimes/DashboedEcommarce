@@ -7,7 +7,7 @@ import { Component, HostListener } from '@angular/core';
 })
 export class MaindashboardComponent {
   collpsed: boolean = true;
-  returncollpased:boolean = false
+  returncollpased: boolean = false
   custemResponsive: boolean = false
   smallresponsive: boolean = false
   ngOnInit() {
@@ -23,8 +23,16 @@ export class MaindashboardComponent {
     this.updateSidenavState();
   }
 
-  returnDefauleMenue(event:boolean){
-this.returncollpased = event
+  returnDefauleMenue(event: boolean) {
+    this.returncollpased = event
+    const screenWidth = window.innerWidth;
+    if (screenWidth <= 767 && event == false) {
+      this.collpsed = event;
+    }
+
+    if (screenWidth >= 767 && screenWidth <= 1200 && event == false){
+      this.collpsed = event;
+    }
   }
 
   updateSidenavState() {
@@ -33,10 +41,6 @@ this.returncollpased = event
     if (screenWidth <= 767) {
       this.collpsed = false;
       this.custemResponsive = true;
-
-      // if(this.returncollpased == false){
-
-      // }
     }
 
     else if (screenWidth >= 767 && screenWidth <= 1200) {
