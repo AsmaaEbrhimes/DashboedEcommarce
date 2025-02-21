@@ -8,7 +8,7 @@ import { FadeinAndFadeout } from '../../../Core/animations/fadeinandfadeout-anma
   selector: 'app-menuebar',
   templateUrl: './menuebar.component.html',
   styleUrl: './menuebar.component.scss',
-  animations: [slideToggleAnimation , FadeinAndFadeout]
+  animations: [slideToggleAnimation, FadeinAndFadeout]
 
 })
 export class MenuebarComponent implements OnInit {
@@ -24,7 +24,7 @@ export class MenuebarComponent implements OnInit {
   }
   datamenue: INavbarData[] = [];
   closebsed: any
-itemlabel:string = ''
+  itemlabel: string = ''
   ngOnInit(): void {
     this.dataMenue();
   }
@@ -36,6 +36,11 @@ itemlabel:string = ''
   }
 
   toggleSubMenu(item: INavbarData): void {
+    this.datamenue.forEach((menuItem) => {
+      if (menuItem !== item) {
+        menuItem.isOpen = false;
+      }
+    })
     item.isOpen = !item.isOpen;
   }
 
@@ -44,8 +49,7 @@ itemlabel:string = ''
     this.CollapsedMenue.emit(false)
   }
 
-  activeRoute(item:INavbarData){
-    console.log(item.label)
+  activeRoute(item: INavbarData) {
     this.itemlabel = item.label
   }
 }
