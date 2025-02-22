@@ -61,6 +61,7 @@
              "extractLicenses": true,
              "namedChunks": false,
              "aot": true
+
             },
             "development": {
               "optimization": true,
@@ -79,7 +80,6 @@
                 }
               ],
               "outputHashing": "all",
-
               "namedChunks": false,
               "aot": true
             }
@@ -118,7 +118,6 @@
             ],
             "styles": [
               "src/styles.scss"
-
             ],
             "scripts": []
           }
