@@ -11,10 +11,6 @@ export class HeaderComponent implements OnDestroy{
 
   @Output() isCollapsed = new EventEmitter<boolean>();
 
-  // toggelMenue() {
-  //   this.isMenuCollapsed = !this.isMenuCollapsed;
-  //   this.isCollapsed.emit(this.isMenuCollapsed);
-  // }
 
   toggelMenue() {
     this.isMenuCollapsed = !this.isMenuCollapsed;

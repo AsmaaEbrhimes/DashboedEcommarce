@@ -8,6 +8,7 @@ import { AllproductsComponent } from './allproducts/allproducts.component';
 import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { OrdersComponent } from './orders/orders.component';
 import { TableModule } from 'primeng/table';
+import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { TableModule } from 'primeng/table';
     CommonModule,
     ProductsRoutingModule,
     DropdownModule,
-    TableModule
+    TableModule,
+    SharedModule
   ]
 })
 export class ProductsModule { }

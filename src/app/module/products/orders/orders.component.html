@@ -1,6 +1,5 @@
-
 <div class="col-one p-3">
-<p-table [paginator]="true" [rows]="12" [rowsPerPageOptions]="[5, 10, 20]" [value]="products"
+  <!-- <p-table [paginator]="true" [rows]="12" [rowsPerPageOptions]="[5, 10, 20]" [value]="products"
 styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '46rem' }">
 <ng-template pTemplate="header">
   <tr class="custem_background_tapel p-2 rounded-4">
@@ -19,9 +18,11 @@ styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '46rem' }">
     <td class="text-light">{{ product.Date }}</td>
     <td class="text-light">{{ product.quantity }}</td>
     <td class="text-light">{{ product.status }}</td>
-
-
   </tr>
 </ng-template>
-</p-table>
+</p-table> -->
+
+
+  <app-main-tabel [Dataheader]="headproduct" [BodyData]="products"></app-main-tabel>
+
 </div>

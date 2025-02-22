@@ -39,7 +39,7 @@ export class MenuebarComponent implements OnInit {
   toggleSubMenu(item: INavbarData): void {
     this.datamenue.forEach((menuItem) => {
       if (menuItem !== item) {
-       menuItem.isOpen = false;
+        menuItem.isOpen = false;
       }
     })
     item.isOpen = !item.isOpen;
@@ -51,7 +51,7 @@ export class MenuebarComponent implements OnInit {
   }
 
   activeRoute(item: INavbarData) {
-this.returnDefaultMenue.emit(false)
+    this.returnDefaultMenue.emit(false)
     this.itemlabel = item.label
   }
 }
