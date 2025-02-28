@@ -9,6 +9,7 @@ export class MainTabelComponent {
 
   @Input() Dataheader: any;
   @Input() BodyData: any[] = [];
+  @Input() page: string = '';
 
 
   getHeadKeys(): string[] {

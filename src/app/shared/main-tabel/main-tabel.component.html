@@ -1,8 +1,7 @@
-<p-table [paginator]="true" [rows]="12" [rowsPerPageOptions]="[5, 10, 20]"
+<!-- <p-table [paginator]="true" [rows]="12" [rowsPerPageOptions]="[5, 10, 20]"
   [value]="BodyData"
   styleClass="p-datatable-gridlines"
   [tableStyle]="{ 'min-width': '46rem' }">
-
   <ng-template pTemplate="header">
     <tr>
       <th *ngFor="let key of getHeadKeys()" class="gray text-light">
@@ -18,4 +17,34 @@
       </td>
     </tr>
   </ng-template>
-</p-table>
+</p-table> -->
+
+
+<table
+  [ngClass]="{
+    orders:page === 'orders',
+    home: page === 'home',
+    active:true
+  }"
+>
+<thead>
+  <tr>
+      <th>Header</th>
+  </tr>
+</thead>
+
+
+
+<tbody>
+  <tr>
+    @for (item of BodyData ; track  $index){
+    <td>
+        <p [ngClass]="{
+          new:item.status === 'New',
+
+        }">Body</p>
+    </td>
+  }
+  </tr>
+</tbody>
+</table>

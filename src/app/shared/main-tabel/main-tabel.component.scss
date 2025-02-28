@@ -48,3 +48,31 @@
   border-radius: 7px;
 }
 
+table{
+  &.home {
+    color: red;
+    width: 50%;
+    animation:fadeIn 0.5s ease-in-out
+  }
+  &.orders{
+    color: green;
+    width: 100%;
+    animation:fadeIn 0.5s ease-in-out
+  }
+  td{
+    p{
+
+    &.home {
+      font-size: 30px;
+    }
+    &.orders{
+      font-size: 16px;
+    }
+  }
+
+  }
+  &.active {
+    font-size: 30px;
+  }
+}
+
