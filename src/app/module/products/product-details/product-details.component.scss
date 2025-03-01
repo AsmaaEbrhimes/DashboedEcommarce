@@ -1,0 +1,92 @@
+.col-1{
+  height: fit-content;
+  width: 64%;
+}
+.col-2{
+width: 34%;
+height: fit-content;
+position: sticky;
+top: 0;
+}
+
+.custem-background{
+  background-color: #132337;
+}
+.fa-house{
+  background-color: #3ECC72;
+  color: white;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 50%;
+}
+
+.fa-truck-fast{
+  background-color: rgb(232,249,239);
+  color: green;
+  height: 30px;
+  width: 30px;
+  text-align: center;
+  line-height: 30px;
+  border-radius: 50%;
+}
+.line{
+  background-color: aliceblue;
+  height: 2px;
+}
+
+.small-size {
+  font-size: 12.9px;
+}
+
+.border-bottom{
+  border-bottom: 1px dashed rgb(100 116 139 ) !important;
+}
+
+.icon-color{
+  color: #2450c5;
+}
+@media(min-width:320px) and (max-width:767px){
+  .col-1 , .col-2{
+    width: 100%;
+  }
+
+  .col-2{
+    margin-top: 10px;
+    position: relative;
+  }
+  .small-size{
+    font-size: 7.9px;
+}
+}
+
+@media(min-width:767px) and (max-width:850px){
+  .col-1{
+    width: 91% !important;
+    // border: 20px solid red;
+  }
+}
+@media(min-width:767px) and (max-width:1200px){
+  .col-1 , .col-2{
+    width: 100%;
+  }
+  .col-2{
+    position: relative;
+    margin-top: 10px;
+  }
+}
+
+
+
+
+@media(min-width:1200px) and (max-width:1400px){
+  .col-1 {
+    width: 60%;
+  }
+
+  .col-2{
+    width: 37.5%;
+  }
+}
+

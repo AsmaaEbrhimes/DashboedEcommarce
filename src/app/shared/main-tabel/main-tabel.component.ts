@@ -5,17 +5,13 @@ import { Component, Input } from '@angular/core';
   templateUrl: './main-tabel.component.html',
   styleUrl: './main-tabel.component.scss'
 })
-export class MainTabelComponent {
+export class MainTabelComponent<T extends object> {
 
-  @Input() Dataheader: any;
-  @Input() BodyData: any[] = [];
+  @Input() BodyData: T[] = [];
   @Input() page: string = '';
 
 
   getHeadKeys(): string[] {
-    if (this.Dataheader) {
-      return Object.keys(this.Dataheader);
-    }
     return this.BodyData.length > 0 ? Object.keys(this.BodyData[0]) : [];
   }
 }

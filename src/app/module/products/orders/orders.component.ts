@@ -15,18 +15,8 @@ export interface IOrder {
 
 export class OrdersComponent {
   products: IOrder[] = [];
-  headproduct: any
 
   ngOnInit() {
-    this.headproduct = {
-      Id: "Id",
-      Product: "Product",
-      Date: "Date",
-      quantity: "quantity",
-      status: "status"
-    }
-
-
     this.products = [
       { Id: 'P001', Product: 'Product', Date: '3/1/2014', quantity: 20, status: ' Completed	' },
       { Id: 'P002', Product: 'Product', Date: '13/1/2014', quantity: 15, status: ' Pendding	' },

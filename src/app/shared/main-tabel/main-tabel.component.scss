@@ -1,18 +1,18 @@
-
-
-::ng-deep tbody, td, tfoot, th, thead, tr {
+::ng-deep tbody,
+td,
+tfoot,
+th,
+thead,
+tr {
   border-color: inherit;
   border-style: solid;
   border-width: 0;
-  border-bottom: 1px solid rgb(35 58 87 );
+  border-bottom: 1px solid rgb(35 58 87);
   text-align: center;
   font-size: 15px;
   padding: 10px;
   background-color: #132337;
 }
-
-
-
 
 ::ng-deep .p-datatable.p-datatable-gridlines .p-paginator-bottom {
   border-width: 0px;
@@ -35,44 +35,46 @@
   height: 3rem;
 }
 
-
 ::ng-deep.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
   color: white;
   font-weight: bold;
   background-color: #020f1f;
 }
 
-
-::ng-deep.p-datatable>.p-datatable-wrapper {
+::ng-deep.p-datatable > .p-datatable-wrapper {
   overflow: auto;
   border-radius: 7px;
 }
 
-table{
-  &.home {
-    color: red;
-    width: 50%;
-    animation:fadeIn 0.5s ease-in-out
-  }
-  &.orders{
-    color: green;
-    width: 100%;
-    animation:fadeIn 0.5s ease-in-out
-  }
-  td{
-    p{
-
-    &.home {
-      font-size: 30px;
-    }
-    &.orders{
-      font-size: 16px;
-    }
-  }
-
-  }
-  &.active {
-    font-size: 30px;
-  }
+.custem-green {
+  color: #249782;
+  background-color: #163a46;
+  border: 1px solid #249772;
 }
 
+.yollow-color {
+  background-color: #eab30833;
+  color: rgb(234 179 8);
+  border: 1px solid #eaa81d;
+}
+
+.color-blueviolet {
+  background-color: #a855f733;
+  color: rgb(168 85 247);
+  border: 1px solid rgb(168 85 247);
+}
+
+.color-green {
+  color: #249782;
+  border: 1px solid #249782;
+  background-color: #163a46;
+}
+
+
+.th{
+color:#92afd3
+}
+
+.td{
+color:white
+}

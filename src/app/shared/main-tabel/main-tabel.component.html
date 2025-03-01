@@ -1,50 +1,34 @@
-<!-- <p-table [paginator]="true" [rows]="12" [rowsPerPageOptions]="[5, 10, 20]"
-  [value]="BodyData"
-  styleClass="p-datatable-gridlines"
-  [tableStyle]="{ 'min-width': '46rem' }">
+<p-table [paginator]="true" [rows]="page === 'home' ? 5 : 10" [rowsPerPageOptions]="[5, 10, 20]" [value]="BodyData"
+  styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '46rem' }">
+  <!-- Header -->
   <ng-template pTemplate="header">
     <tr>
-      <th *ngFor="let key of getHeadKeys()" class="gray text-light">
-        {{ Dataheader ? Dataheader[key] : key }}
+      <th class="th" *ngFor="let key of getHeadKeys()">
+        {{ key }}
       </th>
     </tr>
   </ng-template>
 
-  <ng-template pTemplate="body" let-rowData>
+  <!-- Body -->
+  <ng-template pTemplate="body" let-BodyData>
     <tr>
-      <td *ngFor="let key of getHeadKeys()">
-        {{ rowData[key] }}
+      <td class="td" *ngFor="let key of getHeadKeys()">
+        <!-- ✅ لو العمود هو 'status'، طبق الألوان فقط للجداول التي تحتوي عليه -->
+        <ng-container *ngIf="key === 'status' && page === 'home'; else normalCell">
+          <p class="rounded mt-4" [ngClass]="{
+               'custem-green': BodyData.status === 'New',
+               'yollow-color': BodyData.status === 'padding',
+               'color-blueviolet': BodyData.status === 'shipping',
+               'color-green': BodyData.status === 'Delivered'
+             }">
+            {{ BodyData.status }}
+          </p>
+        </ng-container>
+        <!-- ✅ عرض البيانات العادية لأي عمود آخر -->
+        <ng-template #normalCell>
+          {{ BodyData[key]}}
+        </ng-template>
       </td>
     </tr>
   </ng-template>
-</p-table> -->
-
-
-<table
-  [ngClass]="{
-    orders:page === 'orders',
-    home: page === 'home',
-    active:true
-  }"
->
-<thead>
-  <tr>
-      <th>Header</th>
-  </tr>
-</thead>
-
-
-
-<tbody>
-  <tr>
-    @for (item of BodyData ; track  $index){
-    <td>
-        <p [ngClass]="{
-          new:item.status === 'New',
-
-        }">Body</p>
-    </td>
-  }
-  </tr>
-</tbody>
-</table>
+</p-table>

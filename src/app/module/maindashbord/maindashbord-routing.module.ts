@@ -7,6 +7,7 @@ import { ViewproductComponent } from '../products/viewproduct/viewproduct.compon
 import { AllproductsComponent } from '../products/allproducts/allproducts.component';
 import { ShoppingcartComponent } from '../products/shoppingcart/shoppingcart.component';
 import { OrdersComponent } from '../products/orders/orders.component';
+import { ProductDetailsComponent } from '../products/product-details/product-details.component';
 
 const routes: Routes = [
   {
@@ -19,6 +20,7 @@ const routes: Routes = [
       {path:"product/AllProduct" , component:AllproductsComponent},
       {path:"product/shoppingcart" , component:ShoppingcartComponent},
       {path:"product/order" , component:OrdersComponent},
+      {path:"product/DetailsOrder" , component:ProductDetailsComponent},
     ]
   }
 ];

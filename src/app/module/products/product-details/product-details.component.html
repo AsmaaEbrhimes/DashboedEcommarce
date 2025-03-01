@@ -1,0 +1,79 @@
+<div class="d-flex flex-wrap column-gap-4 p-4">
+  <div class="col-1">
+    <app-main-tabel [BodyData]="orderCustemer()" [page]="'ordersdetails'"></app-main-tabel>
+    <div class="custem-background mt-4 rounded p-4">
+      <p>Bought - Awaiting Delivery</p>
+      <div class="d-flex align-items-center justify-content-center">
+        <i class="fa-solid fa-house"></i>
+        <span class="line w-75"></span>
+        <i class="fa-solid fa-truck-fast"></i>
+      </div>
+
+      <div class="small-size d-flex justify-content-between mt-3">
+        <div>
+          <p class="mb-0 text-center">order Created</p>
+          <p class="mb-0 text-center">15 Feb 2024 11:30 Am</p>
+        </div>
+        <div>
+          <p class="mb-0 text-center">On Delivery</p>
+          <p class="mt-0 text-center">15 Feb 2024 11:30 Am</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-2">
+    <div>
+      <div class="p-4 custem-background rounded">
+        <div class="border-bottom">
+          <div class="d-flex justify-content-between align-items-center">
+            <p>Order Summary</p>
+            <p>Payment pending</p>
+          </div>
+
+          <div class="d-flex justify-content-between align-items-center">
+            <p>Items subtotal :</p>
+            <p>$1060</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <p>Discount :</p>
+            <p>-$80</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <p>Tax :</p>
+            <p>-$80</p>
+          </div>
+          <div class="d-flex justify-content-between align-items-center">
+            <p>Shipping Cost :</p>
+            <p>-$80</p>
+          </div>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <p>Total :</p>
+          <p>400</p>
+        </div>
+      </div>
+      <div class="p-4 custem-background rounded mt-4">
+        <div class="d-flex justify-content-between align-items-center mt-0">
+          <p class="mt-0"><i class="fa-solid fa-circle-user pe-2 icon-color"></i> username:</p>
+          <p class="mt-0">donFlo</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <p><i class="fa-solid fa-face-smile pe-2 icon-color"></i>Full Name :</p>
+          <p>donFlo</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <p><i class="fa-solid fa-envelope pe-2 icon-color"></i>Email :</p>
+          <p>donFlo</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <p><i class="fa-solid fa-shield-halved pe-2 icon-color"></i>Order Date :</p>
+          <p>05 Jan 2024</p>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mt-3">
+          <p class="mb-0"><i class="fa-solid fa-truck pe-2 icon-color"></i>Courier :</p>
+          <p class="mb-0">05 Jan 2024</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -9,6 +9,7 @@ import { ShoppingcartComponent } from './shoppingcart/shoppingcart.component';
 import { OrdersComponent } from './orders/orders.component';
 import { TableModule } from 'primeng/table';
 import { SharedModule } from '../../shared/shared.module';
+import { ProductDetailsComponent } from './product-details/product-details.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { SharedModule } from '../../shared/shared.module';
     ViewproductComponent,
     AllproductsComponent,
     ShoppingcartComponent,
-    OrdersComponent
+    OrdersComponent,
+    ProductDetailsComponent
   ],
   imports: [
     CommonModule,

@@ -3,61 +3,6 @@
 .col-one{
   width: 100%;
 }
-// .gray{
-//   background-color: #1c2e45;
-//   }
-
-
-// ::ng-deep tbody, td, tfoot, th, thead, tr {
-//   border-color: inherit;
-//   border-style: solid;
-//   border-width: 0;
-//   border-bottom: 1px solid rgb(35 58 87 );
-//   text-align: center;
-//   font-size: 15px;
-//   padding: 10px;
-//   background-color: #132337;
-// }
-
-
-
-
-// ::ng-deep .p-datatable.p-datatable-gridlines .p-paginator-bottom {
-//   border-width: 0px;
-//   background-color: #132337;
-// }
-
-// ::ng-deep.p-dropdown .p-dropdown-trigger {
-//   background: transparent;
-//   color: #6b7280;
-//   width: 3rem;
-//   border-top-right-radius: 6px;
-//   border-bottom-right-radius: 6px;
-//   display: none;
-// }
-
-// ::ng-deep .p-dropdown {
-//   margin-left: 0.5rem;
-//   display: none;
-//   margin-right: 0.5rem;
-//   height: 3rem;
-// }
-
-
-// ::ng-deep.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
-//   color: white;
-//   font-weight: bold;
-//   background-color: #020f1f;
-// }
-
-
-// ::ng-deep.p-datatable>.p-datatable-wrapper {
-//   overflow: auto;
-//   border-radius: 7px;
-// }
-
-
-
 @media(min-width:767px) and (max-width:1200px){
   .col-one{
     width: 100%;
