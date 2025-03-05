@@ -62,11 +62,12 @@ top: 0;
 }
 
 @media(min-width:767px) and (max-width:850px){
-  .col-1{
-    width: 91% !important;
-    // border: 20px solid red;
+  .col-1 , .col-2{
+    width: 92% !important;
   }
 }
+
+
 @media(min-width:767px) and (max-width:1200px){
   .col-1 , .col-2{
     width: 100%;
