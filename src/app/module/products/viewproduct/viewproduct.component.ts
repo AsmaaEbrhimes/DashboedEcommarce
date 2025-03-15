@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 
 @Component({
   selector: 'app-viewproduct',
@@ -6,8 +6,12 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './viewproduct.component.scss'
 })
 export class ViewproductComponent implements OnInit {
-
+  toggeltap = signal<boolean>(false)
   ngOnInit(): void {
 
+  }
+
+  ToggelTap() {
+    this.toggeltap.set(!this.toggeltap())
   }
 }

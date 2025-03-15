@@ -48,8 +48,8 @@
   <div class="col-2 custem_color rounded p-3">
     <div class="d-flex align-items-center justify-content-between">
       <p class="Arrivals-property px-2 py-1 rounded">New Arrivals</p>
-      <p class="custem-img-color trabel-dots rounded py-1 px-2 curor-pointer"><i class="fa-solid fa-ellipsis"></i></p>
-      <div class="custem-img-color position-absolute p-3 rounded tabMenue">
+      <p (click)="ToggelTap()" class="custem-img-color trabel-dots rounded py-1 px-2 curor-pointer"><i class="fa-solid fa-ellipsis"></i></p>
+      <div class="custem-img-color position-absolute p-3 rounded tabMenue" *ngIf="toggeltap()">
         <div class="d-flex align-items-center justify-content-between">
           <i class="fa-solid fa-pen-to-square"></i>
           <span>Edit</span>

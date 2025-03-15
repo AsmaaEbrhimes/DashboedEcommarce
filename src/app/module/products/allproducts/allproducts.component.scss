@@ -97,6 +97,12 @@ input:focus{
   height: fit-content;
 }
 
+.hover-color:hover{
+  color:rgb(88, 126, 175) !important;
+  cursor: pointer;
+
+}
+
 @media(min-width:320px) and (max-width:767px){
   .custem-flex div{
     width: 100% !important;
