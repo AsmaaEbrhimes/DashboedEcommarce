@@ -21,8 +21,7 @@
 
 
 <ul class="mt-4 p-2 m-0">
-  <li class="mb-3 custem-color curor-pointer curor-pointer" *ngFor="let item of datamenue"
-    [ngClass]="{'flex':!closebsed}">
+  <li class="mb-3 custem-color curor-pointer curor-pointer" *ngFor="let item of datamenue">
     <div class="fs-5 d-flex flex-nowrap hover_li p-1 rounded" (click)="toggleSubMenu(item)"
       [ngClass]="{'justify-content-between': collpsed, 'justify-content-center': !collpsed}">
       <div>

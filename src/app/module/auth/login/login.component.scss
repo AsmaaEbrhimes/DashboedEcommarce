@@ -1,9 +1,19 @@
+$breakpoints: (
+  sm: (min: 320px, max: 767px),
+  md: (min: 767px, max: 1200px),
+  lg: (min: 1200px, max: 1400px)
+);
+@mixin respond($size) {
+  $query: map-get($breakpoints, $size);
+  @media (min-width: map-get($query, min)) and (max-width: map-get($query, max)) {
+    @content;
+  }
+}
+
 .background-login {
   height: 100vh;
   background-color: #0f1824
 }
-
-
 .custem_primary_color{
   color: #185bea;
 }
@@ -11,15 +21,13 @@
 .coustem_secondry_color{
   color: rgb(146 175 211 );
 }
+
+
 .content
 {
 width: 32%;
   background-color: #132337;
   box-shadow: 0 0 10px #1a2a3e !important;
-}
-
-.text-left{
-  text-align: center;
 }
 
 .input{
@@ -81,22 +89,16 @@ color: white;
   color: rgb(146 175 211 );
 }
 
-
-.icons i:first-child{
-  background-color: rgb(59 130 246);
-}
-
-
-.icons i:nth-child(2){
-  background-color: rgb(249 115 22 );
-}
-
-.icons i:nth-child(3){
-  background-color: rgb(14 165 233 );
-}
-
-.icons i:nth-child(4){
-  background-color: rgb(100 116 139);
+$icon-colors: (
+  rgb(59 130 246),
+  rgb(249 115 22),
+  rgb(14 165 233),
+  rgb(100 116 139)
+);
+@for $i from 1 through length($icon-colors) {
+  .icons i:nth-child(#{$i}) {
+    background-color: nth($icon-colors, $i);
+  }
 }
 
 
@@ -110,37 +112,18 @@ color: white;
 ::placeholder{
 color: rgb(155, 187, 235);
 }
-@media(min-width:320px) and (max-width:767px){
-  .content{
-    width: 100%;
+
+
+.content {
+  @include respond(sm) {
+    width: 90%;
+  }
+
+  @include respond(md) {
+    width: 50%;
+  }
+
+  @include respond(lg) {
+    width: 40%;
   }
 }
-
-
-@media(min-width:767px) and (max-width:1200px){
-  .content{
-width: 50%;
-  }
-}
-
-
-@media(min-width:1200px) and (max-width:1400px){
-    .content{
-      width: 40%;
-        }
-
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-

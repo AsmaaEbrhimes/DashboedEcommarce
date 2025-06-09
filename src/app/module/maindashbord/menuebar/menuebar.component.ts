@@ -24,7 +24,7 @@ export class MenuebarComponent implements OnInit {
     return this._collapsed;
   }
   datamenue: INavbarData[] = [];
-  closebsed: any
+  // closebsed: any
   itemlabel: string = ''
   ngOnInit(): void {
     this.dataMenue();

@@ -1,19 +1,28 @@
 <div class="d-flex align-item-center">
-  <div class="menuebar overflow-hidden" [ngClass]="{
-    'custem-width-menue' : !collpsed,
-    'responsive_width-xs' : custemResponsive && collpsed,
-    'width-menue-small' : smallresponsive && collpsed
-  }">
-    <app-menuebar [collpsed]="collpsed" (CollapsedMenue)="CloseMneueEvent($event)"
-      (returnDefaultMenue)="returnDefauleMenue($event)"></app-menuebar>
+  <div
+    class="menuebar overflow-hidden"
+    [ngClass]="{
+      'custem-width-menue': !collpsed,
+      'responsive_width-xs': custemResponsive && collpsed,
+      'width-menue-small': smallresponsive && collpsed
+    }"
+  >
+    <app-menuebar
+      [collpsed]="collpsed"
+      (CollapsedMenue)="CloseMneueEvent($event)"
+      (returnDefaultMenue)="returnDefauleMenue($event)"
+    ></app-menuebar>
   </div>
-  <div class="content" [ngClass]="{'
-  custem-left-content' : !collpsed,
-'responsive_left-xs' : custemResponsive && collpsed,
-  'left-content-small' :  smallresponsive && collpsed
-}">
-    <app-header (isCollapsed)="toggelEvent($event)">
-    </app-header>
+  
+  <div
+    class="content"
+    [ngClass]="{
+      'custem-left-content': !collpsed,
+      'responsive_left-xs': custemResponsive && collpsed,
+      'left-content-small': smallresponsive && collpsed
+    }"
+  >
+    <app-header (isCollapsed)="toggelEvent($event)"></app-header>
     <router-outlet></router-outlet>
   </div>
 </div>

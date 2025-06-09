@@ -17,3 +17,12 @@ li{
 }
 
 
+
+@mixin height($value) {
+  height: $value;
+}
+
+
+// .my-box {
+//   @include height(100px);
+// }
