@@ -23,6 +23,62 @@ li{
 }
 
 
+
+.loding::before {
+      content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 25px;
+    width: 25px;
+    z-index: 444;
+    display: block;
+    margin: auto;
+    text-align: center;
+    border-radius: 50%;
+border-right: 3px solid white;
+border-left: 3px solid white;
+border-top: 3px solid transparent;
+border-bottom: 3px solid transparent;
+    animation: loder 0.9s linear infinite;
+}
+
+.loding::after {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: inherit;
+    border-radius: 6px;
+}
+
+@keyframes loder {
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
 // .my-box {
 //   @include height(100px);
 // }
+
+

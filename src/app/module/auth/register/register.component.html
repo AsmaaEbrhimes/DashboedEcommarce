@@ -1,53 +1,150 @@
-<div class="background-login d-flex justify-content-center align-items-center">
-  <div class="content d-flex justify-content-center rounded-2 m-auto position-relative">
-    <div class="w-100" >
-      <div class="text-center ">
-        <img src="./assets/Img/logo-light.png" width="120" height="30" class="mt-4 mb-4" />
-        <h5 class="custem_primary_color mb-2">Create your free account</h5>
-        <p class="coustem_secondry_color">Get your free Tailwick account now</p>
+<div [ngStyle]="{ visibility: (success$ | async) ? 'visible' : 'hidden' }">
+  <app-success></app-success>
+</div>
+  <app-tostr-error></app-tostr-error>
+
+<div class="content mt-2">
+  <div class="w-100">
+    <div class="text-center">
+      <img
+        src="./assets/Img/logo-light.png"
+        width="120"
+        height="30"
+        class="mt-3"
+      />
+    </div>
+
+    <form class="px-3" [formGroup]="registerForm">
+      <div class="w-100 position-relative">
+        <label class="d-block">UserName</label>
+        <input
+          [class.is-invalid]="
+            getControls('name')?.invalid && getControls('name')?.touched
+          "
+          formControlName="name"
+          class="form-control w-100 p-2 bg-transparent rounded-2 mt-2 input"
+          placeholder="Enter username"
+        />
+        <small
+          *ngIf="getControls('name')?.invalid && getControls('name')?.touched"
+          class="error-message"
+          >this The Name Is Requierd</small
+        >
       </div>
 
-      <form class="p-3 ">
-        <div class="w-100">
-          <label class="d-block">Email</label>
-          <input class="w-100 p-2 bg-transparent rounded-2 mt-2 input" placeholder="Enter email" />
-        </div>
+      <div class="w-100 mt-4 position-relative">
+        <label class="d-block">Email</label>
+        <input
+          [class.is-invalid]="
+            getControls('email')?.invalid && getControls('email')?.touched
+          "
+          formControlName="email"
+          class="form-control w-100 p-2 bg-transparent rounded-2 mt-2 input"
+          placeholder="Enter email"
+        />
+        <div>
+          <small
+            *ngIf="getControls('email')?.errors?.['required'] && getControls('email')?.touched"
+            class="error-message">This email is required
+          </small>
 
-        <div class="w-100 mt-4">
-          <label class="d-block">UserName</label>
-          <input class="w-100 p-2 bg-transparent rounded-2 mt-2 input" placeholder="Enter username" />
+          <small
+            *ngIf="getControls('email')?.errors?.['invalidEmail'] && getControls('email')?.touched"
+            class="error-message">
+            Please enter a valid email.
+          </small>
         </div>
+      </div>
 
-        <div class="w-100 mt-4">
-          <label class="d-block">password</label>
-          <input class="w-100 p-2 bg-transparent rounded-2 mt-2 input" placeholder="Enter password" />
-        </div>
+      <div class="w-100 mt-4 position-relative">
+        <label class="d-block">Phone</label>
+        <input
+          [class.is-invalid]="
+            getControls('phone')?.invalid && getControls('phone')?.touched
+          "
+          formControlName="phone"
+          class="form-control w-100 p-2 bg-transparent rounded-2 mt-2 input"
+          placeholder="Enter Phone"
+        />
+        <small
+          *ngIf="getControls('phone')?.invalid && getControls('phone')?.touched"
+          class="error-message"
+          >this The Phone Is Requierd</small
+        >
+      </div>
 
-        <div class="w-100 mt-4 d-flex align-items-center custom-checkbox">
-          <input type="checkbox" id="rememberMe" />
-          <label for="rememberMe" class="check position-relative"></label>
-          <span class="ps-1">Remember me</span>
-        </div>
+      <div class="w-100 mt-4 position-relative">
+        <label class="d-block">password</label>
+        <input
+          [class.is-invalid]="
+            getControls('password')?.invalid && getControls('password')?.touched
+          "
+          formControlName="password"
+          class="form-control w-100 p-2 bg-transparent rounded-2 mt-2 input"
+          placeholder="Enter password"
+        />
+        <small
+          *ngIf="
+            getControls('password')?.invalid && getControls('password')?.touched
+          "
+          class="error-message"
+          >this The password Is Requierd</small
+        >
+      </div>
 
-        <button class="btn_signin text-light p-2 border-0 rounded w-100">Sign In</button>
+      <div class="w-100 mt-4 position-relative">
+        <label class="d-block">Confirm password</label>
+        <input
+          [class.is-invalid]="
+            getControls('passwordConfirm')?.invalid &&
+            getControls('passwordConfirm')?.touched
+          "
+          formControlName="passwordConfirm"
+          class="form-control w-100 p-2 bg-transparent rounded-2 mt-2 input"
+          placeholder="Enter password"
+        />
+        <div>
+          <small
+            *ngIf="
+              getControls('passwordConfirm')?.invalid &&
+              getControls('passwordConfirm')?.touched
+            "
+            class="error-message"
+            >this The passwordConfirm Is Requierd
+          </small>
+          <small
+            *ngIf="
+              registerForm.hasError('misMatch') &&
+              getControls('passwordConfirm')?.touched
+            "
+            class="error-message mt-3 mb-3"
+            >this the Password Dont Match</small
+          >
+        </div>
+      </div>
 
-        <div class="d-flex justify-content-center align-items-center mt-4">
-          <span class="border_span w-50"></span>
-          <span class="text-center w-50 p-1  gray_color">Sign In with</span>
-          <span class="border_span w-50"></span>
-        </div>
+      <button
+        (click)="CreateAccountUser('register')"
+        [ngClass]="{ loding: LoadingButton == 'register' }"
+        class="btn_signin"
+      >
+        Sign Up
+      </button>
 
-        <div class="d-flex justify-content-center align-items-center mt-4 icons text-center">
-          <i class="fa-brands fa-facebook-f me-3  rounded custem-size-icon text-center"></i>
-          <i class="fa-regular fa-envelope me-3  rounded custem-size-icon text-center"></i>
-          <i class="fa-brands fa-twitter me-3  rounded custem-size-icon text-center"></i>
-          <i class="fa-brands fa-google me-3  rounded custem-size-icon text-center"></i>
-        </div>
-        <div class="d-flex justify-content-center coustem_secondry_color mt-4 fe-bolder">
-          <p>Already have an account ? <a href="" [routerLink]="['/auth/login']" routerLinkActive="router-link-active"  class="coustem_secondry_color">Login</a></p>
-        </div>
-      </form>
-    </div>
+      <div
+        class="d-flex justify-content-center coustem_secondry_color mt-2 fe-bolder"
+      >
+        <p>
+          Already have an account ?
+          <a
+            href=""
+            [routerLink]="['/auth/login']"
+            routerLinkActive="router-link-active"
+            class="coustem_secondry_color"
+            >Login</a
+          >
+        </p>
+      </div>
+    </form>
   </div>
-
 </div>

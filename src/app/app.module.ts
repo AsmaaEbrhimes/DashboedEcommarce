@@ -4,6 +4,13 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
+import { StoreModule } from '@ngrx/store';
+import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { environment } from './environments/environment';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { EffectsModule } from '@ngrx/effects';
+import { AuthInterceptor } from './Core/Interceptor/authcathion.interceptor';
+import { ErrorInterceptor } from './Core/Interceptor/Error.interceptor';
 @NgModule({
   declarations: [
     AppComponent,
@@ -11,10 +18,26 @@ import { ReactiveFormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    HttpClientModule,
+    ReactiveFormsModule,
     BrowserAnimationsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    StoreModule.forRoot({},{}),
+      EffectsModule.forRoot([]),
+    StoreDevtoolsModule.instrument({maxAge:25,logOnly:environment.production})
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true
+    },
+     {
+      provide: HTTP_INTERCEPTORS,
+      useClass: ErrorInterceptor,
+      multi: true
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
