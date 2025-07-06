@@ -48,6 +48,10 @@ export class AllUsersComponent implements OnInit {
   }
 
   ShowDilogSepasificeAddUser(){
-    this.EventDilogSepasificEdit=true
+    // this.EventDilogSepasificEdit=true
+    this.EventDilogSepasificEdit = false; // كسر التكرار
+  setTimeout(() => {
+    this.EventDilogSepasificEdit = true;
+  }, 0);
   }
 }

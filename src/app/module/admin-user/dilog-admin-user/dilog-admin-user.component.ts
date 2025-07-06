@@ -11,6 +11,9 @@ import { AppState } from '../../../Store/Reducer/reducer';
   styleUrl: './dilog-admin-user.component.scss',
 })
 export class DilogAdminUserComponent implements OnInit {
+   dialogVisible = false;
+
+
   editDilog!: ObjUser | any;
   myForm!: FormGroup;
   isObjectValue!: boolean;
@@ -32,6 +35,9 @@ export class DilogAdminUserComponent implements OnInit {
   get valueEditDilog(): ObjUser | boolean {
     return this.editDilog;
   }
+
+
+
 
   CkeckTypeValue() {
     if (typeof this.editDilog == 'boolean') {
