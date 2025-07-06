@@ -6,8 +6,5 @@ import { Component } from '@angular/core';
   styleUrl: './success.component.css'
 })
 export class SuccessComponent {
-  // ShowSuccess: boolean = false
-  // ShowAleartSuccess() {
-  //   this.ShowSuccess = true
-  // }
+
 }

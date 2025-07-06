@@ -10,7 +10,8 @@ margin: auto;
     display: block;
     stroke-width: 2;
     stroke: #4bb71b;
-    animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+    animation: fill 5s ease-in-out 5s, scale .3s ease-in-out .9s both;
+    animation-iteration-count: 2;
     position: relative;
     top: 5px;
     right: 5px;
@@ -31,7 +32,8 @@ margin: auto;
     transform-origin: 50% 50%;
     stroke-dasharray: 48;
     stroke-dashoffset: 48;
-    animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+    animation: stroke 1s cubic-bezier(0.65, 0, 0.45, 1);
+    animation-iteration-count: 2;
 }
 
 @keyframes stroke {

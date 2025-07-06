@@ -46,6 +46,11 @@ tr {
   border-radius: 7px;
 }
 
+::ng-deep .p-checkbox .p-checkbox-box {
+  border: 2px solid #2666b3;
+  background-color: transparent;
+}
+
 .custem-green {
   color: #249782;
   background-color: #163a46;
@@ -70,11 +75,26 @@ tr {
   background-color: #163a46;
 }
 
-
-.th{
-color:#92afd3
+.th {
+  color: #92afd3;
 }
 
-.td{
-color:white
+.td {
+  color: white;
+}
+
+.action-uesr {
+  display: flex;
+  cursor: pointer;
+  button {
+    border: none;
+    background-color: transparent;
+  }
+  button:first-child i {
+    color: red;
+  }
+
+  button:last-child i , button:nth-child(2) i {
+    color: green;
+  }
 }

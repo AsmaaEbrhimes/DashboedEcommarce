@@ -1,6 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 interface IorderCustmer {
-  Item: string,
+  id: number,
    quantity: number,
    price: number,
    total: number
@@ -19,15 +19,14 @@ ngOnInit(): void {
 }
   getOrderDetails() {
     this.orderCustemer.set([
-      { Item: 'Product 1', quantity: 10, price: 10, total: 20 },
-      { Item: 'Product 1', quantity: 10, price: 10, total: 20 },
-      { Item: 'Product 1', quantity: 10, price: 10, total: 20 },
-      { Item: 'Product 1', quantity: 10, price: 10, total: 20 },
-      { Item: 'Product 1', quantity: 10, price: 10, total: 20 },
-      { Item: 'Product 1', quantity: 10, price: 10, total: 20 },
-      { Item: 'Product 1', quantity: 10, price: 10, total: 20 },
-      { Item: 'Product 1', quantity: 10, price: 10, total: 20 },
-      { Item: 'Product 1', quantity: 10, price: 10, total: 20 },
+      { id:1, quantity: 10, price: 10, total: 20 },
+      { id:2, quantity: 10, price: 10, total: 20 },
+      { id:3, quantity: 10, price: 10, total: 20 },
+      { id:4, quantity: 10, price: 10, total: 20 },
+      { id:5, quantity: 10, price: 10, total: 20 },
+      { id:6, quantity: 10, price: 10, total: 20 },
+      { id:7, quantity: 10, price: 10, total: 20 },
+      { id:8, quantity: 10, price: 10, total: 20 },
 
     ]);
   }

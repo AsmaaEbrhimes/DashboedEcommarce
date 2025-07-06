@@ -1,16 +1,37 @@
-import { Component, HostListener, OnInit, OnDestroy, Output, EventEmitter } from '@angular/core';
+import { CoreServiesService } from './../../Core/servies/core-servies.service';
+import {
+  Component,
+  HostListener,
+  OnInit,
+  OnDestroy,
+  Output,
+  EventEmitter,
+} from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { AppReducer, AppState } from '../../Store/Reducer/reducer';
+import { ActionApp } from '../../Store/Types/Types';
 
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
-export class HeaderComponent implements OnDestroy{
+export class HeaderComponent implements OnDestroy, OnInit {
   isMenuCollapsed: boolean = true;
   isScrolled = false;
+  successMessage$!: Observable<boolean>;
 
   @Output() isCollapsed = new EventEmitter<boolean>();
 
+  ngOnInit(): void {
+    this.ShowMessageSucces();
+  }
+
+  constructor(
+    private store: Store<{ app: AppState }>,
+    private coreServies: CoreServiesService
+  ) {}
 
   toggelMenue() {
     this.isMenuCollapsed = !this.isMenuCollapsed;
@@ -21,13 +42,24 @@ export class HeaderComponent implements OnDestroy{
     }
   }
 
-
   @HostListener('window:scroll', [])
   onScroll(): void {
     this.isScrolled = window.scrollY > 0;
   }
 
-ngOnDestroy(): void {
-  window.removeEventListener('scroll', this.onScroll);
-}
+  ShowMessageSucces() {
+    this.successMessage$ = this.store.select((state) => state.app.success);
+    this.successMessage$.subscribe((successMessage) => {
+      if (successMessage) {
+        this.coreServies.processSuccessAuth();
+        setTimeout(() => {
+          this.store.dispatch(ActionApp.ClearSucessProccing());
+        }, 2000);
+      }
+    });
+  }
+
+  ngOnDestroy(): void {
+    window.removeEventListener('scroll', this.onScroll);
+  }
 }

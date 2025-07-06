@@ -79,14 +79,14 @@ export const navbarData: INavbarData[] = [
   },
   {
     routeLink: 'Dashboard',
-    label: 'Dashboard',
-    icon: 'fa-solid fa-gauge',
+    label: 'Admin User',
+    icon: 'fa-solid fa-user-pen',
     isOpen: false,
     sublevelItems: [
       {
-        routeLink: 'page1',
-        label: 'Page 1',
-        icon: 'fa-solid fa-file',
+        routeLink: 'AdminUser/allUser',
+        label: 'All Users',
+        icon: 'fa-solid fa-users',
       },
       {
         routeLink: 'page2',

@@ -2,11 +2,10 @@ import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import * as AuthActions from '../AllTypes/auth.types';
 import { AuthService } from '../../auth.service';
-import { exhaustMap, map ,catchError} from 'rxjs/operators';
-import { of, Observable } from 'rxjs';
+import { exhaustMap, map, catchError } from 'rxjs/operators';
+import { of } from 'rxjs';
 import { HttpErrorResponse } from '@angular/common/http';
-
-
+import * as jwt_decode from 'jwt-decode';
 
 @Injectable({ providedIn: 'root' })
 export class AuthEffect {
@@ -19,11 +18,12 @@ export class AuthEffect {
         this.authservies.LoginUser(action.user).pipe(
           map((res: any) => {
             sessionStorage.setItem('token', res.token);
+            let jwtDecoded = jwt_decode.jwtDecode(res.token);
             return AuthActions.AuthActions.AuthSuccess();
           }),
-        catchError((error: HttpErrorResponse) => {
-          return of(AuthActions.AuthActions.AuthError());
-        })
+          catchError((error: HttpErrorResponse) => {
+            return of(AuthActions.AuthActions.AuthError());
+          })
         )
       )
     )
@@ -34,21 +34,14 @@ export class AuthEffect {
       ofType(AuthActions.AuthActions.isRegisterUser),
       exhaustMap((action: any) =>
         this.authservies.regitertionUser(action.user).pipe(
-          map((res:any) => {
+          map((res: any) => {
             return AuthActions.AuthActions.AuthSuccess();
           }),
-        catchError((error: HttpErrorResponse) => {
-          return of(AuthActions.AuthActions.AuthError());
-        })
+          catchError((error: HttpErrorResponse) => {
+            return of(AuthActions.AuthActions.AuthError());
+          })
         )
       )
     )
- );
-  }
-
-
-
-
-
-
-
+  );
+}

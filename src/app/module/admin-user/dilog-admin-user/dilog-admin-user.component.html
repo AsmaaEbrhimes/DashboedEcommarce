@@ -1,0 +1,46 @@
+<div class="overflow-hidden">
+  <p-dialog
+    [modal]="true"
+    [(visible)]="editDilog"
+    [style]="{ width: '50rem' }"
+    [breakpoints]="{ '1199px': '75vw', '575px': '90vw' }"
+  >
+    <form [formGroup]="myForm">
+      <div class="custem-center gap-2">
+
+        <div>
+          <label>Enter Your Name</label>
+          <input formControlName="name" class="form-control input-edit" type="text" />
+        </div>
+
+        <div>
+          <label>Enter Your Email</label>
+          <input formControlName="email" class="form-control input-edit" type="email" />
+        </div>
+      </div>
+
+      <div class="custem-center gap-2 mt-3">
+        <div>
+          <label>Enter Your Password</label>
+          <input formControlName="password" class="form-control input-edit" type="password" />
+        </div>
+        <div *ngIf="isObjectValue==false">
+          <label>Enter Your ConfirmePassword</label>
+          <input formControlName="passwordConfirm" class="form-control input-edit" type="password" />
+        </div>
+      </div>
+
+      <div class="custem-center mt-3" *ngIf="isObjectValue==false">
+        <div>
+          <label>Enter Your Phone</label>
+          <input formControlName="phone" class="form-control input-edit" type="email" />
+        </div>
+      </div>
+
+      <div class="text-end pt-5 mt-3 pb-3 pe-3">
+        <button class="edit-btn" (click)="EditUser()" *ngIf="isObjectValue==true">Edit</button>
+        <button class="add-btn" (click)="AddUser()" *ngIf="isObjectValue==false">Add</button>
+      </div>
+    </form>
+  </p-dialog>
+</div>

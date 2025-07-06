@@ -1,32 +1,54 @@
-<p-table [paginator]="true" [rows]="page === 'home' ? 5 : 10" [rowsPerPageOptions]="[5, 10, 20]" [value]="BodyData"
-  styleClass="p-datatable-gridlines" [tableStyle]="{ 'min-width': '46rem' }">
-  <!-- Header -->
+<p-table
+  [paginator]="true"
+  [rows]="page === 'home' ? 5 : 10"
+  [rowsPerPageOptions]="[5, 10, 20]"
+  [value]="BodyData"
+  [(selection)]="selectedProducts"
+  styleClass="p-datatable-gridlines"
+  [tableStyle]="{ 'max-width': '100%' }"
+>
   <ng-template pTemplate="header">
     <tr>
+      <th style="width: 4rem"><p-tableHeaderCheckbox /></th>
       <th class="th" *ngFor="let key of getHeadKeys()">
         {{ key }}
       </th>
+
+      <th *ngIf="page=='users'">Action</th>
     </tr>
   </ng-template>
-  <!-- Body -->
+
   <ng-template pTemplate="body" let-BodyData>
     <tr>
+      <td>
+        <p-tableCheckbox [value]="BodyData" />
+      </td>
+
       <td class="td" *ngFor="let key of getHeadKeys()">
-        <!-- ✅ لو العمود هو 'status'، طبق الألوان فقط للجداول التي تحتوي عليه -->
-        <ng-container *ngIf="key === 'status' && page === 'home'; else normalCell">
-          <p class="rounded mt-4" [ngClass]="{
-               'custem-green': BodyData.status === 'New',
-               'yollow-color': BodyData.status === 'padding',
-               'color-blueviolet': BodyData.status === 'shipping',
-               'color-green': BodyData.status === 'Delivered'
-             }">
+        <ng-container
+          *ngIf="key === 'status' && page === 'home'; else normalCell"
+        >
+          <p
+            class="rounded mt-4"
+            [ngClass]="{
+              'custem-green': BodyData.status === 'New',
+              'yollow-color': BodyData.status === 'padding',
+              'color-blueviolet': BodyData.status === 'shipping',
+              'color-green': BodyData.status === 'Delivered'
+            }"
+          >
             {{ BodyData.status }}
           </p>
         </ng-container>
-        <!-- ✅ عرض البيانات العادية لأي عمود آخر -->
+
         <ng-template #normalCell>
-          {{ BodyData[key]}}
+          {{ formatCellValue(key, BodyData[key]) }}
         </ng-template>
+      </td>
+      <td *ngIf="page=='users'" class="action-uesr">
+        <button (click)="RemoveUser()"><i class="fa-solid fa-trash"></i></button>
+        <button (click)="EditUser(BodyData)"><i class="fa-solid fa-pen"></i></button>
+        <!-- <button (click)="AddUser()"> <i class="fa-solid fa-user-pen"></i></button> -->
       </td>
     </tr>
   </ng-template>

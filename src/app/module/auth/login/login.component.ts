@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Store } from '@ngrx/store';
@@ -6,6 +6,7 @@ import { AuthActions } from '../Store/AllTypes/auth.types';
 import { Observable } from 'rxjs';
 import { AuthState } from '../Store/Reducer/auth.reducer';
 import { RequierdEmail } from '../valdtion/EmailValidtion';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -15,17 +16,18 @@ export class LoginComponent {
   constructor(
     private FB: FormBuilder,
     private authServies: AuthService,
-    private store: Store<{ authFeaturesKey: AuthState }>
+    private store: Store<{ authFeaturesKey: AuthState }>,
+    private router: Router
   ) {}
   LoginForm!: FormGroup;
   success$!: Observable<boolean>;
-  LoadingButton:string=""
+  LoadingButton: string = '';
   error$!: Observable<boolean>;
 
   ngOnInit(): void {
     this.CreateFormLogin();
     this.SuccessResponseLogin();
-    this.ErrorResponseLogin()
+    this.ErrorResponseLogin();
   }
 
   getControl(controlName: string) {
@@ -34,20 +36,20 @@ export class LoginComponent {
 
   CreateFormLogin() {
     this.LoginForm = this.FB.group({
-      email: ['',[RequierdEmail]],
+      email: ['', [RequierdEmail]],
       password: ['', Validators.required],
     });
   }
 
-  LoginAccountUser(loaderText:string) {
-    this.LoadingButton=loaderText
-    if(this.LoginForm.invalid){
-      this.LoginForm.markAllAsTouched()
-        this.LoadingButton=""
-      return
+  LoginAccountUser(loaderText: string) {
+    this.LoadingButton = loaderText;
+    if (this.LoginForm.invalid) {
+      this.LoginForm.markAllAsTouched();
+      this.LoadingButton = '';
+      return;
     }
     this.store.dispatch(
-      AuthActions.isLoginUser({user: this.LoginForm.value })
+      AuthActions.isLoginUser({ user: this.LoginForm.value })
     );
   }
 
@@ -55,17 +57,18 @@ export class LoginComponent {
     this.success$ = this.store.select((state) => state.authFeaturesKey.success);
     this.success$.subscribe((success) => {
       if (success) {
-        this.LoadingButton=""
+        this.LoadingButton = '';
         this.authServies.processSuccessAuth();
         this.LoginForm.reset();
         setTimeout(() => {
           this.store.dispatch(AuthActions.clearSuccess());
+          this.router.navigate(['/']);
         }, 2000);
       }
     });
   }
 
-ErrorResponseLogin() {
+  ErrorResponseLogin() {
     this.error$ = this.store.select((state) => state.authFeaturesKey.error);
     this.error$.subscribe((error) => {
       if (error) {
@@ -77,6 +80,4 @@ ErrorResponseLogin() {
       }
     });
   }
-
-
 }

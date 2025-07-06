@@ -1,0 +1,16 @@
+<div class="w-100 p-3 animate__animated animate__fadeInDown">
+  <div class="text-end w-100">
+  <button (click)="ShowDilogSepasificeAddUser()" class="Add-user">Add</button>
+  </div>
+  <app-main-tabel
+   [BodyData]="Users"
+   [page]="'users'"
+   (edituser)="EditUser($event)"
+   ></app-main-tabel>
+</div>
+
+<app-dilog-admin-user
+[showDilogEdit]="EventDilogSepasificEdit"
+></app-dilog-admin-user>
+
+

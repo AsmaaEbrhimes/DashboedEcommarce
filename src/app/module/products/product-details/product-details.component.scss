@@ -1,6 +1,5 @@
 .col-1 {
   height: fit-content;
-  width: 64%;
 }
 
 .col-2 {
@@ -51,53 +50,10 @@
   color: #2450c5;
 }
 
-@media(min-width:320px) and (max-width:767px) {
+// @media(min-width:320px) and (max-width:767px) {
 
   .col-1,
   .col-2 {
     width: 100%;
   }
 
-  .col-2 {
-    margin-top: 10px;
-    position: relative;
-  }
-
-  .small-size {
-    font-size: 7.9px;
-  }
-}
-
-@media(min-width:767px) and (max-width:850px) {
-
-  .col-1,
-  .col-2 {
-    width: 92% !important;
-  }
-}
-
-
-@media(min-width:767px) and (max-width:1200px) {
-  .col-1,
-  .col-2 {
-    width: 100%;
-  }
-
-  .col-2 {
-    position: relative;
-    margin-top: 10px;
-  }
-}
-
-
-
-
-@media(min-width:1200px) and (max-width:1400px) {
-  .col-1 {
-    width: 60%;
-  }
-
-  .col-2 {
-    width: 37.5%;
-  }
-}

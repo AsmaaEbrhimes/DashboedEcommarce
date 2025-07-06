@@ -6,7 +6,7 @@ import { MainTabelComponent } from './main-tabel/main-tabel.component';
 import { TableModule } from 'primeng/table';
 import { SuccessComponent } from './success/success.component';
 import { TostrErrorComponent } from './tostr-error/tostr-error.component';
-
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -18,12 +18,16 @@ import { TostrErrorComponent } from './tostr-error/tostr-error.component';
     CommonModule,
     SharedRoutingModule,
         TableModule,
+
   ],
   exports:[
     HeaderComponent,
     MainTabelComponent,
     SuccessComponent,
     TostrErrorComponent
+  ],
+  providers:[
+        DatePipe
   ]
 })
 export class SharedModule { }

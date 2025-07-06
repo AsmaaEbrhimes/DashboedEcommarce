@@ -5,16 +5,17 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
-import { StoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from './environments/environment';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthInterceptor } from './Core/Interceptor/authcathion.interceptor';
 import { ErrorInterceptor } from './Core/Interceptor/Error.interceptor';
+import { UserEffect } from './module/admin-user/Store/Effects/user.effect';
+import { userReducer } from './module/admin-user/Store/Reducser/user.reducer';
+import { AppReducer } from './Store/Reducer/reducer';
 @NgModule({
-  declarations: [
-    AppComponent,
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,22 +23,27 @@ import { ErrorInterceptor } from './Core/Interceptor/Error.interceptor';
     ReactiveFormsModule,
     BrowserAnimationsModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({},{}),
-      EffectsModule.forRoot([]),
-    StoreDevtoolsModule.instrument({maxAge:25,logOnly:environment.production})
+    StoreModule.forRoot({ app: AppReducer }),
+    EffectsModule.forRoot([]),
+    EffectsModule.forFeature([UserEffect]),
+    StoreModule.forFeature('user', userReducer),
+    StoreDevtoolsModule.instrument({
+      maxAge: 25,
+      logOnly: environment.production,
+    }),
   ],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
     },
-     {
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: ErrorInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
