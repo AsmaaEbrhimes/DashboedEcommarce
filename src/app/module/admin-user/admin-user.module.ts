@@ -26,8 +26,6 @@ import { userReducer } from '../admin-user/Store/Reducser/user.reducer';
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
-    // EffectsModule.forFeature([UserEffect]),
-    // StoreModule.forFeature('user', userReducer),
   ],
 })
 export class AdminUserModule {}

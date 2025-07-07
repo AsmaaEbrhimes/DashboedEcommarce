@@ -30,19 +30,12 @@ label {
   align-items: center;
 }
 
-// select {
-//   background-color: transparent;
-//   color: #3081e6;
-//   border: 1px solid rgb(56 91 135);
-//   width: 100%;
-//   padding: 10px;
-//   border-radius: 5px;
-//   margin-top: 25px;
-// }
+.error-message{
+  color: red;
+  position: absolute;
+    font-size: 12px;
+}
 
-// option {
-//   background-color: transparent !important;
-// }
 
 .edit-btn {
   background-color: transparent;

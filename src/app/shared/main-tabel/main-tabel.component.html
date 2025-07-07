@@ -46,9 +46,8 @@
         </ng-template>
       </td>
       <td *ngIf="page=='users'" class="action-uesr">
-        <button (click)="RemoveUser()"><i class="fa-solid fa-trash"></i></button>
+        <button (click)="RemoveUser(BodyData)"><i class="fa-solid fa-trash"></i></button>
         <button (click)="EditUser(BodyData)"><i class="fa-solid fa-pen"></i></button>
-        <!-- <button (click)="AddUser()"> <i class="fa-solid fa-user-pen"></i></button> -->
       </td>
     </tr>
   </ng-template>

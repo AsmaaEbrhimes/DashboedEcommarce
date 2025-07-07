@@ -20,3 +20,9 @@ export const EditUser = createAction(
   '[Users] EditUser',
   props<{id: number; EditData: any[] }>()
 );
+
+
+export const DeleteUser = createAction(
+  '[Users] DeleteUser',
+  props<{id:string}>()
+);

@@ -7,39 +7,89 @@
   >
     <form [formGroup]="myForm">
       <div class="custem-center gap-2">
-
         <div>
           <label>Enter Your Name</label>
-          <input formControlName="name" class="form-control input-edit" type="text" />
+          <input
+            formControlName="name"
+            class="form-control input-edit"
+            type="text"
+              [class.is-invalid]="
+              getControl('name')?.invalid && getControl('name')?.touched
+            "
+          />
+          <small *ngIf="getControl('name')?.invalid && getControl('name')?.touched" class="error-message">Enter Your Name</small>
         </div>
 
         <div>
           <label>Enter Your Email</label>
-          <input formControlName="email" class="form-control input-edit" type="email" />
+          <input
+            formControlName="email"
+            class="form-control input-edit"
+            type="email"
+             [class.is-invalid]="
+              getControl('email')?.invalid && getControl('email')?.touched
+            "
+          />
+          <small *ngIf="getControl('email')?.invalid && getControl('email')?.touched" class="error-message">Enter Your Email</small>
         </div>
       </div>
 
       <div class="custem-center gap-2 mt-3">
         <div>
           <label>Enter Your Password</label>
-          <input formControlName="password" class="form-control input-edit" type="password" />
+          <input
+            formControlName="password"
+            class="form-control input-edit"
+            type="password"
+            [class.is-invalid]="
+              getControl('password')?.invalid && getControl('password')?.touched
+            "
+          />
+          <small *ngIf="getControl('password')?.invalid && getControl('password')?.touched" class="error-message">Enter Your Password</small>
         </div>
-        <div *ngIf="isObjectValue==false">
+        <div *ngIf="isObjectValue == false">
           <label>Enter Your ConfirmePassword</label>
-          <input formControlName="passwordConfirm" class="form-control input-edit" type="password" />
+          <input
+            formControlName="passwordConfirm"
+            class="form-control input-edit"
+            type="password"
+            [class.is-invalid]="
+              getControl('passwordConfirm')?.invalid && getControl('passwordConfirm')?.touched "
+          />
+          <small *ngIf="getControl('passwordConfirm')?.invalid && getControl('passwordConfirm')?.touched" class="error-message">Enter Your Confirm Password</small>
         </div>
       </div>
 
-      <div class="custem-center mt-3" *ngIf="isObjectValue==false">
+      <div class="custem-center mt-3" *ngIf="isObjectValue == false">
         <div>
           <label>Enter Your Phone</label>
-          <input formControlName="phone" class="form-control input-edit" type="email" />
+          <input
+            formControlName="phone"
+            class="form-control input-edit"
+            type="email"
+            [class.is-invalid]="
+              getControl('phone')?.invalid && getControl('phone')?.touched
+            "
+          />
+          <small *ngIf="getControl('phone')?.invalid && getControl('phone')?.touched" class="error-message">Enter Your Phone</small>
         </div>
       </div>
 
       <div class="text-end pt-5 mt-3 pb-3 pe-3">
-        <button class="edit-btn" (click)="EditUser()" *ngIf="isObjectValue==true">Edit</button>
-        <button class="add-btn" (click)="AddUser()" *ngIf="isObjectValue==false">Add</button>
+        <button
+          class="edit-btn"
+          (click)="EditUser()"
+          *ngIf="isObjectValue == true"
+        >
+          Edit
+        </button>
+        <button
+          class="add-btn"
+          (click)="AddUser()"
+          *ngIf="isObjectValue == false"
+        >
+          Add
+        </button>
       </div>
     </form>
   </p-dialog>

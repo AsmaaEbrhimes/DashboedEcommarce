@@ -50,4 +50,19 @@ export class UserEffect {
       )
     )
   );
+
+  DeleteUser = createEffect(() =>
+    this.action$.pipe(
+      ofType(UserActions.DeleteUser),
+      exhaustMap((action) =>
+        this.userservies.DeleteUserAdmin(action.id).pipe(
+          switchMap((res) => {
+            return [UserActions.AllUser(), ActionApp.SucessProccing()];
+          })
+        )
+      )
+    )
+  );
+
+  
 }

@@ -19,4 +19,8 @@ export class UsersService {
   EditUserAdmin(id: number, data: any) {
     return this.http.put(`${environment.baseApi}v1/users/${id}`,data);
   }
+
+  DeleteUserAdmin(id: string) {
+    return this.http.delete(`${environment.baseApi}v1/users/${id}`);
+  }
 }

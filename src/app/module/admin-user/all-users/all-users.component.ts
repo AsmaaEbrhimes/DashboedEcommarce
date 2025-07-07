@@ -15,17 +15,17 @@ export class AllUsersComponent implements OnInit {
   dilogAdminUserComponent!: DilogAdminUserComponent;
 
   Users: any;
-  EventDilogSepasificEdit!: ObjUser|boolean;
+  EventDilogSepasificEdit!: ObjUser | boolean;
 
   constructor(private store: Store<{ user: UserState }>) {}
 
   ngOnInit(): void {
-    this.store.dispatch(UserActions.AllUser());
     this.setDtaInLocalStorage();
     this.ReadDataInLoaclStorage();
   }
 
   setDtaInLocalStorage() {
+    this.store.dispatch(UserActions.AllUser());
     const stored = localStorage.getItem('allUsers');
     const users = stored ? JSON.parse(stored) : [];
     this.store.dispatch(UserActions.LoadUsersFromLocalStorage({ users }));
@@ -47,11 +47,10 @@ export class AllUsersComponent implements OnInit {
     this.EventDilogSepasificEdit = event;
   }
 
-  ShowDilogSepasificeAddUser(){
-    // this.EventDilogSepasificEdit=true
-    this.EventDilogSepasificEdit = false; // كسر التكرار
-  setTimeout(() => {
-    this.EventDilogSepasificEdit = true;
-  }, 0);
+  ShowDilogSepasificeAddUser() {
+    this.EventDilogSepasificEdit = false;
+    setTimeout(() => {
+      this.EventDilogSepasificEdit = true;
+    }, 0);
   }
 }

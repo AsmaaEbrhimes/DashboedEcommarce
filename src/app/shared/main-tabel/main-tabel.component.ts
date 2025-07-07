@@ -8,6 +8,8 @@ import {
   output,
 } from '@angular/core';
 import { ObjUser } from '../../module/admin-user/InterFase/user.interface';
+import { Store } from '@ngrx/store';
+import { UserActions } from '../../module/admin-user/Store/Types/typesUser';
 
 @Component({
   selector: 'app-main-tabel',
@@ -16,7 +18,7 @@ import { ObjUser } from '../../module/admin-user/InterFase/user.interface';
 })
 export class MainTabelComponent<T extends object> {
   @Output() edituser = new EventEmitter<ObjUser>();
-  constructor(private datePipe: DatePipe) {}
+  constructor(private datePipe: DatePipe, private store: Store) {}
 
   selectedProducts: any = [];
 
@@ -36,10 +38,13 @@ export class MainTabelComponent<T extends object> {
     return value;
   }
 
-  RemoveUser() {
-  }
-  EditUser(dataUser:ObjUser) {
-    this.edituser.emit(dataUser);
+  RemoveUser(dataUser: ObjUser) {
+    this.store.dispatch(
+      UserActions.DeleteUser({id: dataUser._id })
+    );
   }
 
+  EditUser(dataUser: ObjUser) {
+    this.edituser.emit(dataUser);
+  }
 }
