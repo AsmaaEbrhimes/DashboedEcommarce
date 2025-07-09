@@ -20,7 +20,7 @@ $breakpoints: (
 }
 
 
-.Add-user {
+.Add-category{
   text-align: center;
   background-color: transparent;
   border: 1px solid white;
@@ -37,7 +37,7 @@ $breakpoints: (
 
 
 
-.Add-user{
+.Add-category{
   @include respond(sm) {
     width: 30%;
   }

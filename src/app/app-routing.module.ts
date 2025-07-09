@@ -16,6 +16,7 @@ const routes: Routes = [
     loadChildren: () =>
       import('./module/auth/auth.module').then((m) => m.AuthModule),
   },
+
   {
     path: 'AdminUser',
     loadChildren: () =>
@@ -23,6 +24,16 @@ const routes: Routes = [
         (m) => m.AdminUserModule
       ),
   },
+
+
+   {
+    path: 'Category',
+    loadChildren: () =>
+      import('./module/category/category.module').then(
+        (m) => m.CategoryModule
+      ),
+  },
+
   {
     path: 'product',
     loadChildren: () =>

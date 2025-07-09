@@ -34,8 +34,6 @@ import { SharedModule } from '../../shared/shared.module';
     SharedModule,
     EffectsModule.forFeature([AuthEffect]),
     StoreModule.forFeature('authFeaturesKey', AuthReducer),
-
-
 ]
 })
 export class AuthModule {}

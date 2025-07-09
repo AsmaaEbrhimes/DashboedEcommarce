@@ -87,30 +87,22 @@ export const navbarData: INavbarData[] = [
         routeLink: 'AdminUser/allUser',
         label: 'All Users',
         icon: 'fa-solid fa-users',
-      },
-      {
-        routeLink: 'page2',
-        label: 'Page 2',
-        icon: 'fa-solid fa-folder',
-      },
+      }
     ],
   },
+
+
   {
-    routeLink: 'Dashboard',
-    label: 'Dashboard',
-    icon: 'fa-solid fa-gauge',
+    routeLink: 'Category/category',
+    label: 'category',
+    icon: 'fa-solid fa-layer-group',
     isOpen: false,
     sublevelItems: [
       {
-        routeLink: 'page1',
-        label: 'Page 1',
+        routeLink: 'category',
+        label: 'All Category',
         icon: 'fa-solid fa-file',
-      },
-      {
-        routeLink: 'page2',
-        label: 'Page 2',
-        icon: 'fa-solid fa-folder',
-      },
+      }
     ],
   },
 
