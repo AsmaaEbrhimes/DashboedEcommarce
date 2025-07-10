@@ -3,8 +3,12 @@
     <button class="Add-category">Add Category</button>
   </div>
 
-<div class="w-100  animate__animated animate__fadeInDown">
-  <app-main-tabel></app-main-tabel>
+  <div class="w-100 animate__animated animate__fadeInDown">
+    <app-main-tabel
+      [BodyData]="categories()"
+      [page]="'Category'"
+    ></app-main-tabel>
+  </div>
 </div>
 
-</div>
+<app-dilog></app-dilog>

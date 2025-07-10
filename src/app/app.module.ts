@@ -14,6 +14,8 @@ import { ErrorInterceptor } from './Core/Interceptor/Error.interceptor';
 import { UserEffect } from './module/admin-user/Store/Effects/user.effect';
 import { userReducer } from './module/admin-user/Store/Reducser/user.reducer';
 import { AppReducer } from './Store/Reducer/reducer';
+import { EffectCategory } from './module/category/Store/EffectCategory/EffecCategory';
+import { categoriesReducer } from './module/category/Store/ReducerCategory/ReducerCategory';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -25,8 +27,12 @@ import { AppReducer } from './Store/Reducer/reducer';
     ReactiveFormsModule,
     StoreModule.forRoot({ app: AppReducer }),
     EffectsModule.forRoot([]),
+
     EffectsModule.forFeature([UserEffect]),
     StoreModule.forFeature('user', userReducer),
+
+    EffectsModule.forFeature([EffectCategory]),
+StoreModule.forFeature('categoryFeaturesKey', categoriesReducer),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

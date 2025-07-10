@@ -5,7 +5,6 @@ import {
   inject,
   Input,
   Output,
-  output,
 } from '@angular/core';
 import { ObjUser } from '../../module/admin-user/InterFase/user.interface';
 import { Store } from '@ngrx/store';
@@ -32,7 +31,8 @@ export class MainTabelComponent<T extends object> {
   }
 
   formatCellValue(key: string, value: any): any {
-    if ((key === 'updatedAt' || key === 'createdAt') && this.page == 'users') {
+let arrayPage = ['Category', 'users'];
+    if ((key === 'updatedAt' || key === 'createdAt') && arrayPage.includes(this.page)) {
       return this.datePipe.transform(value, 'shortDate');
     }
     return value;

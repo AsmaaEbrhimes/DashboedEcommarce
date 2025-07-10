@@ -31,7 +31,7 @@ export class UserEffect {
       exhaustMap((action: any) =>
         this.userservies.AddUserAdmin(action.addData).pipe(
           switchMap((res) => {
-            return [UserActions.AllUser(), ActionApp.SucessProccing()];
+            return this.refreshUsersAndNotify();
           })
         )
       )
@@ -44,7 +44,7 @@ export class UserEffect {
       exhaustMap((action) =>
         this.userservies.EditUserAdmin(action.id, action.EditData).pipe(
           switchMap((res) => {
-            return [UserActions.AllUser(), ActionApp.SucessProccing()];
+            return this.refreshUsersAndNotify();
           })
         )
       )
@@ -57,12 +57,16 @@ export class UserEffect {
       exhaustMap((action) =>
         this.userservies.DeleteUserAdmin(action.id).pipe(
           switchMap((res) => {
-            return [UserActions.AllUser(), ActionApp.SucessProccing()];
+            return this.refreshUsersAndNotify();
           })
         )
       )
     )
   );
 
-  
+
+  private refreshUsersAndNotify() {
+  return [UserActions.AllUser(), ActionApp.SucessProccing()];
+}
+
 }

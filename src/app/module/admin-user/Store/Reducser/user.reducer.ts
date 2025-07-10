@@ -11,7 +11,6 @@ const initialState: UserState = {
 
 export const userReducer = createReducer(
   initialState,
-
   on(UserActions.LoadUsersFromLocalStorage, (state, { users }) => ({
     ...state,
     users
