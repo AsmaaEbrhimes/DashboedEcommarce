@@ -34,6 +34,15 @@ const routes: Routes = [
       ),
   },
 
+
+{
+    path: 'brand',
+    loadChildren: () =>
+      import('./module/brands/brands.module').then(
+        (m) => m.BrandsModule
+      ),
+  },
+
   {
     path: 'product',
     loadChildren: () =>

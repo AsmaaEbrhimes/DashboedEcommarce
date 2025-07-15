@@ -107,20 +107,15 @@ export const navbarData: INavbarData[] = [
   },
 
   {
-    routeLink: 'Dashboard',
-    label: 'Dashboard',
-    icon: 'fa-solid fa-gauge',
+    routeLink: '',
+    label: 'brand',
+    icon: 'fa-solid fa-shuffle',
     isOpen: false,
     sublevelItems: [
       {
-        routeLink: 'page1',
-        label: 'Page 1',
+        routeLink: 'brand/brand',
+        label: 'All Brand',
         icon: 'fa-solid fa-file',
-      },
-      {
-        routeLink: 'page2',
-        label: 'Page 2',
-        icon: 'fa-solid fa-folder',
       },
     ],
   },

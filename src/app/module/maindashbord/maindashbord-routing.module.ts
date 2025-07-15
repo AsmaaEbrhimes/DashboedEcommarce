@@ -1,4 +1,3 @@
-
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MaindashboardComponent } from './maindashboard/maindashboard.component';
@@ -11,6 +10,7 @@ import { OrdersComponent } from '../products/orders/orders.component';
 import { ProductDetailsComponent } from '../products/product-details/product-details.component';
 import { AllUsersComponent } from '../admin-user/all-users/all-users.component';
 import { AllCategoryComponent } from '../category/all-category/all-category.component';
+import { BrandsComponent } from '../brands/brands/brands.component';
 
 const routes: Routes = [
   {
@@ -18,20 +18,21 @@ const routes: Routes = [
     component: MaindashboardComponent,
     children: [
       { path: '', component: FirstpageComponent },
-      {path:"product/creatproduct" , component:CreateproductComponent},
-      {path:"product/viewproduct" , component:ViewproductComponent},
-      {path:"product/AllProduct" , component:AllproductsComponent},
-      {path:"product/shoppingcart" , component:ShoppingcartComponent},
-      {path:"product/order" , component:OrdersComponent},
-      {path:"product/DetailsOrder" , component:ProductDetailsComponent},
-      {path:"AdminUser/allUser",component:AllUsersComponent},
-      {path:"category",component:AllCategoryComponent},
-    ]
-  }
+      { path: 'product/creatproduct', component: CreateproductComponent },
+      { path: 'product/viewproduct', component: ViewproductComponent },
+      { path: 'product/AllProduct', component: AllproductsComponent },
+      { path: 'product/shoppingcart', component: ShoppingcartComponent },
+      { path: 'product/order', component: OrdersComponent },
+      { path: 'product/DetailsOrder', component: ProductDetailsComponent },
+      { path: 'AdminUser/allUser', component: AllUsersComponent },
+      { path: 'category', component: AllCategoryComponent },
+      { path: 'brand/brand', component: BrandsComponent },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class MaindashbordRoutingModule { }
+export class MaindashbordRoutingModule {}

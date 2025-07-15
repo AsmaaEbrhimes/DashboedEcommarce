@@ -4,6 +4,7 @@ import { switchMap, tap } from 'rxjs';
 import { CategoryService } from '../../category.service';
 import { ActionCategory } from '../TypesCategory/TypesCategory';
 import { CategoryResponse } from '../../Interface';
+import { ActionApp } from '../../../../Store/Types/Types';
 
 @Injectable({ providedIn: 'root' })
 export class EffectCategory {
@@ -29,4 +30,52 @@ export class EffectCategory {
       )
     )
   );
+
+
+
+ AddCategory$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(ActionCategory.AddCategory),
+      switchMap((action) =>
+        this.categoryservies.addCategory(action.categoryName).pipe(
+          switchMap((res) => {
+            return this.refreshCategoriesAndNotify();
+          })
+        )
+      )
+    )
+  );
+
+
+  EditCategory$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(ActionCategory.EditCategory),
+      switchMap((action) =>
+        this.categoryservies.updateCategory(action.id, action.categoryName).pipe(
+          switchMap((res) => {
+            return this.refreshCategoriesAndNotify();
+          })
+        )
+      )
+    )
+  );
+  DeleteCategory$ = createEffect(() =>
+    this.action$.pipe(
+      ofType(ActionCategory.DeleteCategory),
+      switchMap((action) =>
+        this.categoryservies.deleteCategory(action.id).pipe(
+          switchMap((res) => {
+            return this.refreshCategoriesAndNotify();
+          })
+        )
+      )
+    )
+  );
+
+  private refreshCategoriesAndNotify() {
+    return [
+      ActionCategory.AllCategory(),
+      ActionApp.SucessProccing(),
+    ];
+  }
 }

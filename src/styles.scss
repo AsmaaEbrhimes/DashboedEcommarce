@@ -16,6 +16,11 @@ li{
   list-style: none;
 }
 
+.error-message {
+  color: red;
+  position: absolute;
+  font-size: 12px;
+}
 
 
 @mixin height($value) {

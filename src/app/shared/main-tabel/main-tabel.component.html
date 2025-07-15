@@ -4,6 +4,8 @@
   [rowsPerPageOptions]="[5, 10, 20]"
   [value]="BodyData"
   [(selection)]="selectedProducts"
+  (onRowSelect)="onRowSelected($event)"
+  (onRowUnselect)="onRowUnselected()"
   styleClass="p-datatable-gridlines"
   [tableStyle]="{ 'max-width': '100%' }"
 >
@@ -14,7 +16,7 @@
         {{ key }}
       </th>
 
-      <th *ngIf="page=='users'">Action</th>
+      <th *ngIf="page == 'users'|| page === 'Category'">Action</th>
     </tr>
   </ng-template>
 
@@ -45,9 +47,17 @@
           {{ formatCellValue(key, BodyData[key]) }}
         </ng-template>
       </td>
-      <td *ngIf="page=='users'" class="action-uesr">
-        <button (click)="RemoveUser(BodyData)"><i class="fa-solid fa-trash"></i></button>
-        <button (click)="EditUser(BodyData)"><i class="fa-solid fa-pen"></i></button>
+      <td *ngIf="page == 'users'|| page === 'Category'" class="action-uesr">
+
+        <button
+        (click)="onRemoveClick(BodyData)"
+        >
+          <i class="fa-solid fa-trash"></i>
+        </button>
+
+        <button *ngIf="page == 'users'" (click)="EditUser(BodyData)">
+          <i class="fa-solid fa-pen"></i>
+        </button>
       </td>
     </tr>
   </ng-template>

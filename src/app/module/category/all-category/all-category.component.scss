@@ -19,8 +19,7 @@ $breakpoints: (
   }
 }
 
-
-.Add-category{
+.Add-category {
   text-align: center;
   background-color: transparent;
   border: 1px solid white;
@@ -35,11 +34,72 @@ $breakpoints: (
   }
 }
 
+.form-add-category {
+  width: 100%;
+  position: relative;
+  bottom: 10px;
+  top: 7px;
 
+  input {
+    position: relative;
+    right: 10px;
+    background-color: transparent;
+    border: 1px solid rgb(56 91 135);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    width: 100%;
+  }
 
-.Add-category{
+  ::placeholder {
+    color: white;
+  }
+
+  button {
+    position: relative;
+    top: 15px;
+    margin-bottom: 40px;
+    right: 10px;
+    border: none;
+    width: 20%;
+    border: 1px solid white;
+    padding: 10px;
+    color: white;
+    border-radius: 5px;
+    font-weight: bold;
+    &:hover {
+      opacity: 0.6;
+    }
+
+    @include respond(sm) {
+      width: 50%;
+    }
+
+    @include respond(md) {
+      width: 30%;
+    }
+  }
+}
+
+.add-category{
+  background-color: green;
+}
+
+.edit-category {
+  background-color: red;
+}
+
+.Group {
+  width: 100%;
+  small {
+    position: relative;
+    right: 10px;
+  }
+}
+
+.Add-category {
   @include respond(sm) {
-    width: 30%;
+    width: 50%;
   }
 
   @include respond(md) {
