@@ -1,1 +1,19 @@
-<p>brands works!</p>
+<div class="w-100 p-3 animate__animated animate__fadeInDown">
+  <div class="brand">
+    <button (click)="IsToggelForm()">Add Brands</button>
+    @if(ToggelFormSepasificBrand()){
+    <div [@slideToggle]>
+      <input
+        class="w-100 form-control"
+        type="text"
+        placeholder="Enter brand name"
+      />
+      <div class="text-start">
+        <small class="error-message"> Enter a brand name </small>
+      </div>
+      <button class="add-brand">Add</button>
+    </div>
+    }
+  </div>
+  <app-main-tabel [BodyData]="brandObj()" [page]="'brands'"></app-main-tabel>
+</div>

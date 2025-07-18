@@ -7,6 +7,8 @@ import { AppReducer } from '../../Store/Reducer/reducer';
 import { EffectCategory } from '../../module/category/Store/EffectCategory/EffecCategory';
 import { categoriesReducer } from '../../module/category/Store/ReducerCategory/ReducerCategory';
 import { EffectsModule } from '@ngrx/effects';
+import { BrandEffect } from '../../module/brands/Store/Effect-brand/Effect';
+import { brandReducer } from '../../module/brands/Store/Reducer-brand/Reducer';
 
 @NgModule({
   declarations: [],
@@ -18,6 +20,8 @@ import { EffectsModule } from '@ngrx/effects';
     StoreModule.forFeature('user', userReducer),
     EffectsModule.forFeature([EffectCategory]),
     StoreModule.forFeature('categoryFeaturesKey', categoriesReducer),
+    EffectsModule.forFeature([BrandEffect]),
+    StoreModule.forFeature('brand', brandReducer),
   ],
 })
 export class StoreModuleModule {}

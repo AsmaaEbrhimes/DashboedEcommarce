@@ -45,7 +45,7 @@ export class MainTabelComponent<T extends object> implements OnInit {
   }
 
   formatCellValue(key: string, value: any): any {
-    let arrayPage = ['Category', 'users'];
+    let arrayPage = ['Category', 'users', 'brands'];
     if (
       (key === 'updatedAt' || key === 'createdAt') &&
       arrayPage.includes(this.page)

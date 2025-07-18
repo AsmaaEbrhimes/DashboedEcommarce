@@ -5,8 +5,8 @@ export const AllBrand = createAction(
   '[Brand] Get All Brand'
 )
 
+export const LoadBrandFromLocalStorage = createAction(
+  '[Brand] Load Brand From LocalStorage',
+  props<{ brands: any[] }>()
+);
 
-// export const LoadCategoryFromLocalStorage = createAction(
-//   '[Category] Load Category From LocalStorage',
-//     props<{ categories: Category[] }>()
-// );
