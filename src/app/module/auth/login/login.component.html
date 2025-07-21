@@ -23,6 +23,9 @@
             [class.is-invalid]="
               getControl('email')?.invalid && getControl('email')?.touched
             "
+            [class.is-valid]="
+              getControl('email')?.valid && getControl('email')?.touched
+            "
             formControlName="email"
             class="form-control w-100 p-2 bg-transparent rounded-2 mt-2 input"
             placeholder="Enter Username Or Email"
@@ -48,6 +51,9 @@
           <input
             [class.is-invalid]="
               getControl('password')?.invalid && getControl('password')?.touched
+            "
+            [class.is-valid]="
+              getControl('password')?.valid && getControl('password')?.touched
             "
             formControlName="password"
             class="form-control w-100 p-2 bg-transparent rounded-2 mt-2 input"

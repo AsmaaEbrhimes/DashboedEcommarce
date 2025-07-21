@@ -21,6 +21,9 @@
           [class.is-invalid]="
             getControls('name')?.invalid && getControls('name')?.touched
           "
+           [class.is-valid]="
+              getControls('name')?.valid && getControls('name')?.touched
+            "
           formControlName="name"
           class="form-control w-100 p-2 bg-transparent rounded-2 mt-2 input"
           placeholder="Enter username"
@@ -38,6 +41,10 @@
           [class.is-invalid]="
             getControls('email')?.invalid && getControls('email')?.touched
           "
+
+           [class.is-valid]="
+              getControls('email')?.valid && getControls('email')?.touched
+            "
           formControlName="email"
           class="form-control w-100 p-2 bg-transparent rounded-2 mt-2 input"
           placeholder="Enter email"
@@ -62,6 +69,9 @@
           [class.is-invalid]="
             getControls('phone')?.invalid && getControls('phone')?.touched
           "
+             [class.is-valid]="
+              getControls('phone')?.valid && getControls('phone')?.touched
+            "
           formControlName="phone"
           class="form-control w-100 p-2 bg-transparent rounded-2 mt-2 input"
           placeholder="Enter Phone"
@@ -79,6 +89,9 @@
           [class.is-invalid]="
             getControls('password')?.invalid && getControls('password')?.touched
           "
+             [class.is-valid]="
+              getControls('password')?.valid && getControls('password')?.touched
+            "
           formControlName="password"
           class="form-control w-100 p-2 bg-transparent rounded-2 mt-2 input"
           placeholder="Enter password"
@@ -99,6 +112,9 @@
             getControls('passwordConfirm')?.invalid &&
             getControls('passwordConfirm')?.touched
           "
+             [class.is-valid]="
+              getControls('passwordConfirm')?.valid && getControls('passwordConfirm')?.touched
+            "
           formControlName="passwordConfirm"
           class="form-control w-100 p-2 bg-transparent rounded-2 mt-2 input"
           placeholder="Enter password"

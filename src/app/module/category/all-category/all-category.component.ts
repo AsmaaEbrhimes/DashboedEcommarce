@@ -88,7 +88,7 @@ export class AllCategoryComponent implements OnInit {
     );
   }
 
-  ShowUiSepasificeEditCategory(category: Category) {
+  ShowUiSepasificeEdit(category: Category) {
     if (category) {
       this.CategoryObj.set(category);
       this.formCategory.patchValue({ name: category.name });

@@ -2,18 +2,51 @@
   <div class="brand">
     <button (click)="IsToggelForm()">Add Brands</button>
     @if(ToggelFormSepasificBrand()){
-    <div [@slideToggle]>
-      <input
-        class="w-100 form-control"
-        type="text"
-        placeholder="Enter brand name"
-      />
-      <div class="text-start">
-        <small class="error-message"> Enter a brand name </small>
+    <form [@slideToggle] [formGroup]="BrandsForm()">
+      <div>
+        <input
+          [class.is-invalid]="
+            getControlName('name')?.invalid && getControlName('name')?.touched
+          "
+          [class.is-valid]="
+            getControlName('name')?.valid && getControlName('name')?.touched
+          "
+          class="w-100 form-control"
+          type="text"
+          placeholder="Enter brand name"
+          formControlName="name"
+        />
+        <div
+          *ngIf="
+            getControlName('name')?.invalid &&
+            (getControlName('name')?.dirty || getControlName('name')?.touched)
+          "
+          class="text-start"
+        >
+          <small class="error-message"> Enter a brand name </small>
+        </div>
       </div>
-      <button class="add-brand">Add</button>
-    </div>
+      <button
+        *ngIf="!IsExsistBrandObj()"
+        (click)="AddBrand()"
+        class="add-brand"
+      >
+        Add
+      </button>
+      <button
+        *ngIf="IsExsistBrandObj()"
+        (click)="EditBrand()"
+        class="edit-brand"
+      >
+        Edit
+      </button>
+    </form>
     }
   </div>
-  <app-main-tabel [BodyData]="brandObj()" [page]="'brands'"></app-main-tabel>
+  <app-main-tabel
+    [BodyData]="brandsList()"
+    (ShowUiSepasificeEdit)="ShowUiSepasificeEdit($event)"
+    [page]="'brands'"
+  >
+  </app-main-tabel>
 </div>

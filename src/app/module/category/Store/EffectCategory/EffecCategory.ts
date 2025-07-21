@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
-import { switchMap, tap } from 'rxjs';
+import { exhaustMap, switchMap, tap } from 'rxjs';
 import { CategoryService } from '../../category.service';
 import { ActionCategory } from '../TypesCategory/TypesCategory';
 import { CategoryResponse } from '../../Interface';
@@ -36,7 +36,7 @@ export class EffectCategory {
  AddCategory$ = createEffect(() =>
     this.action$.pipe(
       ofType(ActionCategory.AddCategory),
-      switchMap((action) =>
+      exhaustMap((action) =>
         this.categoryservies.addCategory(action.categoryName).pipe(
           switchMap((res) => {
             return this.refreshCategoriesAndNotify();
@@ -50,7 +50,7 @@ export class EffectCategory {
   EditCategory$ = createEffect(() =>
     this.action$.pipe(
       ofType(ActionCategory.EditCategory),
-      switchMap((action) =>
+      exhaustMap((action) =>
         this.categoryservies.updateCategory(action.id, action.categoryName).pipe(
           switchMap((res) => {
             return this.refreshCategoriesAndNotify();
@@ -62,7 +62,7 @@ export class EffectCategory {
   DeleteCategory$ = createEffect(() =>
     this.action$.pipe(
       ofType(ActionCategory.DeleteCategory),
-      switchMap((action) =>
+      exhaustMap((action) =>
         this.categoryservies.deleteCategory(action.id).pipe(
           switchMap((res) => {
             return this.refreshCategoriesAndNotify();

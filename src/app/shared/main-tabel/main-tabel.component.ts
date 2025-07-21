@@ -22,7 +22,7 @@ import { ActionCategory } from '../../module/category/Store/TypesCategory/TypesC
 })
 export class MainTabelComponent<T extends object> implements OnInit {
   @Output() edituser = new EventEmitter<ObjUser>();
-  @Output() ShowUiSepasificeEditCategory = new EventEmitter<Category>();
+  @Output() ShowUiSepasificeEdit = new EventEmitter<Category>();
   constructor(
     private datePipe: DatePipe,
     private store: Store,
@@ -34,10 +34,14 @@ export class MainTabelComponent<T extends object> implements OnInit {
 
   @Input() BodyData: T[] = [];
   @Input() page: string = '';
+  @Input() UnCheckedCheckBox: boolean = false;
 
   ngOnInit(): void {
     this.refreshSelectInCheckbox();
   }
+
+
+
   getHeadKeys(): string[] {
     return Array.isArray(this.BodyData) && this.BodyData.length > 0
       ? Object.keys(this.BodyData[0])
@@ -71,7 +75,6 @@ export class MainTabelComponent<T extends object> implements OnInit {
     this.categoryStore.dispatch(
       ActionCategory.DeleteCategory({ id: dataCategory._id })
     );
-    console.log(dataCategory);
   }
 
   EditUser(dataUser: ObjUser) {
@@ -79,10 +82,10 @@ export class MainTabelComponent<T extends object> implements OnInit {
   }
 
   onRowSelected(event: any) {
-    this.ShowUiSepasificeEditCategory.emit(event.data);
+    this.ShowUiSepasificeEdit.emit(event.data);
   }
   onRowUnselected() {
-    this.ShowUiSepasificeEditCategory.emit();
+    this.ShowUiSepasificeEdit.emit();
   }
 
   refreshSelectInCheckbox() {

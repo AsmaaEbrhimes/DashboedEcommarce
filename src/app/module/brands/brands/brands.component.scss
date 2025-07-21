@@ -1,3 +1,6 @@
+
+
+
 .brand {
   width: 100%;
   text-align: right;
@@ -31,6 +34,11 @@
       top: 8px;
   }
 
+  .edit-brand{
+      position: relative;
+      background-color: red;
+      top: 8px;
+  }
   input {
     border: 1px solid white;
     color: white;
@@ -39,5 +47,15 @@
   }
   ::placeholder {
     color: white;
+  }
+}
+
+
+
+
+
+@media(min-width:320px) and (max-width:767px){
+  .brand button,.add-brand{
+width: 50%;
   }
 }

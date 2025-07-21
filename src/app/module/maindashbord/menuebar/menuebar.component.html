@@ -1,15 +1,34 @@
+<div>
+
 <div class="menue_avatar d-flex justify-content-center mt-3">
   <div class="d-flex align-items-center justify-content-center">
-    <img *ngIf="collpsed" src="./assets/Img/logo-light.png" alt="img" class="w-50" />
-    <i (click)="closemMenue()" *ngIf="collpsed"
-      class="fa-solid fa-xmark fs-4 fw-bold position-absolute curor-pointer text-center m-auto me-3 rounded-circle show-in-small-screen "></i>
+    <img
+      *ngIf="collpsed"
+      src="./assets/Img/logo-light.png"
+      alt="img"
+      class="w-50"
+    />
+    <i
+      (click)="closemMenue()"
+      *ngIf="collpsed"
+      class="fa-solid fa-xmark fs-4 fw-bold position-absolute curor-pointer text-center m-auto me-3 rounded-circle show-in-small-screen"
+    ></i>
   </div>
 
-  <img *ngIf="!collpsed" src="./assets/Img/download (1).png" alt="img" class="mb-5 position-fixed" width="30px" height="30px"/>
+  <img
+    *ngIf="!collpsed"
+    src="./assets/Img/download (1).png"
+    alt="img"
+    class="mb-5 position-fixed"
+    width="30px"
+    height="30px"
+  />
 </div>
 
-<div *ngIf="collpsed"
-  class="pt-2 pb-2 px-3 d-flex justify-content-center justify-content-between mt-3 active-bacground  pb-0 rounded-2">
+<div
+  *ngIf="collpsed"
+  class="pt-2 pb-2 px-3 d-flex justify-content-center justify-content-between mt-3 active-bacground pb-0 rounded-2"
+>
   <div class="d-flex align-items-center">
     <p class="m-0"><i class="fa-solid fa-chart-line pe-2"></i></p>
     <p class="m-0">Dashbord</p>
@@ -19,30 +38,64 @@
   </div>
 </div>
 
-
 <ul class="mt-4 p-2 m-0">
-  <li class="mb-3 custem-color curor-pointer curor-pointer" *ngFor="let item of datamenue">
-    <div class="fs-5 d-flex flex-nowrap hover_li p-1 rounded" (click)="toggleSubMenu(item)"
-      [ngClass]="{'justify-content-between': collpsed, 'justify-content-center': !collpsed}">
+  <li
+    class="mb-3 custem-color curor-pointer curor-pointer"
+    *ngFor="let item of datamenue"
+  >
+    <div
+      class="fs-5 d-flex flex-nowrap hover_li p-1 rounded"
+      (click)="toggleSubMenu(item)"
+      [ngClass]="{
+        'justify-content-between': collpsed,
+        'justify-content-center': !collpsed
+      }"
+    >
       <div>
-        <span class="text-center m-auto custem-size icon-label"><i [class]="item?.icon"></i></span>
-        <span [@fadeInOut] *ngIf="collpsed" class="custem-size ms-2">{{ item?.label }}</span>
+        <span class="text-center m-auto custem-size icon-label"
+          ><i [class]="item?.icon"></i
+        ></span>
+        <span [@fadeInOut] *ngIf="collpsed" class="custem-size ms-2">{{
+          item?.label
+        }}</span>
       </div>
       <div>
-        <span *ngIf="collpsed" class="background_icon text-center rounded-circle ">
-          <i *ngIf="!item.isOpen" class="fa-solid fa-chevron-left custem-size"></i>
+        <span
+          *ngIf="collpsed"
+          class="background_icon text-center rounded-circle"
+        >
+          <i
+            *ngIf="!item.isOpen"
+            class="fa-solid fa-chevron-left custem-size"
+          ></i>
           <i *ngIf="item.isOpen" class="fa-solid fa-angle-up curor-pointer"></i>
         </span>
       </div>
     </div>
     <ul *ngIf="item?.isOpen && item?.sublevelItems && collpsed" [@slideToggle]>
-      <li [routerLink]="[subItem?.routeLink]" routerLinkActive="router-link-active" (click)="activeRoute(subItem)"
+      <li
+        [routerLink]="[subItem?.routeLink]"
+        routerLinkActive="router-link-active"
+        (click)="activeRoute(subItem)"
         class="p-0 mt-2 m-0 d-flex flex-nowrap align-items-center curor-pointer"
-        [ngClass]="{'active_color' : itemlabel == subItem.label, 'custem-color': itemlabel !== subItem.label}"
-        *ngFor="let subItem of item?.sublevelItems" >
-        <span class="circle rounded-circle me-2" [ngClass]="{'active_background' : itemlabel == subItem.label, 'main-background': itemlabel !== subItem.label}"></span>
+        [ngClass]="{
+          active_color: itemlabel == subItem.label,
+          'custem-color': itemlabel !== subItem.label
+        }"
+        *ngFor="let subItem of item?.sublevelItems"
+      >
+        <span
+          class="circle rounded-circle me-2"
+          [ngClass]="{
+            active_background: itemlabel == subItem.label,
+            'main-background': itemlabel !== subItem.label
+          }"
+        ></span>
         <span>{{ subItem?.label }}</span>
       </li>
     </ul>
   </li>
 </ul>
+
+<button class="logOut-btn">LogOut</button>
+</div>

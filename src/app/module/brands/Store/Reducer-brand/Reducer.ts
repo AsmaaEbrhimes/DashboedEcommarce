@@ -2,8 +2,9 @@ import { on } from "@ngrx/store";
 
 import { createReducer } from "@ngrx/store";
 import { brandAction } from "../Types-brand/Types";
+import { brandObj } from "../../Interface";
 export interface BrandState {
-  brands: any[];
+  brands: brandObj[]
 }
 
 
