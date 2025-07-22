@@ -1,23 +1,27 @@
+import { LocalStorageService } from './../../../Core/servies/local-storage.service';
 import { DilogAdminUserComponent } from './../dilog-admin-user/dilog-admin-user.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { UserActions } from '../Store/Types/typesUser';
 import { UserState } from '../Store/Reducser/user.reducer';
-import { Observable } from 'rxjs';
 import { ObjUser } from '../InterFase/user.interface';
+import { Subject, takeUntil } from 'rxjs';
 @Component({
   selector: 'app-all-users',
   templateUrl: './all-users.component.html',
   styleUrls: ['./all-users.component.scss'],
 })
-export class AllUsersComponent implements OnInit {
+export class AllUsersComponent implements OnInit,OnDestroy {
   @ViewChild(DilogAdminUserComponent)
   dilogAdminUserComponent!: DilogAdminUserComponent;
-
-  Users: any;
+  private destroy$ = new Subject<void>();
+  Users: ObjUser[]=[];
   EventDilogSepasificEdit!: ObjUser | boolean;
 
-  constructor(private store: Store<{ user: UserState }>) {}
+  constructor(
+    private store: Store<{ user: UserState }>,
+    private LocalStorageService:LocalStorageService
+  ) {}
 
   ngOnInit(): void {
     this.setDtaInLocalStorage();
@@ -26,14 +30,14 @@ export class AllUsersComponent implements OnInit {
 
   setDtaInLocalStorage() {
     this.store.dispatch(UserActions.AllUser());
-    const stored = localStorage.getItem('allUsers');
-    const users = stored ? JSON.parse(stored) : [];
+  const users = this.LocalStorageService.get<ObjUser[]>('allUsers') || [];
     this.store.dispatch(UserActions.LoadUsersFromLocalStorage({ users }));
   }
 
   ReadDataInLoaclStorage() {
     this.store
       .select((state) => state.user)
+      .pipe(takeUntil(this.destroy$))
       .subscribe((userState: any) => {
         this.Users = (userState.users || []).map((user: any) => {
           const { password, ...rest } = user;
@@ -52,5 +56,9 @@ export class AllUsersComponent implements OnInit {
     setTimeout(() => {
       this.EventDilogSepasificEdit = true;
     }, 0);
+  }
+    ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

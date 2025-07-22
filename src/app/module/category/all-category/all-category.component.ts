@@ -6,6 +6,10 @@ import { Category } from '../Interface';
 import { slideToggleAnimation } from '../../../Core/animations/menu-animations';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AppState } from '../../../Store/Reducer/reducer';
+import { takeUntil } from 'rxjs/operators';
+import { OnDestroy } from '@angular/core';
+import { Subject} from 'rxjs';
+import { LocalStorageService } from '../../../Core/servies/local-storage.service';
 
 @Component({
   selector: 'app-all-category',
@@ -13,17 +17,19 @@ import { AppState } from '../../../Store/Reducer/reducer';
   styleUrl: './all-category.component.scss',
   animations: [slideToggleAnimation],
 })
-export class AllCategoryComponent implements OnInit {
+export class AllCategoryComponent implements OnInit, OnDestroy {
   categories = signal<Category[]>([]);
   toggleFormAdd = signal<boolean>(false);
   IsExsistEditObj = signal<boolean>(false);
   CategoryObj = signal<Category | undefined>(undefined);
   formCategory!: FormGroup;
+  private destroy$ = new Subject<void>();
 
   constructor(
     private Store: Store<{ categoryFeaturesKey: CategoryState }>,
     private StoreApp: Store<{ app: AppState }>,
-    private FB: FormBuilder
+    private FB: FormBuilder,
+        private LocalStorageService:LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -45,22 +51,22 @@ export class AllCategoryComponent implements OnInit {
 
   seDataInLocalStorage() {
     this.Store.dispatch(ActionCategory.AllCategory());
-    const stored = localStorage.getItem('allCategory');
-    const categories = stored ? JSON.parse(stored) : [];
+    const categories=this.LocalStorageService.get<Category[]>('allCategory')||[]
     this.Store.dispatch(
       ActionCategory.LoadCategoryFromLocalStorage({ categories })
     );
   }
 
   ReadDataInLocalStorage() {
-    this.Store.select(
-      (state) => state.categoryFeaturesKey.categories
-    ).subscribe((categories: Category[]) => {
-      this.categories.set(categories);
-    });
+    this.Store.select((state) => state.categoryFeaturesKey.categories)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((categories: Category[]) => {
+        this.categories.set(categories);
+      });
   }
 
-  ToggelAddFrom() {
+  toggleCategoryForm() {
+    this.formCategory.reset();
     this.toggleFormAdd.set(!this.toggleFormAdd());
     this.IsExsistEditObj.set(false);
   }
@@ -105,13 +111,20 @@ export class AllCategoryComponent implements OnInit {
   }
 
   HandelSuccessProccing() {
-    const success$ = this.StoreApp.select((state) => state.app.success);
-    success$.subscribe((success) => {
+    const success$ = this.StoreApp.select((state) => state.app.success)
+    .pipe(takeUntil(this.destroy$));
+    success$
+    .subscribe((success) => {
       if (success) {
         this.formCategory.reset();
         this.toggleFormAdd.set(false);
         this.IsExsistEditObj.set(false);
       }
     });
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

@@ -1,6 +1,3 @@
-
-
-
 .brand {
   width: 100%;
   text-align: right;
@@ -28,16 +25,16 @@
     }
   }
 
-  .add-brand{
+  .add-brand {
     position: relative;
-      background-color: green;
-      top: 8px;
+    background-color: green;
+    top: 8px;
   }
 
-  .edit-brand{
-      position: relative;
-      background-color: red;
-      top: 8px;
+  .edit-brand {
+    position: relative;
+    background-color: red;
+    top: 8px;
   }
   input {
     border: 1px solid white;
@@ -50,12 +47,17 @@
   }
 }
 
-
-
-
-
-@media(min-width:320px) and (max-width:767px){
-  .brand button,.add-brand{
-width: 50%;
+@media (min-width: 320px) and (max-width: 767px) {
+  .brand button,
+  .add-brand,.edit-brand {
+    width: 50%;
   }
 }
+
+@media (min-width: 767px) and (max-width:1200px) {
+  .brand button,
+  .add-brand,.edit-brand {
+    width: 30%;
+  }
+}
+

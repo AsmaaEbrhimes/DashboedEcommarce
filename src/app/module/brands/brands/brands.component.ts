@@ -1,4 +1,12 @@
-import { Component, EventEmitter, OnInit, Output, signal } from '@angular/core';
+import { LocalStorageService } from './../../../Core/servies/local-storage.service';
+import {
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output,
+  signal,
+} from '@angular/core';
 import { Store } from '@ngrx/store';
 import { brandAction } from '../Store/Types-brand/Types';
 import { BrandState } from '../Store/Reducer-brand/Reducer';
@@ -10,6 +18,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-brands',
@@ -17,17 +26,18 @@ import {
   styleUrl: './brands.component.scss',
   animations: [slideToggleAnimation],
 })
-export class BrandsComponent implements OnInit {
-
+export class BrandsComponent implements OnInit, OnDestroy {
   brandsList = signal<brandObj[]>([]);
   IsExsistBrandObj = signal<boolean>(false);
-  BrandObj = signal<brandObj|undefined>(undefined);
+  BrandObj = signal<brandObj | undefined>(undefined);
   BrandsForm = signal<FormGroup>(new FormGroup({}));
   ToggelFormSepasificBrand = signal<boolean>(false);
+  private destroy$ = new Subject<void>();
 
   constructor(
     private Store: Store<{ brand: BrandState }>,
-    private FB: FormBuilder
+    private FB: FormBuilder,
+    private LocalStorageService:LocalStorageService
   ) {}
 
   ngOnInit(): void {
@@ -37,18 +47,17 @@ export class BrandsComponent implements OnInit {
 
   setDtaInLocalStorage() {
     this.Store.dispatch(brandAction.AllBrand());
-    const stored = localStorage.getItem('brands');
-    const brands = stored ? JSON.parse(stored) : [];
+    const brands=this.LocalStorageService.get<brandObj[]>('brands')||[]
     this.Store.dispatch(brandAction.LoadBrandFromLocalStorage({ brands }));
     this.ReadDataInLocalStorage();
   }
 
   ReadDataInLocalStorage() {
-    this.Store.select((state) => state.brand.brands).subscribe(
-      (brandState: brandObj[]) => {
+    this.Store.select((state) => state.brand.brands)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe((brandState: brandObj[]) => {
         this.brandsList.set(brandState);
-      }
-    );
+      });
   }
 
   createFormBrand() {
@@ -81,7 +90,7 @@ export class BrandsComponent implements OnInit {
 
   ShowUiSepasificeEdit(brand: brandObj) {
     if (brand) {
-      this.BrandObj.set(brand)
+      this.BrandObj.set(brand);
       this.IsExsistBrandObj.set(true);
       this.BrandsForm()?.patchValue({
         name: brand.name,
@@ -95,6 +104,16 @@ export class BrandsComponent implements OnInit {
   }
 
   EditBrand() {
-    this.Store.dispatch(brandAction.EditBrand({brandName:this.BrandsForm().value,id: this.BrandObj()?._id}))
+    this.Store.dispatch(
+      brandAction.EditBrand({
+        brandName: this.BrandsForm().value,
+        id: this.BrandObj()?._id,
+      })
+    );
+  }
+
+  ngOnDestroy(): void {
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 }

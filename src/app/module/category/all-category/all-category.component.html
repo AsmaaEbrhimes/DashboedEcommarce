@@ -1,6 +1,6 @@
 <div class="w-100 p-3 animate__animated animate__fadeInDown">
   <div class="w-100 text-end">
-    <button (click)="ToggelAddFrom()" class="Add-category">Add Category</button>
+    <button (click)="toggleCategoryForm()" class="Add-category">Add Category</button>
 
     @if (toggleFormAdd()) {
     <form [formGroup]="formCategory" class="form-add-category" [@slideToggle]>

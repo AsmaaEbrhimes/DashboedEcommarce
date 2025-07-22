@@ -1,14 +1,18 @@
+import { LocalStorageService } from './../../../../Core/servies/local-storage.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { tap, switchMap, exhaustMap } from 'rxjs/operators';
-
 import { BrandService } from '../../brand.service';
 import { brandAction } from '../Types-brand/Types';
 import { ActionApp } from '../../../../Store/Types/Types';
 
 @Injectable({ providedIn: 'root' })
 export class BrandEffect {
-  constructor(private action$: Actions, private brandService: BrandService) {}
+  constructor(
+    private action$: Actions,
+     private brandService: BrandService,
+     private LocalStorageService:LocalStorageService
+    ) {}
 
   saveBrandsToStorage$ = createEffect(() =>
     this.action$.pipe(
@@ -17,6 +21,7 @@ export class BrandEffect {
         this.brandService.getAllBrands().pipe(
           tap((res: any) => {
             localStorage.setItem('brands', JSON.stringify(res.data));
+            this.LocalStorageService.set('brands',res.data)
           }),
           switchMap((res: any) => [
             brandAction.LoadBrandFromLocalStorage({ brands: res.data }),

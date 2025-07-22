@@ -1,3 +1,4 @@
+import { LocalStorageService } from './../../../../Core/servies/local-storage.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { exhaustMap, switchMap, tap } from 'rxjs';
@@ -10,7 +11,8 @@ import { ActionApp } from '../../../../Store/Types/Types';
 export class EffectCategory {
   constructor(
     private action$: Actions,
-    private categoryservies: CategoryService
+    private categoryservies: CategoryService,
+    private LocalStorageService:LocalStorageService
   ) {}
 
   getAllCategory$ = createEffect(() =>
@@ -19,7 +21,7 @@ export class EffectCategory {
       switchMap(() =>
         this.categoryservies.getCategories().pipe(
           tap((res: CategoryResponse) => {
-            localStorage.setItem('allCategory', JSON.stringify(res.data));
+            this.LocalStorageService.set('allCategory',res.data)
           }),
           switchMap((res) => [
             ActionCategory.LoadCategoryFromLocalStorage({

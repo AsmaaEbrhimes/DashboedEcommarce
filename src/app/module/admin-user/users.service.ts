@@ -1,6 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
+import { Observable } from 'rxjs';
+import { dataUser } from './Interface/user.model';
 
 @Injectable({
   providedIn: 'root',
@@ -8,8 +10,8 @@ import { environment } from '../../environments/environment';
 export class UsersService {
   constructor(private http: HttpClient) {}
 
-  getAllUsers() {
-    return this.http.get(`${environment.baseApi}v1/users`);
+  getAllUsers():Observable<dataUser> {
+    return this.http.get<dataUser>(`${environment.baseApi}v1/users`);
   }
 
   AddUserAdmin(data: any) {
