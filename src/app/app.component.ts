@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+//=====================================name Patern Design the used  In Artcitures Folders//=====================================//
+
+//==================================================Modular Architecture Pattern//==============================================//
+import { Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
