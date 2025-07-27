@@ -1,18 +1,22 @@
-import { Component, HostListener } from '@angular/core';
+import { Component, HostListener, signal } from '@angular/core';
+import { CoreServiesService } from '../../../Core/servies/core-servies.service';
 
 @Component({
   selector: 'app-maindashboard',
   templateUrl: './maindashboard.component.html',
-  styleUrl: './maindashboard.component.scss'
+  styleUrl: './maindashboard.component.scss',
 })
 export class MaindashboardComponent {
   collpsed: boolean = true;
-  returncollpased: boolean = false
-  custemResponsive: boolean = false
-  smallresponsive: boolean = false
+  returncollpased: boolean = false;
+  custemResponsive: boolean = false;
+  smallresponsive: boolean = false;
+
   ngOnInit() {
     this.updateSidenavState();
   }
+
+  constructor(private coreServies: CoreServiesService) {}
 
   toggelEvent(event: any) {
     this.collpsed = event;
@@ -24,7 +28,7 @@ export class MaindashboardComponent {
   }
 
   returnDefauleMenue(event: boolean) {
-    this.returncollpased = event
+    this.returncollpased = event;
     const screenWidth = window.innerWidth;
     if (screenWidth <= 767 && event == false) {
       this.collpsed = event;
@@ -40,9 +44,7 @@ export class MaindashboardComponent {
     if (screenWidth <= 767) {
       this.collpsed = false;
       this.custemResponsive = true;
-    }
-
-    else if (screenWidth >= 767 && screenWidth <= 1200) {
+    } else if (screenWidth >= 767 && screenWidth <= 1200) {
       this.collpsed = false;
       this.custemResponsive = false;
       this.smallresponsive = true;

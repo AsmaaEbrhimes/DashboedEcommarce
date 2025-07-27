@@ -12,7 +12,7 @@ import { DatePipe } from '@angular/common';
     HeaderComponent,
     MainTabelComponent,
     SuccessComponent,
-    TostrErrorComponent
+    TostrErrorComponent,
   ],
   imports: [
     CommonModule,
@@ -24,7 +24,7 @@ import { DatePipe } from '@angular/common';
     HeaderComponent,
     MainTabelComponent,
     SuccessComponent,
-    TostrErrorComponent
+    TostrErrorComponent,
   ],
   providers:[
         DatePipe

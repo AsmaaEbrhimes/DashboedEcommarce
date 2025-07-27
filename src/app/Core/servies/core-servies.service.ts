@@ -6,6 +6,9 @@ import { BehaviorSubject } from 'rxjs';
 })
 export class CoreServiesService {
   constructor() {}
+  private _isLoading = new BehaviorSubject<boolean>(true);
+  isLoading$ = this._isLoading.asObservable();
+
   errorMessageSubject$ = new BehaviorSubject<string | null>(null);
 
   processSuccessAuth() {
@@ -14,4 +17,6 @@ export class CoreServiesService {
     audio.load();
     audio.play();
   }
+
+
 }

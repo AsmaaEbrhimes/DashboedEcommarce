@@ -19,6 +19,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { Subject, takeUntil } from 'rxjs';
+import { AppState } from '../../../Store/Reducer/reducer';
 
 @Component({
   selector: 'app-brands',
@@ -37,17 +38,19 @@ export class BrandsComponent implements OnInit, OnDestroy {
   constructor(
     private Store: Store<{ brand: BrandState }>,
     private FB: FormBuilder,
-    private LocalStorageService:LocalStorageService
+    private LocalStorageService: LocalStorageService,
+    private StoreApp: Store<{ app: AppState }>
   ) {}
 
   ngOnInit(): void {
     this.setDtaInLocalStorage();
     this.createFormBrand();
+    this.HandelSuccessProccing();
   }
 
   setDtaInLocalStorage() {
     this.Store.dispatch(brandAction.AllBrand());
-    const brands=this.LocalStorageService.get<brandObj[]>('brands')||[]
+    const brands = this.LocalStorageService.get<brandObj[]>('brands') || [];
     this.Store.dispatch(brandAction.LoadBrandFromLocalStorage({ brands }));
     this.ReadDataInLocalStorage();
   }
@@ -111,7 +114,18 @@ export class BrandsComponent implements OnInit, OnDestroy {
       })
     );
   }
-
+  HandelSuccessProccing() {
+    const success$ = this.StoreApp.select((state) => state.app.success).pipe(
+      takeUntil(this.destroy$)
+    );
+    success$.subscribe((success) => {
+      if (success) {
+        this.BrandsForm().reset();
+        this.ToggelFormSepasificBrand.set(false);
+        this.IsExsistBrandObj.set(false);
+      }
+    });
+  }
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();
