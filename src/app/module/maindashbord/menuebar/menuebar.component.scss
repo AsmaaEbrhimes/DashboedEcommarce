@@ -1,3 +1,4 @@
+
 .hover_li {
   color: rgb(146 175 211);
   cursor: pointer;
@@ -58,11 +59,18 @@
   background-color: #2450c5;
 }
 
+.flex-proprty{
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 92vh;
+}
 .logOut-btn{
   position: absolute;
-  bottom: 5px;
-  width: 95%;
-  margin-left: 3.4px;
+  // bottom: 5px;
+  width: 100%;
+  // margin-left: 3.4px;
   border-radius: 5px;
   background-color: #3b82f6;
   color: white;
@@ -70,6 +78,10 @@
   padding: 10px;
   &:hover{
     opacity: 0.6;
+  }
+  i{
+    font-size: 20px;
+    font-weight: bold;
   }
 }
 

@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { AuthState } from '../Store/Reducer/auth.reducer';
 import { RequierdEmail } from '../valdtion/EmailValidtion';
 import { Router } from '@angular/router';
+import { CoreServiesService } from '../../../Core/servies/core-servies.service';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -17,7 +18,8 @@ export class LoginComponent {
     private FB: FormBuilder,
     private authServies: AuthService,
     private store: Store<{ authFeaturesKey: AuthState }>,
-    private router: Router
+    private router: Router,
+    private CoreServiesService:CoreServiesService
   ) {}
   LoginForm!: FormGroup;
   success$!: Observable<boolean>;
@@ -28,6 +30,7 @@ export class LoginComponent {
     this.CreateFormLogin();
     this.SuccessResponseLogin();
     this.ErrorResponseLogin();
+    this.onLogOut()
   }
 
   getControl(controlName: string) {
@@ -79,5 +82,9 @@ export class LoginComponent {
         }, 2000);
       }
     });
+  }
+
+    onLogOut() {
+    this.CoreServiesService.proccingLogOut();
   }
 }

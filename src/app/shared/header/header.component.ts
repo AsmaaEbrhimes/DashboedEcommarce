@@ -9,7 +9,7 @@ import {
 } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { AppReducer, AppState } from '../../Store/Reducer/reducer';
+import { AppState } from '../../Store/Reducer/reducer';
 import { ActionApp } from '../../Store/Types/Types';
 
 @Component({
