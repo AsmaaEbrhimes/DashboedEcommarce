@@ -16,7 +16,6 @@ export class MaindashboardComponent {
     this.updateSidenavState();
   }
 
-  constructor(private coreServies: CoreServiesService) {}
 
   toggelEvent(event: any) {
     this.collpsed = event;

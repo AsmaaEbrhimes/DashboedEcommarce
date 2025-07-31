@@ -1,5 +1,4 @@
 import { CoreServiesService } from './../../../Core/servies/core-servies.service';
-import { LocalStorageService } from './../../../Core/servies/local-storage.service';
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { navbarData } from '../../../Core/scripts/constant.data';
 import { INavbarData } from '../../../Core/interfaces/navbar.interface';
@@ -32,7 +31,6 @@ export class MenuebarComponent implements OnInit {
   }
 
   constructor(
-    private LocalStorageService: LocalStorageService,
     private Roter: Router,
     private CoreServiesService: CoreServiesService
   ) {}

@@ -1,4 +1,4 @@
-import { LocalStorageService } from './../../../Core/servies/local-storage.service';
+import { StorageService } from '../../../Core/servies/storage.service';
 import { DilogAdminUserComponent } from './../dilog-admin-user/dilog-admin-user.component';
 import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -20,7 +20,7 @@ export class AllUsersComponent implements OnInit,OnDestroy {
 
   constructor(
     private store: Store<{ user: UserState }>,
-    private LocalStorageService:LocalStorageService
+    private StorageService:StorageService
   ) {}
 
   ngOnInit(): void {
@@ -30,7 +30,7 @@ export class AllUsersComponent implements OnInit,OnDestroy {
 
   setDtaInLocalStorage() {
     this.store.dispatch(UserActions.AllUser());
-  const users = this.LocalStorageService.get<ObjUser[]>('allUsers') || [];
+  const users = this.StorageService.get<ObjUser[]>('allUsers') || [];
     this.store.dispatch(UserActions.LoadUsersFromLocalStorage({ users }));
   }
 

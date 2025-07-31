@@ -1,4 +1,4 @@
-import { LocalStorageService } from './../../../../Core/servies/local-storage.service';
+import { StorageService } from '../../../../Core/servies/storage.service';
 import { Injectable } from '@angular/core';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { UsersService } from '../../users.service';
@@ -11,7 +11,7 @@ export class UserEffect {
   constructor(
     private action$: Actions,
      private userservies: UsersService,
-     private LocalStorageService:LocalStorageService
+     private StorageService:StorageService
     ) {}
 
   saveUsersToStorage$ = createEffect(() =>
@@ -20,7 +20,7 @@ export class UserEffect {
       switchMap(() =>
         this.userservies.getAllUsers().pipe(
           tap((res: any) => {
-            this.LocalStorageService.set('allUsers',res.data)
+            this.StorageService.set('allUsers',res.data)
           }),
           switchMap((res: any) => [
             UserActions.LoadUsersFromLocalStorage({ users: res.data }),

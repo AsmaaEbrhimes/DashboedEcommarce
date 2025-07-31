@@ -7,10 +7,10 @@
       <div>
         <input
           [class.is-invalid]="
-            getControlName('name')?.invalid && getControlName('name')?.touched
+            getControlName('name').invalid && getControlName('name').touched
           "
           [class.is-valid]="
-            getControlName('name')?.valid && getControlName('name')?.touched
+            getControlName('name').valid && getControlName('name').touched
           "
           class="w-100 form-control"
           type="text"

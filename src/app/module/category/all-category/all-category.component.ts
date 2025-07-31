@@ -9,7 +9,7 @@ import { AppState } from '../../../Store/Reducer/reducer';
 import { takeUntil } from 'rxjs/operators';
 import { OnDestroy } from '@angular/core';
 import { Subject} from 'rxjs';
-import { LocalStorageService } from '../../../Core/servies/local-storage.service';
+import { StorageService } from '../../../Core/servies/storage.service';
 
 @Component({
   selector: 'app-all-category',
@@ -29,7 +29,7 @@ export class AllCategoryComponent implements OnInit, OnDestroy {
     private Store: Store<{ categoryFeaturesKey: CategoryState }>,
     private StoreApp: Store<{ app: AppState }>,
     private FB: FormBuilder,
-        private LocalStorageService:LocalStorageService
+        private StorageService:StorageService
   ) {}
 
   ngOnInit(): void {
@@ -51,7 +51,7 @@ export class AllCategoryComponent implements OnInit, OnDestroy {
 
   seDataInLocalStorage() {
     this.Store.dispatch(ActionCategory.AllCategory());
-    const categories=this.LocalStorageService.get<Category[]>('allCategory')||[]
+    const categories=this.StorageService.get<Category[]>('allCategory')||[]
     this.Store.dispatch(
       ActionCategory.LoadCategoryFromLocalStorage({ categories })
     );

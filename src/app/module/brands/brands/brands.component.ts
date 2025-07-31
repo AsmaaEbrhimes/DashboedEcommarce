@@ -1,4 +1,4 @@
-import { LocalStorageService } from './../../../Core/servies/local-storage.service';
+import { StorageService } from '../../../Core/servies/storage.service';
 import {
   Component,
   EventEmitter,
@@ -38,7 +38,7 @@ export class BrandsComponent implements OnInit, OnDestroy {
   constructor(
     private Store: Store<{ brand: BrandState }>,
     private FB: FormBuilder,
-    private LocalStorageService: LocalStorageService,
+    private StorageService: StorageService,
     private StoreApp: Store<{ app: AppState }>
   ) {}
 
@@ -50,7 +50,7 @@ export class BrandsComponent implements OnInit, OnDestroy {
 
   setDtaInLocalStorage() {
     this.Store.dispatch(brandAction.AllBrand());
-    const brands = this.LocalStorageService.get<brandObj[]>('brands') || [];
+    const brands = this.StorageService.get<brandObj[]>('brands') || [];
     this.Store.dispatch(brandAction.LoadBrandFromLocalStorage({ brands }));
     this.ReadDataInLocalStorage();
   }
@@ -77,7 +77,7 @@ export class BrandsComponent implements OnInit, OnDestroy {
     this.ToggelFormSepasificBrand.set(!this.ToggelFormSepasificBrand());
   }
 
-  getControlName(controlName: string) {
+  getControlName(controlName: string):FormControl {
     return this.BrandsForm().get(controlName) as FormControl;
   }
 

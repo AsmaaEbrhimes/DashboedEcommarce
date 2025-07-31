@@ -1,7 +1,7 @@
 //=====================================name Patern Design the used  In Artcitures Folders//=====================================//
 
 //==================================================Modular Architecture Pattern//==============================================//
-import { Component, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit } from '@angular/core';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -21,4 +21,24 @@ export class AppComponent implements OnInit {
       this.spinner.hide();
     }, 3000);
   }
+
+
+
+
+
+
+
+
+
+
+@HostListener('window:scroll', ['$event'])
+onScroll(event: Event) {
+  console.log('Scroll event:', event);
+}
+
+
+
+
+
+
 }

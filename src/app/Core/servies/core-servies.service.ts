@@ -1,14 +1,15 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { LocalStorageService } from './local-storage.service';
+import { StorageService } from './storage.service';
 import { Router } from '@angular/router';
+import { StorageType } from '../interfaces/storage-type.enum';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CoreServiesService {
   constructor(
-    private LocalStorageService:LocalStorageService,
+    private StorageService:StorageService,
     private Roter:Router
   ) {}
   private _isLoading = new BehaviorSubject<boolean>(true);
@@ -23,9 +24,13 @@ export class CoreServiesService {
     audio.play();
   }
 
-   proccingLogOut() {
-    this.LocalStorageService.remove('token');
-    this.Roter.navigate(['/auth/login']);
-    this.processSuccessAuth();
-  }
+ proccingLogOut() {
+  this.StorageService.use(StorageType.Session);
+  this.StorageService.remove('token');
+
+  this.Roter.navigate(['/auth/login']);
+  this.processSuccessAuth();
 }
+}
+
+

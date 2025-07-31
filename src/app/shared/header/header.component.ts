@@ -15,9 +15,9 @@ import { ActionApp } from '../../Store/Types/Types';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss',
+  styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnDestroy, OnInit {
+export class HeaderComponent implements OnInit {
   isMenuCollapsed: boolean = true;
   isScrolled = false;
   successMessage$!: Observable<boolean>;
@@ -26,8 +26,8 @@ export class HeaderComponent implements OnDestroy, OnInit {
 
   ngOnInit(): void {
     this.ShowMessageSucces();
+    this.ScrollHight();
   }
-
   constructor(
     private store: Store<{ app: AppState }>,
     private coreServies: CoreServiesService
@@ -42,9 +42,14 @@ export class HeaderComponent implements OnDestroy, OnInit {
     }
   }
 
-  @HostListener('window:scroll', [])
-  onScroll(): void {
-    this.isScrolled = window.scrollY > 0;
+  ScrollHight() {
+    window.addEventListener(
+      'scroll',
+      () => {
+        this.isScrolled = true;
+      },
+      true
+    );
   }
 
   ShowMessageSucces() {
@@ -59,7 +64,5 @@ export class HeaderComponent implements OnDestroy, OnInit {
     });
   }
 
-  ngOnDestroy(): void {
-    window.removeEventListener('scroll', this.onScroll);
-  }
+
 }

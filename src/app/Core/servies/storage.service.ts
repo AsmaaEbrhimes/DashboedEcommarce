@@ -1,29 +1,34 @@
 // ==================================== Facade Pattern=========================================== //
 // 1- prevent Of dealing with complax opertions
 
-
 import { Injectable } from '@angular/core';
+import { StorageType } from '../interfaces/storage-type.enum';
 
 @Injectable({
   providedIn: 'root',
 })
-export class LocalStorageService {
-  constructor() {}
+export class StorageService {
+  private storage: Storage = localStorage; // Default
+
+  use(type: StorageType): void {
+    this.storage = type === StorageType.Local ? localStorage : sessionStorage;
+  }
 
   set<T>(key: string, data: T): void {
-    localStorage.setItem(key, JSON.stringify(data));
+    this.storage.setItem(key, JSON.stringify(data));
   }
 
   get<T>(key: string): T | null {
-    const item = localStorage.getItem(key);
+    const item = this.storage.getItem(key);
     return item ? (JSON.parse(item) as T) : null;
   }
 
   remove(key: string): void {
-    localStorage.removeItem(key);
+    this.storage.removeItem(key);
   }
 
   clear(): void {
-    localStorage.clear();
+    this.storage.clear();
   }
 }
+
