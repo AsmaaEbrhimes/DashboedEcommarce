@@ -11,6 +11,7 @@ export const LoadCategoryFromLocalStorage = createAction(
     props<{ categories: Category[] }>()
 );
 
+
 export const AddCategory = createAction(
   '[Category] Add Category',
   props<{ categoryName: string }>()

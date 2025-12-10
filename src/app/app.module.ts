@@ -26,7 +26,6 @@ import { CoreModule } from './Core/Interceptor/core.module';
     StoreModuleModule,
     SharedModule,
     NgxSpinnerModule.forRoot({ type: 'square-jelly-box' }),
-
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,

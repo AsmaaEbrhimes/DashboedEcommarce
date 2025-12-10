@@ -27,7 +27,6 @@ export class CoreServiesService {
  proccingLogOut() {
   this.StorageService.use(StorageType.Session);
   this.StorageService.remove('token');
-
   this.Roter.navigate(['/auth/login']);
   this.processSuccessAuth();
 }

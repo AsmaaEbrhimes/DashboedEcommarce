@@ -23,11 +23,13 @@ export class EffectCategory {
           tap((res: CategoryResponse) => {
             this.StorageService.set('allCategory',res.data)
           }),
+
           switchMap((res) => [
             ActionCategory.LoadCategoryFromLocalStorage({
               categories: res.data,
             }),
           ])
+          
         )
       )
     )

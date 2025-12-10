@@ -10,9 +10,9 @@ import { ActionApp } from '../../../../Store/Types/Types';
 export class BrandEffect {
   constructor(
     private action$: Actions,
-     private brandService: BrandService,
-     private StorageService:StorageService
-    ) {}
+    private brandService: BrandService,
+    private StorageService: StorageService
+  ) {}
 
   saveBrandsToStorage$ = createEffect(() =>
     this.action$.pipe(
@@ -20,8 +20,8 @@ export class BrandEffect {
       switchMap(() =>
         this.brandService.getAllBrands().pipe(
           tap((res: any) => {
-            localStorage.setItem('brands', JSON.stringify(res.data));
-            this.StorageService.set('brands',res.data)
+            // localStorage.setItem('brands', JSON.stringify(res.data));
+            this.StorageService.set('brands', res.data);
           }),
           switchMap((res: any) => [
             brandAction.LoadBrandFromLocalStorage({ brands: res.data }),
@@ -30,7 +30,6 @@ export class BrandEffect {
       )
     )
   );
-
 
   AddCategory$ = createEffect(() =>
     this.action$.pipe(
@@ -45,13 +44,11 @@ export class BrandEffect {
     )
   );
 
-
-
-EditCategory$ = createEffect(() =>
+  EditCategory$ = createEffect(() =>
     this.action$.pipe(
       ofType(brandAction.EditBrand),
       exhaustMap((action) =>
-        this.brandService.EditBrandInDataBase(action.brandName,action.id).pipe(
+        this.brandService.EditBrandInDataBase(action.brandName, action.id).pipe(
           switchMap((res) => {
             return this.refreshCategoriesAndNotify();
           })
@@ -59,8 +56,6 @@ EditCategory$ = createEffect(() =>
       )
     )
   );
-
-
 
   private refreshCategoriesAndNotify() {
     return [brandAction.AllBrand(), ActionApp.SucessProccing()];

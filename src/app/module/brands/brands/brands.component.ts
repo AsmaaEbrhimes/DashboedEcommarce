@@ -1,10 +1,8 @@
 import { StorageService } from '../../../Core/servies/storage.service';
 import {
   Component,
-  EventEmitter,
   OnDestroy,
   OnInit,
-  Output,
   signal,
 } from '@angular/core';
 import { Store } from '@ngrx/store';
@@ -126,6 +124,8 @@ export class BrandsComponent implements OnInit, OnDestroy {
       }
     });
   }
+
+  
   ngOnDestroy(): void {
     this.destroy$.next();
     this.destroy$.complete();

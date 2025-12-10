@@ -12,7 +12,9 @@ const initialState: CategoryState = {
 
 export const categoriesReducer = createReducer(
     initialState,
-  on(ActionCategory.LoadCategoryFromLocalStorage, (state, { categories }) => ({
+  on(ActionCategory.LoadCategoryFromLocalStorage, (state, {
+    categories
+  }) => ({
     ...state,
     categories,
   }))
