@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../auth.service';
 import { Store } from '@ngrx/store';
@@ -87,4 +87,71 @@ export class LoginComponent {
     onLogOut() {
     this.CoreServiesService.proccingLogOut();
   }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  @ViewChild('tableContainer', { static: false }) tableContainer!: ElementRef;
+
+  project = { name: 'تقرير_صندوق_التبرعات' }; // مثال لبيانات المشروع
+
+  print(): void {
+    // 1. جلب كود الـ HTML للجدول (سواء من الدالة الخاصة بكِ أو من الـ DOM)
+    // هنا افترضت استخدام الدالة الخاصة بكِ
+    const data = { /* بياناتكِ كما هي */ };
+    const htmlContent = this.printAssociationDonorFundExport({ base: '', system: '' }, data);
+
+    // 2. صياغة قالب صفحة الـ Word مع التنسيقات والاتجاه العربي
+    const fullHtml = `
+      <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
+      <head>
+        <title>${this.project?.name || 'Export'}</title>
+        <meta charset="utf-8">
+        <style>
+          body { direction: rtl; font-family: 'Arial', sans-serif; padding: 20px; }
+          table { border-collapse: collapse; width: 100%; direction: rtl; }
+          th, td { border: 1px solid #000000; padding: 8px; text-align: right; }
+          th { background-color: #2b579a; color: white; }
+        </style>
+      </head>
+      <body>
+        ${htmlContent}
+      </body>
+      </html>
+    `;
+
+    // 3. هنا الخطوة الأهم لـ Word Online:
+    // بدلاً من الـ Blob المحتجز في الذاكرة المحلية، يجب إرسال هذا الـ `fullHtml` إلى الـ API (الـ Backend) ليقوم بحفظه على السيرفر ويعود لكِ برابط حقيقي للملف.
+
+    const serverFileUrl = 'https://your-domain.com/uploads/temp_report.doc'; // الرابط الراجع من السيرفر بعد الرفع
+
+    // 4. فتح الملف مباشرة في Word Online (المتصفح) دون الحاجة لتثبيت البرنامج
+    const microsoftViewerUrl = `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(serverFileUrl)}`;
+
+    window.open(microsoftViewerUrl, '_blank');
+  }
+
+  // الدالة الخاصة بكِ لتوليد الـ HTML
+  printAssociationDonorFundExport(config: any, data: any): string {
+    // الكود الخاص بكِ الذي يرجع كود الجدول الـ HTML
+    return `
+      <table>
+        <tr><th>اسم المتبرع</th><th>المبلغ</th></tr>
+        <tr><td>مؤسسة الأمل</td><td>5000$</td></tr>
+      </table>
+    `;
+  }
+
 }

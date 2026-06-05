@@ -4,7 +4,6 @@ import { navbarData } from '../../../Core/scripts/constant.data';
 import { INavbarData } from '../../../Core/interfaces/navbar.interface';
 import { slideToggleAnimation } from '../../../Core/animations/menu-animations';
 import { FadeinAndFadeout } from '../../../Core/animations/fadeinandfadeout-anmations';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-menuebar',
