@@ -8,8 +8,8 @@ import { AuthState } from '../Store/Reducer/auth.reducer';
 import { RequierdEmail } from '../valdtion/EmailValidtion';
 import { Router } from '@angular/router';
 import { CoreServiesService } from '../../../Core/servies/core-servies.service';
-import { Document, Packer, Paragraph, Table, TableRow, TableCell, TextDirection, WidthType, HeightRule, BorderStyle } from 'docx';
-import { saveAs } from 'file-saver';
+import { Document, Packer, Paragraph, Table, TableRow, TableCell, WidthType, BorderStyle } from 'docx';
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -21,7 +21,8 @@ export class LoginComponent {
     private authServies: AuthService,
     private store: Store<{ authFeaturesKey: AuthState }>,
     private router: Router,
-    private CoreServiesService:CoreServiesService
+    private CoreServiesService:CoreServiesService,
+
   ) {}
   LoginForm!: FormGroup;
   success$!: Observable<boolean>;
@@ -95,121 +96,65 @@ export class LoginComponent {
 
 
 
+@ViewChild('tableContainer') tableContainer!: ElementRef;
+project = { name: 'تقرير_صندوق_التبرعات' };
 
+donationsList = [
+  { name: 'مؤسسة الأمل الخيرية', amount: '5000$' },
+  { name: 'فاعل خير', amount: '2500$' },
+  { name: 'شركة النور', amount: '1200$' }
+];
 
-
-
-
-
-
-
-
-@ViewChild('tableContainer', { static: false }) tableContainer!: ElementRef;
-
-  project = { name: 'تقرير_صندوق_التبرعات' };
-
-  // المصفوفة التي تحتوي على البيانات (تتحدث تلقائياً عند التعديل في الواجهة)
-  donationsList = [
-    { name: 'مؤسسة الأمل الخيرية', amount: '5000$' },
-    { name: 'فاعل خير', amount: '2500$' },
-    { name: 'شركة النور', amount: '1200$' }
-  ];
-
-  print(): void {
-    // 1. إنشاء المستند الرئيسي
-    const doc = new Document({
-      sections: [{
-        properties: {
-          page: { margin: { top: 1440, bottom: 1440, left: 1440, right: 1440 } }
-        },
-        children: [
-          // العنوان
-          new Paragraph({
-            text: "تقرير صندوق التبرعات المحدث",
-            alignment: "right",
-            bidirectional: true,
-            spacing: { before: 200, after: 400 },
-          }),
-
-          new Paragraph({ text: "" }),
-
-          // 2. بناء الجدول بالاعتماد على مصفوفة البيانات المحدثة
-          new Table({
-            alignment: "right",
-            width: { size: 100, type: WidthType.PERCENTAGE },
-            rows: [
-              // صف العناوين الثابت (Header)
-              new TableRow({
-                children: [
-                  this.createTableCell("المبلغ", "2b579a", true),
-                  this.createTableCell("اسم المتبرع", "2b579a", true),
-                ],
-              }),
-
-              // دمج صفوف البيانات ديناميكياً باستخدام دالة التعديل (Map Loop)
-              ...this.generateDataRows()
-            ],
-          }),
-        ],
-      }],
-    });
-
-    // 3. فتح الملف المحدث مباشرة
-    Packer.toBlob(doc).then((blob) => {
-      const fileURL = URL.createObjectURL(blob);
-      window.location.href = fileURL;
-      setTimeout(() => URL.revokeObjectURL(fileURL), 5000);
-    }).catch((error) => {
-      console.error('حدث خطأ أثناء إنشاء ملف الـ Word:', error);
-    });
-  }
-
-  /**
-   * دالة التعديل وتوليد الصفوف ديناميكياً:
-   * تقرأ أي تعديل طرأ على المصفوفة وتصيغ الصفوف بناءً عليه
-   */
-  private generateDataRows(): TableRow[] {
-    return this.donationsList.map((item, index) => {
-      // تمييز ألوان الصفوف بالتناوب (صف أبيض وصف رمادي)
-      const rowColor = index % 2 === 0 ? "ffffff" : "f2f2f2";
-
-      return new TableRow({
-        children: [
-          this.createTableCell(item.amount, rowColor, false),
-          this.createTableCell(item.name, rowColor, false),
-        ],
-      });
-    });
-  }
-
-  // الدالة المساعدة لتنسيق الخلايا
-  private createTableCell(text: string, bgColor: string, isHeader: boolean): TableCell {
-    return new TableCell({
-      shading: { fill: bgColor },
-      margins: { top: 150, bottom: 150, left: 150, right: 150 },
-      borders: {
-        top: { style: BorderStyle.SINGLE, size: 6, color: "cccccc" },
-        bottom: { style: BorderStyle.SINGLE, size: 6, color: "cccccc" },
-        left: { style: BorderStyle.SINGLE, size: 6, color: "cccccc" },
-        right: { style: BorderStyle.SINGLE, size: 6, color: "cccccc" },
-      },
+print(): void {
+  const doc = new Document({
+    sections: [{
       children: [
-        new Paragraph({
-          text: text,
+        new Paragraph({ text: "تقرير صندوق التبرعات المحدث", alignment: "right", bidirectional: true, spacing: { after: 400 } }),
+
+        new Table({
           alignment: "right",
-          bidirectional: true,
+          width: { size: 100, type: WidthType.PERCENTAGE },
+          rows: [
+            // صف العناوين
+            new TableRow({ children: [this.cell("المبلغ", "2b579a"), this.cell("اسم المتبرع", "2b579a")] }),
+            // صفوف البيانات ديناميكيًا
+            ...this.donationsList.map((item, i) => new TableRow({
+              children: [this.cell(item.amount, i % 2 === 0 ? "ffffff" : "f2f2f2"), this.cell(item.name, i % 2 === 0 ? "ffffff" : "f2f2f2")]
+            }))
+          ],
         }),
       ],
-    });
-  }
+    }],
+  });
 
-  
-  updateDataDemo() {
-    this.donationsList = [
-      { name: 'تم تعديل الاسم الأول', amount: '9999$' },
-      { name: 'مؤسسة الأمل المحدثة', amount: '5000$' },
-      { name: 'متبرع جديد مضاف', amount: '700$' }
-    ];
-    alert('تم تعديل البيانات بنجاح! اضغطي على زر الطباعة لرؤية التعديل داخل ملف الـ Word.');
-  }
+  Packer.toBlob(doc).then(blob => {
+    const fileURL = URL.createObjectURL(blob);
+    window.location.href = fileURL;
+    setTimeout(() => URL.revokeObjectURL(fileURL), 5000);
+  }).catch(err => console.error('خطأ:', err));
+}
+
+// دالة مساعدة مختصرة جدًا لإنشاء الخلايا بحدود ثابتة
+private cell(text: string, bgColor: string): TableCell {
+  return new TableCell({
+    shading: { fill: bgColor },
+    margins: { top: 150, bottom: 150, left: 150, right: 150 },
+    borders: {
+      top: { style: BorderStyle.SINGLE, size: 6, color: "cccccc" },
+      bottom: { style: BorderStyle.SINGLE, size: 6, color: "cccccc" },
+      left: { style: BorderStyle.SINGLE, size: 6, color: "cccccc" },
+      right: { style: BorderStyle.SINGLE, size: 6, color: "cccccc" },
+    },
+    children: [new Paragraph({ text, alignment: "right", bidirectional: true })],
+  });
+}
+
+updateDataDemo() {
+  this.donationsList = [
+    { name: 'تم تعديل الاسم الأول', amount: '9999$' },
+    { name: 'مؤسسة الأمل المحدثة', amount: '5000$' },
+    { name: 'متبرع جديد مضاف', amount: '700$' }
+  ];
+}
+
 }
