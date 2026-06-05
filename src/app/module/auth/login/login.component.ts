@@ -108,8 +108,6 @@ export class LoginComponent {
   project = { name: 'تقرير_صندوق_التبرعات' }; // مثال لبيانات المشروع
 
   print(): void {
-    // 1. جلب كود الـ HTML للجدول (سواء من الدالة الخاصة بكِ أو من الـ DOM)
-    // هنا افترضت استخدام الدالة الخاصة بكِ
     const data = { /* بياناتكِ كما هي */ };
     const htmlContent = this.printAssociationDonorFundExport({ base: '', system: '' }, data);
 
