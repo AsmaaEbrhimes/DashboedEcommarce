@@ -8,6 +8,8 @@ import { AuthState } from '../Store/Reducer/auth.reducer';
 import { RequierdEmail } from '../valdtion/EmailValidtion';
 import { Router } from '@angular/router';
 import { CoreServiesService } from '../../../Core/servies/core-servies.service';
+import { Document, Packer, Paragraph, Table, TableRow, TableCell, TextDirection, WidthType, HeightRule, BorderStyle } from 'docx';
+import { saveAs } from 'file-saver';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -102,54 +104,115 @@ export class LoginComponent {
 
 
 
+@ViewChild('tableContainer', { static: false }) tableContainer!: ElementRef;
 
-  @ViewChild('tableContainer', { static: false }) tableContainer!: ElementRef;
+  project = { name: 'تقرير_صندوق_التبرعات' };
 
-  project = { name: 'تقرير_صندوق_التبرعات' }; // مثال لبيانات المشروع
+  // المصفوفة التي تحتوي على البيانات (تتحدث تلقائياً عند التعديل في الواجهة)
+  donationsList = [
+    { name: 'مؤسسة الأمل الخيرية', amount: '5000$' },
+    { name: 'فاعل خير', amount: '2500$' },
+    { name: 'شركة النور', amount: '1200$' }
+  ];
 
   print(): void {
-    const data = { /* بياناتكِ كما هي */ };
-    const htmlContent = this.printAssociationDonorFundExport({ base: '', system: '' }, data);
+    // 1. إنشاء المستند الرئيسي
+    const doc = new Document({
+      sections: [{
+        properties: {
+          page: { margin: { top: 1440, bottom: 1440, left: 1440, right: 1440 } }
+        },
+        children: [
+          // العنوان
+          new Paragraph({
+            text: "تقرير صندوق التبرعات المحدث",
+            alignment: "right",
+            bidirectional: true,
+            spacing: { before: 200, after: 400 },
+          }),
 
-    // 2. صياغة قالب صفحة الـ Word مع التنسيقات والاتجاه العربي
-    const fullHtml = `
-      <html xmlns:o='urn:schemas-microsoft-com:office:office' xmlns:w='urn:schemas-microsoft-com:office:word' xmlns='http://www.w3.org/TR/REC-html40'>
-      <head>
-        <title>${this.project?.name || 'Export'}</title>
-        <meta charset="utf-8">
-        <style>
-          body { direction: rtl; font-family: 'Arial', sans-serif; padding: 20px; }
-          table { border-collapse: collapse; width: 100%; direction: rtl; }
-          th, td { border: 1px solid #000000; padding: 8px; text-align: right; }
-          th { background-color: #2b579a; color: white; }
-        </style>
-      </head>
-      <body>
-        ${htmlContent}
-      </body>
-      </html>
-    `;
+          new Paragraph({ text: "" }),
 
-    // 3. هنا الخطوة الأهم لـ Word Online:
-    // بدلاً من الـ Blob المحتجز في الذاكرة المحلية، يجب إرسال هذا الـ `fullHtml` إلى الـ API (الـ Backend) ليقوم بحفظه على السيرفر ويعود لكِ برابط حقيقي للملف.
+          // 2. بناء الجدول بالاعتماد على مصفوفة البيانات المحدثة
+          new Table({
+            alignment: "right",
+            width: { size: 100, type: WidthType.PERCENTAGE },
+            rows: [
+              // صف العناوين الثابت (Header)
+              new TableRow({
+                children: [
+                  this.createTableCell("المبلغ", "2b579a", true),
+                  this.createTableCell("اسم المتبرع", "2b579a", true),
+                ],
+              }),
 
-    const serverFileUrl = 'https://your-domain.com/uploads/temp_report.doc'; // الرابط الراجع من السيرفر بعد الرفع
+              // دمج صفوف البيانات ديناميكياً باستخدام دالة التعديل (Map Loop)
+              ...this.generateDataRows()
+            ],
+          }),
+        ],
+      }],
+    });
 
-    // 4. فتح الملف مباشرة في Word Online (المتصفح) دون الحاجة لتثبيت البرنامج
-    const microsoftViewerUrl = `https://view.officeapps.live.com/op/view.aspx?src=${encodeURIComponent(serverFileUrl)}`;
-
-    window.open(microsoftViewerUrl, '_blank');
+    // 3. فتح الملف المحدث مباشرة
+    Packer.toBlob(doc).then((blob) => {
+      const fileURL = URL.createObjectURL(blob);
+      window.location.href = fileURL;
+      setTimeout(() => URL.revokeObjectURL(fileURL), 5000);
+    }).catch((error) => {
+      console.error('حدث خطأ أثناء إنشاء ملف الـ Word:', error);
+    });
   }
 
-  // الدالة الخاصة بكِ لتوليد الـ HTML
-  printAssociationDonorFundExport(config: any, data: any): string {
-    // الكود الخاص بكِ الذي يرجع كود الجدول الـ HTML
-    return `
-      <table>
-        <tr><th>اسم المتبرع</th><th>المبلغ</th></tr>
-        <tr><td>مؤسسة الأمل</td><td>5000$</td></tr>
-      </table>
-    `;
+  /**
+   * دالة التعديل وتوليد الصفوف ديناميكياً:
+   * تقرأ أي تعديل طرأ على المصفوفة وتصيغ الصفوف بناءً عليه
+   */
+  private generateDataRows(): TableRow[] {
+    return this.donationsList.map((item, index) => {
+      // تمييز ألوان الصفوف بالتناوب (صف أبيض وصف رمادي)
+      const rowColor = index % 2 === 0 ? "ffffff" : "f2f2f2";
+
+      return new TableRow({
+        children: [
+          this.createTableCell(item.amount, rowColor, false),
+          this.createTableCell(item.name, rowColor, false),
+        ],
+      });
+    });
   }
 
+  // الدالة المساعدة لتنسيق الخلايا
+  private createTableCell(text: string, bgColor: string, isHeader: boolean): TableCell {
+    return new TableCell({
+      shading: { fill: bgColor },
+      margins: { top: 150, bottom: 150, left: 150, right: 150 },
+      borders: {
+        top: { style: BorderStyle.SINGLE, size: 6, color: "cccccc" },
+        bottom: { style: BorderStyle.SINGLE, size: 6, color: "cccccc" },
+        left: { style: BorderStyle.SINGLE, size: 6, color: "cccccc" },
+        right: { style: BorderStyle.SINGLE, size: 6, color: "cccccc" },
+      },
+      children: [
+        new Paragraph({
+          text: text,
+          alignment: "right",
+          bidirectional: true,
+        }),
+      ],
+    });
+  }
+
+  /**
+   * دالة تجريبية يمكنكِ ربطها بزر "تعديل البيانات" للتأكد من الفكرة
+   * تقوم بتحديث البيانات في المصفوفة، وإذا ضغطتِ طباعة بعدها ستجدين ملف الوورد تغير تماماً!
+   */
+  updateDataDemo() {
+    this.donationsList = [
+      { name: 'تم تعديل الاسم الأول', amount: '9999$' },
+      { name: 'مؤسسة الأمل المحدثة', amount: '5000$' },
+      { name: 'متبرع جديد مضاف', amount: '700$' }
+    ];
+    alert('تم تعديل البيانات بنجاح! اضغطي على زر الطباعة لرؤية التعديل داخل ملف الـ Word.');
+  }
 }
