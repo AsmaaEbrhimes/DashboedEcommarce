@@ -94,8 +94,6 @@ export class LoginComponent {
 
 
 
-
-
 @ViewChild('tableContainer') tableContainer!: ElementRef;
 project = { name: 'تقرير_صندوق_التبرعات' };
 
@@ -106,7 +104,7 @@ donationsList = [
 ];
 
 print(): void {
-  const doc = new Document({
+  const doc: Document = new Document({
     sections: [{
       children: [
         new Paragraph({ text: "تقرير صندوق التبرعات المحدث", alignment: "right", bidirectional: true, spacing: { after: 400 } }),
@@ -117,9 +115,12 @@ print(): void {
           rows: [
             // صف العناوين
             new TableRow({ children: [this.cell("المبلغ", "2b579a"), this.cell("اسم المتبرع", "2b579a")] }),
-            // صفوف البيانات ديناميكيًا
-            ...this.donationsList.map((item, i) => new TableRow({
-              children: [this.cell(item.amount, i % 2 === 0 ? "ffffff" : "f2f2f2"), this.cell(item.name, i % 2 === 0 ? "ffffff" : "f2f2f2")]
+            // صفوف البيانات ديناميكيًا مع تحديد نوع item كـ any أو كائن مخصص، و i كـ number
+            ...this.donationsList.map((item: { name: string; amount: string }, i: number) => new TableRow({
+              children: [
+                this.cell(item.amount, i % 2 === 0 ? "ffffff" : "f2f2f2"),
+                this.cell(item.name, i % 2 === 0 ? "ffffff" : "f2f2f2")
+              ]
             }))
           ],
         }),
@@ -127,11 +128,12 @@ print(): void {
     }],
   });
 
-  Packer.toBlob(doc).then(blob => {
+  // هنا حددنا نوع الـ blob والـ err صراحة لحل خطأ الـ Build
+  Packer.toBlob(doc).then((blob: Blob) => {
     const fileURL = URL.createObjectURL(blob);
     window.location.href = fileURL;
     setTimeout(() => URL.revokeObjectURL(fileURL), 5000);
-  }).catch(err => console.error('خطأ:', err));
+  }).catch((err: any) => console.error('خطأ:', err));
 }
 
 // دالة مساعدة مختصرة جدًا لإنشاء الخلايا بحدود ثابتة
@@ -149,7 +151,7 @@ private cell(text: string, bgColor: string): TableCell {
   });
 }
 
-updateDataDemo() {
+updateDataDemo(): void {
   this.donationsList = [
     { name: 'تم تعديل الاسم الأول', amount: '9999$' },
     { name: 'مؤسسة الأمل المحدثة', amount: '5000$' },
